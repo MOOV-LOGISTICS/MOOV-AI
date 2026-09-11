@@ -1,0 +1,2122 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>MOOV AI Estate Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;450;500;600&display=swap">
+
+<style>
+/* ============================== tokens ============================== */
+:root{
+  color-scheme: light;
+  --ground:#F4F7F9; --panel:#FFFFFF; --panel-2:#EBF1F5; --panel-3:#E1EAEF;
+  --rule:#D6E0E7; --rule-2:#B4C4CF;
+  --ink:#0A1620; --ink-2:#4B5E6C; --ink-3:#7A8C99;
+  --brand:#004F7C; --brand-ink:#004F7C; --accent:#FE5000; --accent-soft:#FFF1EA;
+  --s1:#0E9E6E; --s2:#F2622C; --s3:#1B7FBF; --s4:#B37F00;
+  --s1-w:rgba(14,158,110,.13); --s2-w:rgba(242,98,44,.13);
+  --grid:rgba(10,22,32,.055);
+  --shadow:0 1px 2px rgba(10,22,32,.05), 0 8px 24px -14px rgba(10,22,32,.22);
+  --hdr-ink:#EAF2F7;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --ground:#080F16; --panel:#0E1A23; --panel-2:#14232D; --panel-3:#1A2C38;
+    --rule:#1E3240; --rule-2:#2C4453;
+    --ink:#E9F0F4; --ink-2:#9DB1BE; --ink-3:#6F838E;
+    --brand:#4796CE; --brand-ink:#7CB6DE; --accent:#FF7A45; --accent-soft:#2A1710;
+    --s1:#1FA173; --s2:#E4653A; --s3:#4796CE; --s4:#BE8A18;
+    --s1-w:rgba(31,161,115,.18); --s2-w:rgba(228,101,58,.18);
+    --grid:rgba(190,215,230,.06);
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -16px rgba(0,0,0,.7);
+    --hdr-ink:#DCE9F1;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --ground:#080F16; --panel:#0E1A23; --panel-2:#14232D; --panel-3:#1A2C38;
+  --rule:#1E3240; --rule-2:#2C4453;
+  --ink:#E9F0F4; --ink-2:#9DB1BE; --ink-3:#6F838E;
+  --brand:#4796CE; --brand-ink:#7CB6DE; --accent:#FF7A45; --accent-soft:#2A1710;
+  --s1:#1FA173; --s2:#E4653A; --s3:#4796CE; --s4:#BE8A18;
+  --s1-w:rgba(31,161,115,.18); --s2-w:rgba(228,101,58,.18);
+  --grid:rgba(190,215,230,.06);
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -16px rgba(0,0,0,.7);
+  --hdr-ink:#DCE9F1;
+}
+
+/* ============================== base ============================== */
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:"IBM Plex Sans","Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:Archivo,"Segoe UI",Helvetica,Arial,sans-serif;
+  margin:0; text-wrap:balance; letter-spacing:-.018em; line-height:1.14;}
+h2{font-size:clamp(21px,2.4vw,27px); font-weight:700}
+h3{font-size:17px; font-weight:600; letter-spacing:-.012em}
+h4{font-size:14px; font-weight:600; letter-spacing:-.006em}
+p{margin:0}
+a{color:var(--brand-ink)}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:2px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+.num{font-family:"IBM Plex Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); font-weight:500}
+.lead{font-size:16px; color:var(--ink-2); max-width:68ch; line-height:1.6}
+.sub{font-size:13px; color:var(--ink-2); line-height:1.55}
+.fine{font-size:11.5px; color:var(--ink-3); line-height:1.5}
+strong{font-weight:600}
+.hi{color:var(--accent); font-weight:600}
+
+/* ============================== header ============================== */
+.cmd{
+  position:relative; background:var(--brand); color:var(--hdr-ink);
+  border-bottom:1px solid rgba(0,0,0,.25);
+}
+:root[data-theme="dark"] .cmd, :root:not([data-theme="light"]) .cmd{background:#062C44}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .cmd{background:#004F7C}}
+.cmd::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);
+  background-size:44px 44px; mask-image:linear-gradient(90deg,rgba(0,0,0,.9),transparent 78%);
+}
+.cmd-in{position:relative; max-width:1280px; margin:0 auto; padding:16px 24px 0;
+  display:flex; flex-wrap:wrap; align-items:flex-end; gap:16px 28px}
+.brandmark{display:flex; align-items:center; gap:11px; padding-bottom:14px}
+.hexmark{width:26px; height:29px; flex:none}
+.wordmark{font-family:Archivo,sans-serif; font-weight:700; font-size:19px;
+  letter-spacing:.06em; color:#fff}
+.title-block{padding-bottom:12px; margin-right:auto}
+.title-block h1{font-family:Archivo,sans-serif; font-size:clamp(19px,2.3vw,24px);
+  font-weight:600; letter-spacing:-.01em; margin:0; color:#fff}
+.title-block .meta{font-family:"IBM Plex Mono",monospace; font-size:10.5px;
+  letter-spacing:.12em; text-transform:uppercase; color:rgba(234,242,247,.62); margin-top:5px}
+.hdr-tools{display:flex; align-items:center; gap:8px; padding-bottom:12px}
+.tbtn{background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.2);
+  color:var(--hdr-ink); font-family:"IBM Plex Mono",monospace; font-size:10.5px;
+  letter-spacing:.1em; text-transform:uppercase; padding:7px 11px; border-radius:3px;
+  cursor:pointer; transition:background .15s}
+.tbtn:hover{background:rgba(255,255,255,.18)}
+
+/* ============================== tab rail ============================== */
+.rail{position:sticky; top:0; z-index:40; background:var(--brand);
+  border-bottom:1px solid var(--rule); box-shadow:0 1px 0 rgba(0,0,0,.15)}
+:root[data-theme="dark"] .rail, :root:not([data-theme="light"]) .rail{background:#062C44}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .rail{background:#004F7C}}
+.rail-in{max-width:1280px; margin:0 auto; padding:0 24px; display:flex;
+  gap:2px; overflow-x:auto; scrollbar-width:none}
+.rail-in::-webkit-scrollbar{display:none}
+.tab{appearance:none; background:none; border:0; cursor:pointer; white-space:nowrap;
+  padding:13px 15px 12px; color:rgba(234,242,247,.66); font-family:Archivo,sans-serif;
+  font-size:13.5px; font-weight:500; letter-spacing:.005em; position:relative;
+  display:flex; align-items:baseline; gap:8px; transition:color .15s}
+.tab .ix{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.1em;
+  color:rgba(234,242,247,.42)}
+.tab:hover{color:#fff}
+.tab[aria-selected="true"]{color:#fff}
+.tab[aria-selected="true"] .ix{color:var(--accent)}
+.tab[aria-selected="true"]::after{content:""; position:absolute; left:15px; right:15px;
+  bottom:0; height:3px; background:var(--accent); border-radius:2px 2px 0 0}
+
+/* ============================== layout ============================== */
+.wrap{max-width:1280px; margin:0 auto; padding-inline:24px; padding-block:30px 64px}
+.panel[hidden]{display:none!important}
+.panel{animation:rise .22s ease-out}
+@keyframes rise{from{opacity:.55; transform:translateY(3px)} to{opacity:1; transform:none}}
+@media (prefers-reduced-motion:reduce){.panel{animation:none}}
+.stack{display:flex; flex-direction:column; gap:34px}
+.sec-head{display:flex; flex-direction:column; gap:7px; margin-bottom:2px}
+.sec-head .row{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+.card{background:var(--panel); border:1px solid var(--rule); border-radius:5px;
+  box-shadow:var(--shadow)}
+.pad{padding:20px 22px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:940px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}}
+
+/* readout strip — the instrument row */
+.readouts{display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
+  background:var(--panel); border:1px solid var(--rule); border-radius:5px;
+  overflow:hidden; box-shadow:var(--shadow)}
+@media(max-width:820px){.readouts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ro{padding:16px 18px 15px; border-right:1px solid var(--rule); position:relative}
+.ro:last-child{border-right:0}
+@media(max-width:820px){
+  .ro:nth-child(2n){border-right:0}
+  .ro:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+}
+.ro .k{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-3)}
+.ro .v{font-family:Archivo,sans-serif; font-weight:700; font-size:29px;
+  letter-spacing:-.028em; margin-top:6px; font-variant-numeric:tabular-nums; line-height:1}
+.ro .u{font-size:13px; font-weight:500; color:var(--ink-2); margin-left:3px}
+.ro .n{font-size:11.5px; color:var(--ink-3); margin-top:7px; line-height:1.45}
+.ro .bar{position:absolute; left:0; top:0; bottom:0; width:3px}
+
+/* misc atoms */
+.tagline{display:inline-flex; align-items:center; gap:7px; font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3)}
+.dot{width:9px; height:9px; border-radius:2px; flex:none}
+.rule{height:1px; background:var(--rule); border:0; margin:0}
+.kv{display:flex; justify-content:space-between; gap:14px; padding:9px 0;
+  border-bottom:1px solid var(--rule); font-size:13.5px}
+.kv:last-child{border-bottom:0}
+.kv .k{color:var(--ink-2)}
+.kv .v{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; font-weight:500}
+.pill{display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:10px;
+  letter-spacing:.1em; text-transform:uppercase; padding:3px 8px; border-radius:3px;
+  border:1px solid var(--rule-2); color:var(--ink-2)}
+.pill.act{border-color:var(--accent); color:var(--accent); background:var(--accent-soft)}
+.pill.ok{border-color:var(--s1); color:var(--s1)}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--rule); border-radius:5px; background:var(--panel)}
+table{border-collapse:collapse; width:100%; min-width:720px; font-size:13px}
+th,td{text-align:left; padding:11px 14px; border-bottom:1px solid var(--rule); vertical-align:top}
+thead th{background:var(--panel-2); font-family:"IBM Plex Mono",monospace; font-size:10px;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--ink-2); font-weight:500;
+  position:sticky; top:0; white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+td.n,th.n{text-align:right; font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums}
+td.rowh{font-weight:600; white-space:nowrap; color:var(--ink)}
+.mtx td.c{text-align:center; font-family:"IBM Plex Mono",monospace}
+.yes{color:var(--accent); font-weight:700}
+.no{color:var(--ink-3)}
+
+/* charts */
+.chart-fig{display:flex; flex-direction:column; gap:12px}
+.chart-fig figcaption{font-size:11.5px; color:var(--ink-3); line-height:1.5}
+svg.chart{display:block; width:100%; height:auto; overflow:visible}
+.legend{display:flex; flex-wrap:wrap; gap:6px 20px}
+.lgi{display:flex; align-items:center; gap:8px; font-size:12.5px; color:var(--ink-2)}
+.lgi .v{margin-left:auto; font-family:"IBM Plex Mono",monospace; color:var(--ink); font-weight:500}
+#tip{position:fixed; z-index:90; pointer-events:none; opacity:0; transition:opacity .1s;
+  background:var(--ink); color:var(--ground); padding:7px 10px; border-radius:4px;
+  font-size:12px; line-height:1.4; box-shadow:0 6px 20px -6px rgba(0,0,0,.5); max-width:230px}
+#tip .t{font-weight:600; display:block}
+#tip .d{font-family:"IBM Plex Mono",monospace; font-size:11.5px; opacity:.85}
+
+details{border-top:1px solid var(--rule); padding-top:12px}
+summary{cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:10.5px;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--ink-2)}
+summary::marker{color:var(--ink-3)}
+details[open] summary{margin-bottom:12px}
+
+/* calculator */
+.calc-row{display:flex; flex-direction:column; gap:6px; margin-bottom:16px}
+.calc-row label{display:flex; justify-content:space-between; font-size:12.5px; color:var(--ink-2)}
+.calc-row output{font-family:"IBM Plex Mono",monospace; color:var(--ink); font-weight:500}
+input[type=range]{width:100%; accent-color:var(--accent); height:22px}
+
+footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40px}
+@media print{
+  .rail,.hdr-tools{display:none}
+  .panel[hidden]{display:block!important}
+  .card{break-inside:avoid; box-shadow:none}
+}
+</style>
+
+<header class="cmd">
+  <div class="cmd-in">
+    <div class="brandmark">
+      <svg class="hexmark" viewBox="0 0 26 29" aria-hidden="true">
+        <path d="M13 1 24.3 7.5v13L13 27 1.7 20.5v-13z" fill="none" stroke="#fff" stroke-width="1.7"/>
+        <path d="M13 8.2 18.8 11.6v6.8L13 21.8 7.2 18.4v-6.8z" fill="#FE5000"/>
+      </svg>
+      <span class="wordmark">MOOV</span>
+    </div>
+    <div class="title-block">
+      <h1>AI Estate Review</h1>
+      <div class="meta">IT Department &middot; September 2026 &middot; Internal</div>
+    </div>
+    <div class="hdr-tools">
+      <button class="tbtn" id="themeBtn" type="button" aria-label="Switch colour theme">Theme</button>
+    </div>
+  </div>
+</header>
+
+<nav class="rail" aria-label="Sections">
+  <div class="rail-in" role="tablist">
+    <button class="tab" role="tab" id="t-overview" aria-controls="p-overview" aria-selected="true"><span class="ix">01</span>Overview</button>
+    <button class="tab" role="tab" id="t-spend"    aria-controls="p-spend"    aria-selected="false"><span class="ix">02</span>Spend</button>
+    <button class="tab" role="tab" id="t-qoder"    aria-controls="p-qoder"    aria-selected="false"><span class="ix">03</span>Qoder Work</button>
+    <button class="tab" role="tab" id="t-moov"     aria-controls="p-moov"     aria-selected="false"><span class="ix">04</span>MOOV AI</button>
+    <button class="tab" role="tab" id="t-decision" aria-controls="p-decision" aria-selected="false"><span class="ix">05</span>Decision</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ================================================== 01 OVERVIEW -->
+<section class="panel stack" id="p-overview" role="tabpanel" aria-labelledby="t-overview">
+
+  <div class="sec-head">
+    <span class="eyebrow">01 / Overview</span>
+    <h2>The AI solution MOOV runs today</h2>
+    <p class="lead">We currently run four AI solutions from four suppliers, serving different populations.</p>
+  </div>
+
+  <div class="readouts r3">
+    <div class="ro"><span class="bar" style="background:var(--brand)"></span>
+      <div class="k">Estimated annual AI spend</div><div class="v">&yen;597,476</div>
+      <div class="n">&yen;49,790 a month at today’s run-rate, annualised. Four billed platforms;
+        no platform has yet run a full year</div></div>
+    <div class="ro"><span class="bar" style="background:var(--s2)"></span>
+      <div class="k">Concentration</div><div class="v">46<span class="u">%</span></div>
+      <div class="n">of all AI spend sits on one platform &mdash; Qoder Work, on 42 seats</div></div>
+    <div class="ro"><span class="bar" style="background:var(--s1)"></span>
+      <div class="k">MOOV AI share</div><div class="v">8.2<span class="u">%</span></div>
+      <div class="n">the only platform whose cost does not rise with headcount</div></div>
+  </div>
+
+  <!-- ---------- vendor views: cards / comparison table ---------- -->
+  <div>
+    <div class="viewbar">
+      <span class="eyebrow">The four solutions</span>
+      <div class="vswitch" role="tablist" aria-label="Choose a view">
+        <button class="segb" type="button" role="tab" id="vb-cards"
+                aria-controls="vw-cards" aria-selected="true">Cards</button>
+        <button class="segb" type="button" role="tab" id="vb-table"
+                aria-controls="vw-table" aria-selected="false">Comparison table</button>
+      </div>
+    </div>
+
+    <div id="vw-cards" role="tabpanel" aria-labelledby="vb-cards">
+    <div class="vgrid">
+
+      <article class="vcard" style="--vc:var(--s3)">
+        <div class="vc-head">
+          <div class="vc-name">Gemini</div>
+          <div class="vc-sup">Google &middot; bundled with Workspace</div>
+        </div>
+        <p class="vc-pos">Google's assistant, included in the Workspace licences we already hold.</p>
+        <dl class="vc-dl">
+          <dt>What it does</dt>
+          <dd>Drafting and summarising in Docs and Gmail, meeting notes in Meet, quick Q&amp;A in the browser.</dd>
+          <dt>Best fit</dt>
+          <dd>People whose working day runs inside Google Workspace.</dd>
+          <dt>Billed as</dt>
+          <dd>Monthly subscription per seat, billed on the fiscal year.</dd>
+          <dt>Data &amp; security</dt>
+          <dd>Processed in Google Cloud under the Workspace terms; governed by Google's admin console, not ours.</dd>
+          <dt>Watch out for</dt>
+          <dd>We pay per seat whether or not Gemini is used; attribution is unclear.</dd>
+        </dl>
+        <div class="vc-foot">
+          <div><span class="k">Current users</span><span class="v">76</span></div>
+        </div>
+      </article>
+
+      <article class="vcard" style="--vc:var(--s4)">
+        <div class="vc-head">
+          <div class="vc-name">Copilot</div>
+          <div class="vc-sup">Microsoft &middot; M365 and Teams</div>
+        </div>
+        <p class="vc-pos">Microsoft's assistant, embedded in the M365 estate most of MOOV already works in.</p>
+        <dl class="vc-dl">
+          <dt>What it does</dt>
+          <dd>Drafting in Word and Outlook, formula and analysis help in Excel, meeting recap in Teams.</dd>
+          <dt>Best fit</dt>
+          <dd>People whose working day runs inside M365 &mdash; and who handle material we would rather keep in the Microsoft tenant.</dd>
+          <dt>Billed as</dt>
+          <dd>Annual subscription per seat.</dd>
+          <dt>Data &amp; security</dt>
+          <dd>Inside the Microsoft tenant we already run &mdash; the strongest posture of the three external tools.</dd>
+          <dt>Watch out for</dt>
+          <dd>Highest per-seat price of the two suites, and it overlaps Gemini.</dd>
+        </dl>
+        <div class="vc-foot">
+          <div><span class="k">Current users</span><span class="v">36</span></div>
+        </div>
+      </article>
+
+      <article class="vcard" style="--vc:var(--s2)">
+        <div class="vc-head">
+          <div class="vc-name">Qoder Work</div>
+          <div class="vc-sup">Alibaba &middot; credit-metered</div>
+        </div>
+        <p class="vc-pos">Alibaba's agent platform for doing the work, not describing it &mdash; it plans a task, then executes it end to end.</p>
+        <dl class="vc-dl">
+          <dt>What it does</dt>
+          <dd>Combines coding and document-generation capabilities in a single platform, producing finished Word, PowerPoint, Excel, and HTML outputs while also reading and acting on files on the user's computer.</dd>
+          <dt>Best fit</dt>
+          <dd>MOOV&nbsp;OS development, and named automation owners &mdash; work that genuinely needs an agent, not an answer.</dd>
+          <dt>Billed as</dt>
+          <dd>Pre-paid credits consumed on use, plus seat subscriptions. No ceiling.</dd>
+          <dt>Data &amp; security</dt>
+          <dd>Alibaba Cloud. Code and task context leave our perimeter, it can read local files on the user's machine, and there is no MOOV-side audit trail.</dd>
+          <dt>Watch out for</dt>
+          <dd>Unbounded cost &mdash; consumption, not seats, drives the bill.</dd>
+        </dl>
+        <div class="vc-foot">
+          <div><span class="k">Current users</span><span class="v">42</span></div>
+        </div>
+      </article>
+
+      <article class="vcard" style="--vc:var(--s1)">
+        <div class="vc-head">
+          <div class="vc-name">MOOV AI</div>
+          <div class="vc-sup">Kymo on a Dify engine &middot; our own deployment</div>
+        </div>
+        <p class="vc-pos">Our own enterprise portal &mdash; one governed entry point to chat, corporate knowledge and department agents.</p>
+        <dl class="vc-dl">
+          <dt>What it does</dt>
+          <dd>Q&amp;A grounded in our own SOPs and policies with the source cited, low-code agent building, workflow automation.</dd>
+          <dt>Best fit</dt>
+          <dd>Everyone. The baseline layer for routine knowledge and drafting work.</dd>
+          <dt>Billed as</dt>
+          <dd>Fixed annual platform subscription plus metered model tokens. The subscription does not change with headcount.</dd>
+          <dt>Data &amp; security</dt>
+          <dd>On-premise in Singapore. Teams SSO, RBAC, full audit log; only the inference call leaves.</dd>
+          <dt>Watch out for</dt>
+          <dd>Not a coding tool. Knowledge coverage is still thin &mdash; two bases live.</dd>
+        </dl>
+        <div class="vc-foot">
+          <div><span class="k">Target user</span><span class="v">All employees</span></div>
+        </div>
+      </article>
+
+    </div>
+    </div>
+
+    <div id="vw-table" role="tabpanel" aria-labelledby="vb-table" hidden>
+      <div class="card">
+        <div class="pad" style="border-bottom:1px solid var(--rule)">
+          <span class="eyebrow">The fifth category</span>
+          <h3 style="margin:10px 0 8px">There is a layer underneath this that we cannot see</h3>
+          <p class="sub">Beyond the four tools in this table, staff also reach
+            for free consumer AI &mdash; Doubao, the DeepSeek web app, the assistant built into
+            DingTalk. These cost us nothing, which is exactly why there is no account list, no usage
+            record and no way to know what has been pasted into them.</p>
+          <p class="sub" style="margin-top:10px"><strong>This is the real argument
+            for a sanctioned front door.</strong> The question is not only what we spend on AI; it is
+            how much of our AI use we can actually see. Today the honest answer is: the four columns
+            below, and nothing else.</p>
+        </div>
+    <div class="tbl-wrap" style="border:0; border-radius:0">
+      <table style="min-width:900px">
+        <thead>
+          <tr>
+            <th style="width:132px"></th>
+            <th><i class="dot" style="background:var(--s3);display:inline-block;margin-right:7px"></i>Gemini</th>
+            <th><i class="dot" style="background:var(--s4);display:inline-block;margin-right:7px"></i>Copilot</th>
+            <th><i class="dot" style="background:var(--s2);display:inline-block;margin-right:7px"></i>Qoder Work</th>
+            <th><i class="dot" style="background:var(--s1);display:inline-block;margin-right:7px"></i>MOOV AI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rowh">Position</td>
+            <td>Assistant inside Google Workspace</td>
+            <td>Assistant inside Microsoft 365</td>
+            <td>Agentic platform that executes work</td>
+            <td>Company-level AI front door</td>
+          </tr>
+          <tr>
+            <td class="rowh">Core capability</td>
+            <td>Draft, summarise, meeting notes, Q&amp;A</td>
+            <td>Draft, Excel analysis, Teams recap</td>
+            <td>Writes and runs code; produces finished Word, PPT, Excel, HTML; reads local files</td>
+            <td>Chat, RAG over MOOV knowledge, low-code agents, workflow automation</td>
+          </tr>
+          <tr>
+            <td class="rowh">Best used for</td>
+            <td>People living in Docs, Gmail, Meet</td>
+            <td>People living in Word, Outlook, Excel, Teams</td>
+            <td>MOOV&nbsp;OS development, complex automation, prototyping</td>
+            <td>Everyone &mdash; routine drafting, policy and SOP questions, department agents</td>
+          </tr>
+          <tr>
+            <td class="rowh">Data &amp; security</td>
+            <td>Google Cloud, Workspace terms. Governed in Google's console, not ours</td>
+            <td>Inside our own Microsoft tenant &mdash; strongest of the three external tools</td>
+            <td>Alibaba Cloud. Code and task context leave; reads local files; <strong>no MOOV-side audit trail</strong></td>
+            <td>On-premise Singapore. Teams SSO, RBAC, full audit log. <strong>Only the inference call leaves</strong></td>
+          </tr>
+          <tr>
+            <td class="rowh">Billing model</td>
+            <td>Monthly per seat</td>
+            <td>Annual per seat</td>
+            <td><strong>Pre-paid credits consumed on use</strong> &mdash; no ceiling</td>
+            <td>Fixed annual subscription + metered tokens</td>
+          </tr>
+          <tr>
+            <td class="rowh">Cost per user</td>
+            <td class="num">&yen;189 / month</td>
+            <td class="num">&yen;232 / month</td>
+            <td class="num" style="color:var(--s2);font-weight:600">&yen;547 / month</td>
+            <td class="num" style="color:var(--s1);font-weight:600">&yen;14&ndash;24 / month<br><span class="fine">at 300 staff, incl. tokens</span></td>
+          </tr>
+          <tr>
+            <td class="rowh">Main risk</td>
+            <td>Paid per seat whether used or not; overlaps Copilot</td>
+            <td>Highest seat price; overlaps Gemini</td>
+            <td>Unbounded spend &mdash; consumption, not seats, drives the bill</td>
+            <td>Not a coding tool. Answer quality limited by knowledge-base coverage</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------- agenda ---------- -->
+  <div class="card">
+    <div class="pad" style="border-bottom:1px solid var(--rule)">
+      <span class="eyebrow">Purpose of this session</span>
+      <h3 style="margin:9px 0 6px">Three things we would like to settle today</h3>
+      <p class="sub">Everything in the tabs that follow is evidence for one of these three.</p>
+    </div>
+    <div class="agenda">
+
+      <div class="ag">
+        <div class="ag-n">01</div>
+        <div class="ag-c">
+          <b>How MOOV AI moves forward</b>
+          <p>The platform is deployed, tested and trained on &mdash; but it has never been announced.
+            We are asking for endorsement of the rollout sequence: management briefing first, then
+            department waves through November, then the smartMOOV integration in Q4. And for the
+            open data questions to be closed before, not after, we tell 300 people it exists.</p>
+          <span class="ag-x">Detail in 04 &middot; decision in 05</span>
+        </div>
+      </div>
+
+      <div class="ag">
+        <div class="ag-n">02</div>
+        <div class="ag-c">
+          <b>How we govern AI use across the company</b>
+          <p>An AI Policy is drafted but not signed off. Before access widens we need agreement on
+            what may and may not be given to an AI, who approves knowledge bases and developer
+            access, and what position we take on the free consumer tools already in use that leave
+            no record at all. Governance has to land before the announcement, because it cannot be
+            retrofitted onto habits people have already formed.</p>
+          <span class="ag-x">Detail in 04 &middot; Governance &amp; data</span>
+        </div>
+      </div>
+
+      <div class="ag">
+        <div class="ag-n">03</div>
+        <div class="ag-c">
+          <b>Whose budget does AI spend actually belong to?
+            <span class="pill act" style="margin-left:8px; vertical-align:3px">Not in the numbers yet</span></b>
+          <p>Most Qoder credit is consumed on work the business asked for &mdash; MOOV&nbsp;OS
+            development, operational automation, prototypes raised by other departments &mdash; yet
+            the entire &yen;114,897 sits on IT's cost centre. On the figures in this review, IT looks
+            like the largest AI spender in the company; in substance, a large part of that is
+            delivery on behalf of other functions.</p>
+          <p style="margin-top:9px">We would like to agree a <strong>chargeback principle</strong>:
+            consumption driven by a named business requirement is attributed to that department, and
+            IT's own number is what remains. This matters beyond accounting &mdash; the tiering and
+            access-gate decision in 05 should be made by whoever actually carries the cost. Today
+            nobody outside IT feels it.</p>
+          <span class="ag-x">Raised here &middot; no proposal yet &mdash; input wanted</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- ================================================== 02 SPEND / 03 QODER -->
+<section class="panel stack" id="p-spend" role="tabpanel" aria-labelledby="t-spend" hidden>
+
+  <div class="sec-head">
+    <span class="eyebrow">02 / Spend</span>
+  </div>
+
+  <!-- ---------- spend donut + drill-down ---------- -->
+  <div class="card">
+    <div class="pad" style="border-bottom:1px solid var(--rule)">
+      <span class="eyebrow">Monthly spend by vendor</span>
+      <h3 style="margin:9px 0 6px">What the four solutions cost us each month</h3>
+      <p class="sub">Everything converted to RMB per month: Gemini at USD/CNY 7.10, Copilot from its annual subscription, Qoder as the five-month April&ndash;August average, MOOV AI as its annual subscription divided by twelve. Select a vendor to open its detail.</p>
+    </div>
+    <div class="donut-row">
+      <figure class="chart-fig" style="margin:0">
+        <svg class="chart" viewBox="0 0 300 300" role="img"
+             aria-label="Donut chart of monthly AI spend: Qoder Work 22,979 CNY 46.2 percent, Gemini 14,375 CNY 28.9 percent, Copilot 8,352 CNY 16.8 percent, MOOV AI 4,083 CNY 8.2 percent">
+          <g transform="translate(150,150) rotate(-90) translate(-150,-150)">
+            <circle class="seg" data-v="qoder"   data-t="Qoder Work" data-d="&yen;22,979 / month · 46.2%" cx="150" cy="150" r="118"
+              fill="none" stroke="var(--s2)" stroke-width="34" stroke-dasharray="339.19 741.42" stroke-dashoffset="0"/>
+            <circle class="seg" data-v="gemini"  data-t="Gemini" data-d="&yen;14,375 / month · 28.9%" cx="150" cy="150" r="118"
+              fill="none" stroke="var(--s3)" stroke-width="34" stroke-dasharray="211.06 741.42" stroke-dashoffset="-342.19"/>
+            <circle class="seg" data-v="copilot" data-t="Copilot" data-d="&yen;8,352 / month · 16.8%" cx="150" cy="150" r="118"
+              fill="none" stroke="var(--s4)" stroke-width="34" stroke-dasharray="121.37 741.42" stroke-dashoffset="-556.24"/>
+            <circle class="seg" data-v="moov"    data-t="MOOV AI" data-d="&yen;4,083 / month · 8.2%" cx="150" cy="150" r="118"
+              fill="none" stroke="var(--s1)" stroke-width="34" stroke-dasharray="57.80 741.42" stroke-dashoffset="-680.61"/>
+          </g>
+          <text x="150" y="144" text-anchor="middle" fill="var(--ink)" font-family="Archivo,sans-serif"
+                font-size="30" font-weight="700" letter-spacing="-1">&yen;49,790</text>
+          <text x="150" y="164" text-anchor="middle" fill="var(--ink-3)" font-family="IBM Plex Mono,monospace"
+                font-size="8.5" letter-spacing="1.4">PER MONTH</text>
+        </svg>
+        <figcaption>&yen;597,476 a year at today's populations. MOOV AI's share is its fixed
+          subscription &mdash; token consumption to date is &yen;0.35 in total.</figcaption>
+      </figure>
+
+      <div class="drill">
+        <div class="dr-item">
+          <button class="dr" data-v="qoder" aria-expanded="false" aria-controls="d-qoder" type="button">
+            <i class="dot" style="background:var(--s2)"></i>
+            <span class="dr-n">Qoder Work</span>
+            <span class="dr-a num">&yen;22,979</span>
+            <span class="dr-p num">46.2%</span>
+            <span class="chev" aria-hidden="true"></span>
+          </button>
+          <div class="dr-body" id="d-qoder" hidden>
+            <p class="sub" style="margin-bottom:14px">Credits are consumed on use, so there is no
+              ceiling. Actual spend April to August 2026 was <strong>&yen;114,897</strong> net of one
+              refund &mdash; an average of <strong>&yen;22,979 a month</strong>, but very unevenly spread:</p>
+            <svg class="chart" viewBox="0 0 660 300" role="img"
+                 aria-label="Line chart of Qoder monthly spend: April 3,162, May 18,600, June 7,800, July 48,870, August 36,465 CNY">
+              <g font-family="IBM Plex Mono,monospace" font-size="12" fill="var(--ink-3)">
+                <line x1="56" y1="242" x2="620" y2="242" stroke="var(--rule-2)" stroke-width="1"/>
+                <line x1="56" y1="184.3" x2="620" y2="184.3" stroke="var(--grid)" stroke-width="1"/>
+                <line x1="56" y1="126.5" x2="620" y2="126.5" stroke="var(--grid)" stroke-width="1"/>
+                <line x1="56" y1="68.8" x2="620" y2="68.8" stroke="var(--grid)" stroke-width="1"/>
+                <text x="48" y="246" text-anchor="end">0</text>
+                <text x="48" y="188" text-anchor="end">15k</text>
+                <text x="48" y="130" text-anchor="end">30k</text>
+                <text x="48" y="73"  text-anchor="end">45k</text>
+                <text x="66"   y="264" text-anchor="middle">APR</text>
+                <text x="198.5" y="264" text-anchor="middle">MAY</text>
+                <text x="331"  y="264" text-anchor="middle">JUN</text>
+                <text x="463.5" y="264" text-anchor="middle">JUL</text>
+                <text x="596"  y="264" text-anchor="middle">AUG</text>
+                <text x="56" y="288" font-size="11">CNY per month &middot; source: Qoder order ledger</text>
+              </g>
+              <path d="M66 229.8 L198.5 170.3 L331 211.9 L463.5 53.6 L596 101.4 L596 242 L66 242 Z" fill="var(--s2-w)"/>
+              <path d="M66 229.8 L198.5 170.3 L331 211.9 L463.5 53.6 L596 101.4" fill="none"
+                    stroke="var(--s2)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+              <line x1="66" y1="153.4" x2="620" y2="153.4" stroke="var(--s2)" stroke-width="1" stroke-dasharray="4 4" opacity=".65"/>
+              <text x="620" y="149" text-anchor="end" fill="var(--s2)" font-family="IBM Plex Mono,monospace" font-size="10.5">5-month average &yen;22,979</text>
+              <circle class="pt" data-t="April 2026"  data-d="&yen;3,162"  cx="66"    cy="229.8" r="4.5" fill="var(--s2)" stroke="var(--panel)" stroke-width="2"/>
+              <circle class="pt" data-t="May 2026"    data-d="&yen;18,600" cx="198.5" cy="170.3" r="4.5" fill="var(--s2)" stroke="var(--panel)" stroke-width="2"/>
+              <circle class="pt" data-t="June 2026"   data-d="&yen;7,800"  cx="331"   cy="211.9" r="4.5" fill="var(--s2)" stroke="var(--panel)" stroke-width="2"/>
+              <circle class="pt" data-t="July 2026"   data-d="&yen;48,870" cx="463.5" cy="53.6"  r="4.5" fill="var(--s2)" stroke="var(--panel)" stroke-width="2"/>
+              <circle class="pt" data-t="August 2026" data-d="&yen;36,465" cx="596"   cy="101.4" r="6"   fill="var(--s2)" stroke="var(--panel)" stroke-width="2.5"/>
+              <text x="463.5" y="40" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono,monospace" font-size="13" font-weight="600">&yen;48,870</text>
+              <text x="600" y="93" fill="var(--ink)" font-family="IBM Plex Mono,monospace" font-size="13" font-weight="600">&yen;36,465</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="dr-item">
+          <button class="dr" data-v="gemini" aria-expanded="false" aria-controls="d-gemini" type="button">
+            <i class="dot" style="background:var(--s3)"></i>
+            <span class="dr-n">Gemini</span>
+            <span class="dr-a num">&yen;14,375</span>
+            <span class="dr-p num">28.9%</span>
+            <span class="chev" aria-hidden="true"></span>
+          </button>
+          <div class="dr-body" id="d-gemini" hidden>
+            <div class="kv"><span class="k">List price</span><span class="v">USD 26.64 / user / month</span></div>
+            <div class="kv"><span class="k">In RMB at 7.10</span><span class="v">&yen;189.14 / user / month</span></div>
+            <div class="kv"><span class="k">Seats</span><span class="v">76</span></div>
+            <div class="kv"><span class="k">Monthly</span><span class="v">&yen;14,375</span></div>
+            <p class="fine" style="margin-top:12px">These are Workspace licences that include Gemini.
+              Some were opened for Drive, Meet or Gmail rather than for Gemini, so this figure is the
+              upper bound of Gemini cost &mdash; counted in full here.</p>
+          </div>
+        </div>
+
+        <div class="dr-item">
+          <button class="dr" data-v="copilot" aria-expanded="false" aria-controls="d-copilot" type="button">
+            <i class="dot" style="background:var(--s4)"></i>
+            <span class="dr-n">Copilot</span>
+            <span class="dr-a num">&yen;8,352</span>
+            <span class="dr-p num">16.8%</span>
+            <span class="chev" aria-hidden="true"></span>
+          </button>
+          <div class="dr-body" id="d-copilot" hidden>
+            <div class="kv"><span class="k">List price</span><span class="v">&yen;2,784 / user / year</span></div>
+            <div class="kv"><span class="k">Monthly equivalent</span><span class="v">&yen;232.00 / user / month</span></div>
+            <div class="kv"><span class="k">Seats</span><span class="v">36</span></div>
+            <div class="kv"><span class="k">Monthly</span><span class="v">&yen;8,352</span></div>
+            <p class="fine" style="margin-top:12px">Fixed regardless of how much any individual uses
+              it &mdash; the cost is the seat, not the usage.</p>
+          </div>
+        </div>
+
+        <div class="dr-item">
+          <button class="dr" data-v="moov" aria-expanded="false" aria-controls="d-moov" type="button">
+            <i class="dot" style="background:var(--s1)"></i>
+            <span class="dr-n">MOOV AI</span>
+            <span class="dr-a num">&yen;4,083</span>
+            <span class="dr-p num">8.2%</span>
+            <span class="chev" aria-hidden="true"></span>
+          </button>
+          <div class="dr-body" id="d-moov" hidden>
+            <div class="kv"><span class="k">Platform subscription</span><span class="v">&yen;49,000 / year</span></div>
+            <div class="kv"><span class="k">Monthly equivalent</span><span class="v">&yen;4,083 &mdash; fixed</span></div>
+            <div class="kv"><span class="k">Model rate &mdash; qwen-plus</span><span class="v">&yen;0.50 in / &yen;2.00 out per M</span></div>
+            <div class="kv"><span class="k">Observed per conversation</span><span class="v">7,086 tokens</span></div>
+            <div class="kv"><span class="k">Per user at 300 staff</span><span class="v">&yen;13.61 fixed &middot; &yen;14.32 all-in</span></div>
+            <p class="fine" style="margin-top:12px">The subscription fee is the same whether 40 people
+              use it or 300. Token consumption does rise with usage &mdash; but at the observed rate,
+              the whole company on qwen-plus adds about &yen;213 a month. See the model layer below.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-head" style="margin-bottom:-16px">
+    <h2>What the numbers say</h2>
+    <p class="lead">Monthly spend by vendor, a model of what each solution would cost at a given scale, and the three things that stand out once all four are put on the same footing.</p>
+    <span class="eyebrow" style="margin-top:10px">Findings</span>
+    <h3>Three things stand out</h3>
+  </div>
+
+  <div class="grid g3">
+    <div class="card pad" style="border-top:3px solid var(--s2)">
+      <span class="eyebrow">Finding 01</span>
+      <h3 style="margin:10px 0 8px">Spend is concentrated, and volatile</h3>
+      <p class="sub">Qoder is &yen;22,979 of a &yen;49,790 monthly total &mdash; 46&nbsp;% of AI spend on
+        42 of 154 seats, at &yen;547 per user per month. That is 2.4&times; Copilot and 2.9&times; Gemini.</p>
+      <p class="sub" style="margin-top:10px">The monthly figure also swings hard: &yen;3,162 in April,
+        &yen;48,870 in July. <strong>73&nbsp;% of it is credit consumption, not licences</strong> &mdash;
+        so cutting seats would barely move it. A usage gate would.</p>
+    </div>
+    <div class="card pad" style="border-top:3px solid var(--s4)">
+      <span class="eyebrow">Finding 02</span>
+      <h3 style="margin:10px 0 8px">We run two overlapping office assistants</h3>
+      <p class="sub">Gemini (76 seats) and Copilot (36 seats) do substantially the same job in two
+        different office suites. Together that is <strong>112 seats and &yen;22,727 a month</strong>
+        &mdash; 46&nbsp;% of the total, the same share as Qoder.</p>
+      <p class="sub" style="margin-top:10px">There may be good reasons: the suites are separate
+        purchases and the populations may not overlap. But at renewal it should be a decision, not a
+        default. IT can produce the actual usage split.</p>
+    </div>
+    <div class="card pad" style="border-top:3px solid var(--s1)">
+      <span class="eyebrow">Finding 03</span>
+      <h3 style="margin:10px 0 8px">Only one platform gets cheaper as it grows</h3>
+      <p class="sub">Gemini, Copilot and Qoder all bill by the user, so their per-user cost is fixed
+        by construction &mdash; &yen;189, &yen;232 and &yen;547 a month, whatever we do.</p>
+      <p class="sub" style="margin-top:10px">MOOV AI is a fixed &yen;4,083 a month plus tokens. Across
+        our <strong>300 staff</strong> that is &yen;13.61 each before tokens and
+        <strong>&yen;14.32 all-in</strong>; at 500 people it falls to &yen;8.87. Rolling it out to more
+        people lowers its unit cost instead of raising the bill.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="pad" style="border-bottom:1px solid var(--rule)">
+      <span class="eyebrow">Same footing</span>
+      <h3 style="margin:9px 0 0">All four, RMB per month at today's populations</h3>
+    </div>
+    <div class="tbl-wrap" style="border:0; border-radius:0">
+      <table style="min-width:720px">
+        <thead>
+          <tr><th>Platform</th><th class="n">Users</th><th class="n">Per user / month</th>
+              <th class="n">Per month</th><th class="n">Per year</th><th>Cost driver</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="rowh"><i class="dot" style="background:var(--s2);display:inline-block;margin-right:8px"></i>Qoder Work</td>
+            <td class="n">42</td><td class="n" style="color:var(--s2);font-weight:600">&yen;547.13</td>
+            <td class="n">&yen;22,979</td><td class="n">&yen;275,753</td><td>Credits consumed</td></tr>
+          <tr><td class="rowh"><i class="dot" style="background:var(--s3);display:inline-block;margin-right:8px"></i>Gemini</td>
+            <td class="n">76</td><td class="n">&yen;189.14</td>
+            <td class="n">&yen;14,375</td><td class="n">&yen;172,499</td><td>Seats</td></tr>
+          <tr><td class="rowh"><i class="dot" style="background:var(--s4);display:inline-block;margin-right:8px"></i>Copilot</td>
+            <td class="n">36</td><td class="n">&yen;232.00</td>
+            <td class="n">&yen;8,352</td><td class="n">&yen;100,224</td><td>Seats</td></tr>
+          <tr><td class="rowh"><i class="dot" style="background:var(--s1);display:inline-block;margin-right:8px"></i>MOOV AI</td>
+            <td class="n">300 <span class="fine">all staff</span></td>
+            <td class="n" style="color:var(--s1);font-weight:600">&yen;13.61</td>
+            <td class="n">&yen;4,083</td><td class="n">&yen;49,000</td><td>Fixed subscription + tokens</td></tr>
+          <tr style="background:var(--panel-2)"><td class="rowh">Total</td><td class="n">154 seats</td>
+            <td class="n">&mdash;</td><td class="n">&yen;49,790</td><td class="n">&yen;597,476</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ---------- model layer ---------- -->
+  <div class="card">
+    <div class="pad" style="border-bottom:1px solid var(--rule)">
+      <span class="eyebrow">Model layer</span>
+      <h3 style="margin:9px 0 6px">What we actually pay per answer</h3>
+      <p class="sub">MOOV AI is the only one of the four billed by consumption rather than by seat,
+        so its cost is set by which model answers the question. Three models are connected today.
+        Priced at an average pilot conversation &mdash; <span class="mono">4,724 input + 2,362 output
+        = 7,086 tokens</span>.</p>
+    </div>
+
+    <div class="pad">
+      <div class="mrow mhead">
+        <span>Model</span><span>Basis</span><span class="r">In &yen;/M</span>
+        <span class="r">Out &yen;/M</span><span class="r">Per conversation</span><span></span>
+      </div>
+
+      <div class="mrow">
+        <span class="mn">qwen-plus<small>1000K context &middot; default model</small></span>
+        <span><em class="tag ok">Confirmed</em></span>
+        <span class="r num">0.50</span><span class="r num">2.00</span>
+        <span class="r num" style="color:var(--s1);font-weight:600">&yen;0.0071</span>
+        <span class="mb"><i style="width:6.8%; background:var(--s1)"></i></span>
+      </div>
+
+      <div class="mrow">
+        <span class="mn">qwen3-vl-plus<small>262K context &middot; vision / document</small></span>
+        <span><em class="tag est">Estimated</em></span>
+        <span class="r num">2.00</span><span class="r num">12.00</span>
+        <span class="r num">&yen;0.0378</span>
+        <span class="mb"><i style="width:36.4%; background:var(--s3)"></i></span>
+      </div>
+
+      <div class="mrow">
+        <span class="mn">glm-4.7<small>202K context &middot; long-document reasoning</small></span>
+        <span><em class="tag est">Proxy &mdash; upper bound</em></span>
+        <span class="r num">8.00</span><span class="r num">28.00</span>
+        <span class="r num" style="color:var(--s2);font-weight:600">&yen;0.1039</span>
+        <span class="mb"><i style="width:100%; background:var(--s2)"></i></span>
+      </div>
+
+      <p class="fine" style="margin-top:14px"><strong>How these three numbers were obtained &mdash;
+        they are not equally solid.</strong>
+        <em style="font-style:normal;color:var(--s1)">qwen-plus is measured, not estimated:</em>
+        354,277 tokens over the pilot cost &yen;0.35, which back-solves exactly to &yen;0.50 in /
+        &yen;2.00 out. <em style="font-style:normal;color:var(--ink-2)">qwen3-vl-plus is estimated</em>
+        from the Bailian list-price ladder below, where every plus-tier model prices input at
+        &yen;2.00; the output rate takes the top of the plus band.
+        <em style="font-style:normal;color:var(--ink-2)">glm-4.7 uses the GLM-5.2 list price as a
+        proxy</em> &mdash; 4.7 is a generation older and should be cheaper, so this figure is a
+        ceiling, not a forecast. All figures are list price; <strong>we are not on the 0.7 discount
+        tier</strong>.</p>
+    </div>
+
+    <div class="pad" style="border-top:1px solid var(--rule); background:var(--panel-2)">
+      <h4 style="margin-bottom:10px">The consequence: model choice moves the bill 14.7&times;</h4>
+      <p class="sub">At <strong>300 staff having 100 conversations each per month</strong> &mdash;
+        30,000 conversations, a deliberately generous assumption for a tool nobody is yet required
+        to use:</p>
+      <div class="grid g3" style="margin-top:14px">
+        <div class="card pad" style="box-shadow:none">
+          <span class="eyebrow">All on qwen-plus</span>
+          <div class="mfig">&yen;4,296</div>
+          <p class="fine">&yen;4,083 subscription + &yen;213 tokens<br>
+            <strong style="color:var(--s1)">&yen;14.32 per user / month</strong></p>
+        </div>
+        <div class="card pad" style="box-shadow:none">
+          <span class="eyebrow">Mixed, vision-heavy</span>
+          <div class="mfig">&yen;5,217</div>
+          <p class="fine">&yen;4,083 subscription + &yen;1,134 tokens<br>
+            <strong>&yen;17.39 per user / month</strong></p>
+        </div>
+        <div class="card pad" style="box-shadow:none">
+          <span class="eyebrow">Worst case &mdash; all on glm</span>
+          <div class="mfig">&yen;7,201</div>
+          <p class="fine">&yen;4,083 subscription + &yen;3,118 tokens<br>
+            <strong>&yen;24.00 per user / month</strong></p>
+        </div>
+      </div>
+      <p class="sub" style="margin-top:14px"><strong>Even the worst case is &yen;24 per user per
+        month against Qoder&rsquo;s &yen;547 &mdash; a factor of 23.</strong> The point is not that
+        tokens are free; it is that the entire model bill for the whole company, on the most
+        expensive model we have connected, is roughly the size of the platform subscription we are
+        already paying.</p>
+    </div>
+
+    <details style="border-top:1px solid var(--rule); padding:16px 22px 20px">
+      <summary>Full Bailian list-price ladder &mdash; the models we could connect</summary>
+      <div class="tbl-wrap">
+        <table style="min-width:640px">
+          <thead><tr><th>Model ID</th><th class="n">In &yen;/M</th><th class="n">Out &yen;/M</th>
+            <th class="n">Per conversation</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr><td class="rowh">qwen3.8-flash</td><td class="n">0.80</td><td class="n">2.70</td><td class="n">&yen;0.0102</td><td></td></tr>
+            <tr><td class="rowh">qwen3.6-flash</td><td class="n">1.20</td><td class="n">7.20</td><td class="n">&yen;0.0227</td><td></td></tr>
+            <tr><td class="rowh">deepseek-v4-flash-0731</td><td class="n">1.50</td><td class="n">4.50</td><td class="n">&yen;0.0177</td><td>Off-peak 22:00&ndash;08:00 Beijing</td></tr>
+            <tr><td class="rowh">qwen3.7-plus</td><td class="n">2.00</td><td class="n">8.00</td><td class="n">&yen;0.0283</td><td></td></tr>
+            <tr><td class="rowh">qwen3.6-plus</td><td class="n">2.00</td><td class="n">12.00</td><td class="n">&yen;0.0378</td><td></td></tr>
+            <tr><td class="rowh">deepseek-v4-flash-0731</td><td class="n">3.00</td><td class="n">9.00</td><td class="n">&yen;0.0354</td><td>Peak hours</td></tr>
+            <tr><td class="rowh">deepseek-v4-pro-0813</td><td class="n">4.50</td><td class="n">13.50</td><td class="n">&yen;0.0531</td><td></td></tr>
+            <tr style="background:var(--panel-2)"><td class="rowh">GLM-5.2</td><td class="n">8.00</td><td class="n">28.00</td><td class="n">&yen;0.1039</td><td>Used as the glm-4.7 proxy above</td></tr>
+            <tr><td class="rowh">deepseek-v4-pro</td><td class="n">12.00</td><td class="n">24.00</td><td class="n">&yen;0.1134</td><td></td></tr>
+            <tr><td class="rowh">qwen3.7-max</td><td class="n">12.00</td><td class="n">36.00</td><td class="n">&yen;0.1417</td><td></td></tr>
+            <tr><td class="rowh">qwen3.8-max</td><td class="n">12.00</td><td class="n">36.00</td><td class="n">&yen;0.1417</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fine" style="margin-top:12px">List price, RMB per million tokens. A 0.7 discount tier
+        exists on most of these models and a 0.85 tier on qwen3.8-max; <strong>we are on list price
+        and have not negotiated the discount</strong> &mdash; worth raising with Alibaba before
+        company-wide rollout. Cheapest to most expensive is a 13.9&times; spread, which is why the
+        model catalogue is an IT control, not a user choice.</p>
+    </details>
+  </div>
+
+  <!-- ---------- calculator ---------- -->
+  <div class="card">
+    <div class="pad" style="border-bottom:1px solid var(--rule)">
+      <span class="eyebrow">Cost model</span>
+      <h3 style="margin:9px 0 6px">What would each platform cost at a given scale?</h3>
+      <p class="sub">Set a population and a usage intensity, and each platform is priced on its own commercial model. All figures RMB per month.</p>
+    </div>
+    <div class="calc-grid">
+      <div class="calc-inputs">
+        <div class="calc-row">
+          <label for="uUsers">Active users<output id="oUsers">100</output></label>
+          <input type="range" id="uUsers" min="20" max="500" step="10" value="300">
+        </div>
+        <div class="calc-row">
+          <label for="uConv">Conversations per user per month<output id="oConv">100</output></label>
+          <input type="range" id="uConv" min="10" max="300" step="10" value="100">
+        </div>
+        <hr class="rule" style="margin:6px 0 14px">
+        <p class="fine">Gemini and Copilot are per-seat subscriptions, so their cost is set by the
+          population alone. Qoder is priced at its observed consumption per user. MOOV AI is a fixed
+          subscription plus model tokens &mdash; the only one of the four whose cost does not scale
+          with headcount.</p>
+        <details style="margin-top:14px">
+          <summary>Calculation basis</summary>
+          <div class="kv"><span class="k">Gemini</span><span class="v">&yen;189.14 / user / mo</span></div>
+          <div class="kv"><span class="k">Copilot</span><span class="v">&yen;232.00 / user / mo</span></div>
+          <div class="kv"><span class="k">Qoder Work</span><span class="v">&yen;547.13 / user / mo</span></div>
+          <div class="kv"><span class="k">MOOV AI fixed</span><span class="v">&yen;4,083 / mo</span></div>
+          <div class="kv"><span class="k">MOOV AI tokens</span><span class="v">4,724 in + 2,362 out per conversation</span></div>
+          <div class="kv"><span class="k">Token rates &mdash; qwen-plus</span><span class="v">&yen;0.50 in &middot; &yen;2.00 out per M</span></div>
+          <div class="kv"><span class="k">Total staff</span><span class="v">300 &mdash; Shanghai, Malaysia, Singapore, Netherlands</span></div>
+          <p class="fine" style="margin-top:10px">Token volume per conversation is derived from actual
+            pilot usage &mdash; 354,277 tokens over 50 conversations between 1 July and 9 September,
+            an average of 7,086, split 2:1 input to output. Individual agents vary widely: a
+            retrieval-heavy assistant used 28,027 tokens per conversation, a simple one 650.</p>
+        </details>
+      </div>
+
+      <div class="calc-out">
+        <div class="co-head">
+          <span></span><span>Platform</span><span class="r">Per month</span><span class="r">Per user</span><span></span>
+        </div>
+        <div class="co-row" data-v="qoder">
+          <i class="dot" style="background:var(--s2)"></i>
+          <div class="co-n">Qoder Work<span>credits, at observed intensity</span></div>
+          <div class="co-m num" id="cQoderM">&yen;54,713</div>
+          <div class="co-y num" id="cQoderU">&yen;547.13</div>
+          <div class="co-bar"><span id="bQoder" style="background:var(--s2)"></span></div>
+        </div>
+        <div class="co-row" data-v="copilot">
+          <i class="dot" style="background:var(--s4)"></i>
+          <div class="co-n">Copilot<span>per seat, usage-independent</span></div>
+          <div class="co-m num" id="cCopilotM">&yen;23,200</div>
+          <div class="co-y num" id="cCopilotU">&yen;232.00</div>
+          <div class="co-bar"><span id="bCopilot" style="background:var(--s4)"></span></div>
+        </div>
+        <div class="co-row" data-v="gemini">
+          <i class="dot" style="background:var(--s3)"></i>
+          <div class="co-n">Gemini<span>per seat, usage-independent</span></div>
+          <div class="co-m num" id="cGeminiM">&yen;18,914</div>
+          <div class="co-y num" id="cGeminiU">&yen;189.14</div>
+          <div class="co-bar"><span id="bGemini" style="background:var(--s3)"></span></div>
+        </div>
+        <div class="co-row" data-v="moov">
+          <i class="dot" style="background:var(--s1)"></i>
+          <div class="co-n">MOOV AI<span>fixed subscription + tokens</span></div>
+          <div class="co-m num" id="cMoovM" style="color:var(--s1)">&yen;4,154</div>
+          <div class="co-y num" id="cMoovU" style="color:var(--s1)">&yen;41.54</div>
+          <div class="co-bar"><span id="bMoov" style="background:var(--s1)"></span></div>
+        </div>
+        <p class="fine" id="calcNote" style="padding:14px 18px 0"></p>
+      </div>
+    </div>
+  </div>
+
+  <details open>
+    <summary>Assumptions &amp; sources</summary>
+    <div class="grid g2" style="gap:22px">
+      <div>
+        <div class="kv"><span class="k">USD / CNY</span><span class="v">7.10</span></div>
+        <div class="kv"><span class="k">Gemini</span><span class="v">USD 26.64 &times; 7.10 &times; 76 seats</span></div>
+        <div class="kv"><span class="k">Copilot</span><span class="v">&yen;2,784 / 12 &times; 36 seats</span></div>
+        <div class="kv"><span class="k">Qoder</span><span class="v">&yen;114,897 / 5 months</span></div>
+        <div class="kv"><span class="k">MOOV AI</span><span class="v">&yen;49,000 / 12 months</span></div>
+        <div class="kv"><span class="k">Token rates &mdash; qwen-plus</span><span class="v">&yen;0.50 in &middot; &yen;2.00 out per M</span></div>
+        <div class="kv"><span class="k">Headcount</span><span class="v">300 staff &middot; 433 AD accounts</span></div>
+      </div>
+      <div>
+        <p class="fine"><strong>Gemini seat attribution.</strong> The 76 seats are Google Workspace
+          licences that include Gemini. Some were opened for Drive, Meet or Gmail rather than for
+          Gemini, so this is the upper bound of Gemini cost, counted in full here.</p>
+        <p class="fine" style="margin-top:10px"><strong>Qoder averaging.</strong> &yen;114,897 spent
+          between 16 April and 31 August is divided evenly across the five months. Actual monthly
+          spend ranged from &yen;3,162 to &yen;48,870; the two most recent months averaged &yen;42,668, so
+          the forward run-rate may be materially higher than the average shown here.</p>
+        <p class="fine" style="margin-top:10px"><strong>Bailian token rates.</strong> &yen;0.0005 and
+          &yen;0.002 per 1,000 tokens are confirmed from the billing ledger for the standard tier. The
+          export did not carry the model column, so rates for qwen3-vl-plus, deepseek-r1 and glm-4.7
+          are still to be pulled from the console.</p>
+        <p class="fine" style="margin-top:10px"><strong>Seat overlap.</strong> 154 licences across
+          three vendors; how many individuals hold two or three is not yet audited.</p>
+      </div>
+    </div>
+  </details>
+
+  <p class="fine" style="margin-top:-6px">Sources &mdash; Qoder order ledger, April&ndash;August 2026
+    (41 paid orders, net of one refund). Alibaba Bailian billing ledger. Kymo platform dashboard,
+    1 July &ndash; 9 September 2026. Google Workspace and Microsoft 365 subscription terms. Prepared
+    by the IT Department, MOOV Logistics &mdash; September 2026. Internal use only.</p>
+
+</section>
+
+<section class="panel stack" id="p-qoder" role="tabpanel" aria-labelledby="t-qoder" hidden>
+
+  <div class="sec-head">
+    <span class="eyebrow">03 / Qoder Work</span>
+    <h2>What Qoder Work actually is</h2>
+    <p class="lead">Qoder Work is Alibaba's agentic work platform, and it carries two capabilities at once: software development and office output. Unlike an assistant that answers in a chat window, it takes a task, plans the steps, executes it &mdash; writing and running code, or producing the document &mdash; and reports back. It can also read and act on files on the user's own computer. That is why it is the most capable tool we have &mdash; and why it is
+      metered by consumption rather than by seat.</p>
+  </div>
+
+  <div class="grid g3">
+    <div class="card pad">
+      <span class="eyebrow">What we run on it</span>
+      <ul class="tick pos" style="margin-top:14px">
+        <li><strong style="color:var(--ink)">MOOV&nbsp;OS development</strong> &mdash; the platform's code is written largely with Qoder</li>
+        <li><strong style="color:var(--ink)">Operational automation</strong> &mdash; recurring jobs handed to an agent rather than scripted by hand</li>
+        <li><strong style="color:var(--ink)">Prototyping</strong> &mdash; standing up a working version of an idea before committing engineering time</li>
+      </ul>
+    </div>
+    <div class="card pad">
+      <span class="eyebrow">Where the &yen;114,897 went</span>
+      <div class="kv" style="margin-top:12px"><span class="k">Credit top-ups &mdash; 15 orders</span><span class="v">&yen;84,507</span></div>
+      <div class="kv"><span class="k">Teams subscriptions &mdash; 26 orders</span><span class="v">&yen;31,890</span></div>
+      <div class="kv"><span class="k">Discounts received</span><span class="v">&minus;&yen;7,965</span></div>
+      <div class="kv"><span class="k">Refunded</span><span class="v">&minus;&yen;1,500</span></div>
+      <div class="kv"><span class="k">Average per month, Apr&ndash;Aug</span><span class="v" style="color:var(--s2)">&yen;22,979</span></div>
+      <div style="margin-top:16px; height:10px; display:flex; gap:2px; border-radius:2px; overflow:hidden">
+        <div style="width:73.5%; background:var(--s2)"></div>
+        <div style="width:26.5%; background:var(--s4)"></div>
+      </div>
+      <p class="fine" style="margin-top:9px"><span style="color:var(--s2)">&#9632;</span> 73.5&nbsp;% consumption
+        &nbsp;&nbsp;<span style="color:var(--s4)">&#9632;</span> 26.5&nbsp;% licences</p>
+    </div>
+    <div class="card pad" style="border-left:3px solid var(--accent)">
+      <span class="eyebrow">Why it matters here</span>
+      <p class="sub" style="margin-top:12px">Nearly three-quarters of Qoder spend is usage, not seats.
+        Cutting licences would barely move the number; the only effective controls are
+        <strong>who is allowed to consume credits</strong> and <strong>an alert when consumption
+        crosses a threshold</strong>.</p>
+      <p class="sub" style="margin-top:10px">The corollary: work that does not need an agentic coding
+        platform should not be done on one. That is the case for a cheaper baseline layer underneath
+        it &mdash; which is what MOOV AI is for.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="pad" style="border-bottom:1px solid var(--rule)">
+      <span class="eyebrow">Order ledger</span>
+      <h3 style="margin:9px 0 0">Monthly detail, April &ndash; August 2026</h3>
+    </div>
+    <div class="tbl-wrap" style="border:0; border-radius:0">
+      <table style="min-width:680px">
+        <thead>
+          <tr><th>Month</th><th class="n">Subscription orders</th><th class="n">Subscriptions</th>
+              <th class="n">Credit orders</th><th class="n">Credits</th><th class="n">Net spend</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="rowh">April 2026</td><td class="n">4</td><td class="n">&yen;1,980</td><td class="n">3</td><td class="n">&yen;1,182</td><td class="n">&yen;3,162</td></tr>
+          <tr><td class="rowh">May 2026</td><td class="n">7</td><td class="n">&yen;4,200</td><td class="n">4</td><td class="n">&yen;15,900</td><td class="n">&yen;18,600</td></tr>
+          <tr><td class="rowh">June 2026</td><td class="n">7</td><td class="n">&yen;7,800</td><td class="n">0</td><td class="n">&mdash;</td><td class="n">&yen;7,800</td></tr>
+          <tr><td class="rowh">July 2026</td><td class="n">4</td><td class="n">&yen;8,220</td><td class="n">4</td><td class="n">&yen;40,650</td><td class="n">&yen;48,870</td></tr>
+          <tr><td class="rowh">August 2026</td><td class="n">4</td><td class="n">&yen;9,690</td><td class="n">4</td><td class="n">&yen;26,775</td><td class="n">&yen;36,465</td></tr>
+          <tr style="background:var(--panel-2)"><td class="rowh">Total</td><td class="n">26</td><td class="n">&yen;31,890</td>
+            <td class="n">15</td><td class="n">&yen;84,507</td><td class="n">&yen;114,897</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pad">
+      <p class="fine">Net of &yen;7,965 in discounts received and one &yen;1,500 refund. Nine further
+        orders were voided before payment and are excluded. Source: Qoder order ledger.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ================================================== 04 MOOV AI -->
+<section class="panel" id="p-moov" role="tabpanel" aria-labelledby="t-moov" hidden>
+
+  <div class="sec-head" style="margin-bottom:26px">
+    <span class="eyebrow">04 / MOOV AI</span>
+    <h2>Our own platform, in detail</h2>
+    <p class="lead">Deployed in June, tested in July, IT trained in August. This section is the full
+      picture: what it is, how it is built, what it does, how it is governed, and where the pilot
+      stands today.</p>
+  </div>
+
+  <div class="moov-layout">
+    <aside class="moov-index" aria-label="MOOV AI sections">
+      <a href="#m-what">What it is</a>
+      <a href="#m-built">How it is built</a>
+      <a href="#m-does">What it does</a>
+      <a href="#m-gov">Governance &amp; data</a>
+      <a href="#m-status">Pilot status</a>
+    </aside>
+
+    <div class="stack moov-body">
+
+      <!-- ---------- A. what it is ---------- -->
+      <div id="m-what">
+        <span class="eyebrow">A / What it is</span>
+        <h2 style="margin:8px 0 6px; font-size:23px">MOOV AI is the company-level AI front door</h2>
+        <p class="lead" style="margin-bottom:18px">Not another chat tool &mdash; a single door that
+          people actually walk through.</p>
+
+        <div class="grid g3">
+          <div class="card pad">
+            <span class="dot" style="background:var(--s1); width:22px; height:3px; border-radius:2px; display:block"></span>
+            <h3 style="margin:14px 0 8px">It lives where people already work</h3>
+            <p class="sub">Delivered inside Microsoft Teams &mdash; nothing to install, no new account,
+              no new password. Every employee already has the client.</p>
+            <p class="sub" style="color:var(--accent); font-weight:500; margin-top:10px">The easiest
+              option is now also the sanctioned one, instead of a personal ChatGPT account.</p>
+          </div>
+          <div class="card pad">
+            <span class="dot" style="background:var(--s1); width:22px; height:3px; border-radius:2px; display:block"></span>
+            <h3 style="margin:14px 0 8px">It answers as MOOV, not as the internet</h3>
+            <p class="sub">We build our own knowledge bases and our own agents on top of them. A
+              general model explains how expense claims usually work.</p>
+            <p class="sub" style="color:var(--accent); font-weight:500; margin-top:10px">Our Finance
+              Assistant explains how MOOV's work, and cites the SOP it came from.</p>
+          </div>
+          <div class="card pad">
+            <span class="dot" style="background:var(--s1); width:22px; height:3px; border-radius:2px; display:block"></span>
+            <h3 style="margin:14px 0 8px">Central control becomes management insight</h3>
+            <p class="sub">IT owns permissions, the model catalogue and the audit trail, and every
+              agent, question and knowledge base is logged on our own server.</p>
+            <p class="sub" style="color:var(--accent); font-weight:500; margin-top:10px">So we can see
+              which teams build what, which topics keep recurring, and where the workload and
+              knowledge gaps really sit.</p>
+          </div>
+        </div>
+
+        <div class="grid g2" style="margin-top:16px">
+          <div class="card pad" style="border-left:3px solid var(--rule-2)">
+            <span class="eyebrow">Without a front door</span>
+            <p class="sub" style="margin-top:8px">People use personal AI accounts &mdash; uncontrolled
+              uploads, generic answers, no visibility for IT.</p>
+          </div>
+          <div class="card pad" style="border-left:3px solid var(--accent)">
+            <span class="eyebrow">With MOOV AI</span>
+            <p class="sub" style="margin-top:8px">The same convenience, inside our perimeter &mdash;
+              grounded in our own content and fully logged.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ---------- B. how it's built ---------- -->
+      <div id="m-built">
+        <span class="eyebrow">B / How it is built</span>
+        <h2 style="margin:8px 0 6px; font-size:23px">Four layers &mdash; and we own the three that matter</h2>
+        <p class="lead" style="margin-bottom:18px">Kymo is a Dify reseller. Saying that first removes
+          it as a gotcha: what we paid for is the enterprise layer above the engine, not the engine.</p>
+
+        <div class="card" style="overflow:hidden">
+          <div class="layer" style="--lc:var(--s1)">
+            <div class="lnum">01</div>
+            <div class="lname">Portal layer<span>Kymo</span></div>
+            <div class="ldesc">Single sign-on, role-based access, agent directory, approval flow, audit logs, sensitive-word filtering</div>
+          </div>
+          <div class="layer" style="--lc:var(--s3)">
+            <div class="lnum">02</div>
+            <div class="lname">Build layer<span>Dify</span></div>
+            <div class="ldesc">Agents, chatflows, workflows and RAG knowledge bases &mdash; standard Dify applications, exportable at any time</div>
+          </div>
+          <div class="layer" style="--lc:var(--s4)">
+            <div class="lnum">03</div>
+            <div class="lname">Model layer<span>Alibaba Bailian</span></div>
+            <div class="ldesc">Approved model catalogue: qwen-plus, qwen3-vl-plus, deepseek-r1, glm-4.7. Self-hosted open-source models can be attached for sensitive work</div>
+          </div>
+          <div class="layer" style="--lc:var(--s2); border-bottom:0">
+            <div class="lnum">04</div>
+            <div class="lname">Data layer<span>MOOV Singapore server</span></div>
+            <div class="ldesc">Knowledge bases, conversation history and audit logs stay on our own infrastructure</div>
+          </div>
+        </div>
+
+        <h3 style="margin:26px 0 12px">Dify gives us the engine. Kymo gives us the front door.</h3>
+        <div class="grid g2">
+          <div class="card pad">
+            <span class="pill">Dify alone</span>
+            <h4 style="margin:12px 0 10px">A developer toolbox</h4>
+            <ul class="tick neg">
+              <li>No SSO integration &mdash; separate accounts to manage</li>
+              <li>Basic permissions that do not map to a company hierarchy</li>
+              <li>Every user reaches every knowledge base directly</li>
+              <li>IT builds the portal, access control and audit layer itself</li>
+            </ul>
+          </div>
+          <div class="card pad" style="border-color:var(--s1)">
+            <span class="pill ok">With Kymo</span>
+            <h4 style="margin:12px 0 10px">An enterprise portal over the same engine</h4>
+            <ul class="tick pos">
+              <li>Unified Teams SSO login</li>
+              <li>Granular RBAC aligned to the org structure</li>
+              <li>Application directory with an approval flow</li>
+              <li>Security audit logs on our own server</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card pad" style="margin-top:14px; border-left:3px solid var(--accent)">
+          <p class="sub"><strong>Same engine, different control, different audience.</strong>
+            Business teams get a guided front door; developers keep the full Dify workspace. The
+            split is what keeps low-value build work out of the IT queue without giving up control
+            of what reaches production.</p>
+        </div>
+      </div>
+
+      <!-- ---------- C. what it does ---------- -->
+      <div id="m-does">
+        <span class="eyebrow">C / What it does</span>
+        <h2 style="margin:8px 0 6px; font-size:23px">Four modules, one interface</h2>
+        <p class="lead" style="margin-bottom:18px">From asking a question to automating a process.</p>
+
+        <div class="grid g4">
+          <div class="card pad">
+            <span class="eyebrow" style="color:var(--accent)">01</span>
+            <h4 style="margin:9px 0 7px">AI Chat</h4>
+            <p class="sub">Writing, summarising, translation and analysis. Word, PDF, Excel and
+              PowerPoint files can be uploaded for document analysis.</p>
+          </div>
+          <div class="card pad">
+            <span class="eyebrow" style="color:var(--accent)">02</span>
+            <h4 style="margin:9px 0 7px">RAG Knowledge Base</h4>
+            <p class="sub">Answers built from MOOV SOPs, policies and manuals, returned with the
+              source passage cited.</p>
+          </div>
+          <div class="card pad">
+            <span class="eyebrow" style="color:var(--accent)">03</span>
+            <h4 style="margin:9px 0 7px">AI Agents</h4>
+            <p class="sub">Pre-configured role, knowledge and tools for HR, Finance, Operations,
+              Customer Service and IT.</p>
+          </div>
+          <div class="card pad">
+            <span class="eyebrow" style="color:var(--accent)">04</span>
+            <h4 style="margin:9px 0 7px">Workflow Automation</h4>
+            <p class="sub">Chained steps such as complaint triage, daily operations reports, CV
+              screening and weekly roll-ups.</p>
+          </div>
+        </div>
+
+        <h3 style="margin:26px 0 12px">Four roles, permissions unlocked step by step</h3>
+        <div class="tbl-wrap">
+          <table class="mtx" style="min-width:760px">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th class="c" style="text-align:center">General user<br><span class="fine">Every employee</span></th>
+                <th class="c" style="text-align:center">Knowledge builder<br><span class="fine">On request</span></th>
+                <th class="c" style="text-align:center">Developer<br><span class="fine">Manager + IT</span></th>
+                <th class="c" style="text-align:center">IT admin<br><span class="fine">IT department</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Chat, writing, translation and document analysis</td><td class="c yes">&#9679;</td><td class="c yes">&#9679;</td><td class="c yes">&#9679;</td><td class="c yes">&#9679;</td></tr>
+              <tr><td>Use knowledge bases and agents shared with you</td><td class="c yes">&#9679;</td><td class="c yes">&#9679;</td><td class="c yes">&#9679;</td><td class="c yes">&#9679;</td></tr>
+              <tr><td>Create RAG knowledge bases and set access rights</td><td class="c no">&mdash;</td><td class="c yes">&#9679;</td><td class="c yes">&#9679;</td><td class="c yes">&#9679;</td></tr>
+              <tr><td>Build a simple knowledge-base Q&amp;A agent</td><td class="c no">&mdash;</td><td class="c yes">&#9679;</td><td class="c yes">&#9679;</td><td class="c yes">&#9679;</td></tr>
+              <tr><td>Admin console and Dify orchestration</td><td class="c no">&mdash;</td><td class="c no">&mdash;</td><td class="c yes">&#9679;</td><td class="c yes">&#9679;</td></tr>
+              <tr><td>Build Chatflow / Workflow automations</td><td class="c no">&mdash;</td><td class="c no">&mdash;</td><td class="c yes">&#9679;</td><td class="c yes">&#9679;</td></tr>
+              <tr><td>Accounts, data governance and usage audit</td><td class="c no">&mdash;</td><td class="c no">&mdash;</td><td class="c no">&mdash;</td><td class="c yes">&#9679;</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="fine" style="margin-top:10px">Developer access is requested through the department
+          manager and approved by IT on business value, data security and delivery priority.</p>
+      </div>
+
+      <!-- ---------- D. governance ---------- -->
+      <div id="m-gov">
+        <span class="eyebrow">D / Governance &amp; data</span>
+        <h2 style="margin:8px 0 6px; font-size:23px">Where the data actually goes</h2>
+        <p class="lead" style="margin-bottom:18px">Everything at rest stays on our Singapore server.
+          Only the inference request leaves the perimeter.</p>
+
+        <div class="card pad">
+          <div class="flow">
+            <div class="flow-node user">
+              <div class="fn-t">User</div><div class="fn-d">Teams SSO</div>
+            </div>
+            <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+            <div class="perimeter">
+              <div class="peri-label">MOOV perimeter &middot; Singapore server, on-premise</div>
+              <div class="peri-grid">
+                <div class="chip"><b>Kymo portal</b><span>SSO &middot; RBAC &middot; directory</span></div>
+                <div class="chip"><b>Dify engine</b><span>Agents &middot; workflows</span></div>
+                <div class="chip"><b>Knowledge bases</b><span>SOPs &middot; policies &middot; files</span></div>
+                <div class="chip"><b>Audit logs</b><span>Access &middot; conversations</span></div>
+              </div>
+              <p class="fine" style="margin-top:12px">Conversation history, uploaded files and
+                knowledge bases never transit to the vendor.</p>
+            </div>
+            <div class="flow-arrow two" aria-hidden="true">
+              <span class="out">&rarr;</span><small>prompt + context</small>
+              <span class="in">&larr;</span><small>response</small>
+            </div>
+            <div class="flow-node ext">
+              <div class="fn-k">Outside the perimeter</div>
+              <div class="fn-t">Alibaba Bailian model API</div>
+              <div class="fn-d">Inference only. Receives the prompt plus any retrieved knowledge
+                passages; returns the answer.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid g4" style="margin-top:16px">
+          <div class="card pad"><span class="eyebrow" style="color:var(--accent)">01</span>
+            <h4 style="margin:9px 0 7px">Teams SSO</h4>
+            <p class="sub">No separate accounts or passwords; joiners and leavers follow the existing process.</p></div>
+          <div class="card pad"><span class="eyebrow" style="color:var(--accent)">02</span>
+            <h4 style="margin:9px 0 7px">Role-based access</h4>
+            <p class="sub">Permissions set per role and per knowledge base, aligned to the org structure.</p></div>
+          <div class="card pad"><span class="eyebrow" style="color:var(--accent)">03</span>
+            <h4 style="margin:9px 0 7px">Audit logs</h4>
+            <p class="sub">Conversations, access and agent changes recorded on our own server.</p></div>
+          <div class="card pad"><span class="eyebrow" style="color:var(--accent)">04</span>
+            <h4 style="margin:9px 0 7px">AI Policy</h4>
+            <p class="sub">No sensitive data. Communicated to and enforced for every pilot user since July.</p></div>
+        </div>
+
+        <div class="card pad" style="margin-top:16px; border:1px solid var(--accent)">
+          <span class="eyebrow" style="color:var(--accent)">To be confirmed before company-wide rollout</span>
+          <div class="grid g3" style="margin-top:14px">
+            <div><h4>1 &nbsp;Bailian endpoint region</h4>
+              <p class="sub" style="margin-top:6px">China or international endpoint &mdash; this determines
+                where prompts are processed.</p></div>
+            <div><h4>2 &nbsp;Training on our inputs</h4>
+              <p class="sub" style="margin-top:6px">Contractual position on whether our prompts may be
+                used for model training.</p></div>
+            <div><h4>3 &nbsp;Self-hosted threshold</h4>
+              <p class="sub" style="margin-top:6px">Which workloads justify open-source models on MOOV
+                GPUs, and at what cost.</p></div>
+          </div>
+        </div>
+
+        <h3 style="margin:26px 0 12px">If we ever leave Kymo, the agents come with us</h3>
+        <div class="grid g3">
+          <div class="card pad"><h4>MOOV owns the intellectual property</h4>
+            <p class="sub" style="margin-top:7px">All agents, skills and knowledge bases built on the
+              platform belong to MOOV, confirmed by the vendor during contracting.</p></div>
+          <div class="card pad"><h4>The artefacts are standard Dify applications</h4>
+            <p class="sub" style="margin-top:7px">They can be exported and moved to our own Dify
+              instance or to another reseller.</p></div>
+          <div class="card pad"><h4>The vendor never holds our data</h4>
+            <p class="sub" style="margin-top:7px">Kymo runs on our Singapore server, so conversations
+              and files do not transit to the vendor.</p></div>
+        </div>
+      </div>
+
+      <!-- ---------- E. status ---------- -->
+      <div id="m-status">
+        <span class="eyebrow">E / Pilot status</span>
+        <h2 style="margin:8px 0 6px; font-size:23px">A deliberately small pilot</h2>
+        <p class="lead" style="margin-bottom:18px">Capacity is provisioned; usage is still confined to
+          IT and Legal &mdash; by design.</p>
+
+        <div class="readouts">
+          <div class="ro"><span class="bar" style="background:var(--s1)"></span>
+            <div class="k">Agents built</div><div class="v">15</div>
+            <div class="n">9 published, 4 live on the enterprise home page</div></div>
+          <div class="ro"><span class="bar" style="background:var(--s1)"></span>
+            <div class="k">Accounts provisioned</div><div class="v">433</div>
+            <div class="n">AD-synced, leavers not yet purged &mdash; against <strong>300 actual
+              staff</strong>. 1&ndash;2 active per day; access exists but has not been announced</div></div>
+          <div class="ro"><span class="bar" style="background:var(--s1)"></span>
+            <div class="k">Tokens consumed</div><div class="v">354<span class="u">k</span></div>
+            <div class="n">~50 conversations, 1 Jul &ndash; 9 Sep. Total cost: &yen;0.35</div></div>
+          <div class="ro"><span class="bar" style="background:var(--s1)"></span>
+            <div class="k">Knowledge bases</div><div class="v">2</div>
+            <div class="n">Coverage, not capability, is the constraint on answer quality</div></div>
+        </div>
+
+        <div class="grid g4" style="margin-top:16px">
+          <div class="card pad"><span class="pill ok">Live</span>
+            <h4 style="margin:11px 0 6px">HR Assistant</h4>
+            <p class="sub">Answers employee questions on HR policy.</p></div>
+          <div class="card pad"><span class="pill">Closed test</span>
+            <h4 style="margin:11px 0 6px">Finance Assistant</h4>
+            <p class="sub">Explains expense and reimbursement rules. Built but not published, which
+              is why it carries no usage in the dashboard.</p></div>
+          <div class="card pad"><span class="pill ok">Live</span>
+            <h4 style="margin:11px 0 6px">Moov Compass &mdash; 4PL Expert</h4>
+            <p class="sub">Shipping, air freight and 4PL concepts in plain language.
+              <strong>Most used in the pilot &mdash; 38 conversations.</strong></p></div>
+          <div class="card pad"><span class="pill ok">Live</span>
+            <h4 style="margin:11px 0 6px">MOOV AI User Guide</h4>
+            <p class="sub">Answers questions about how to use the platform itself.</p></div>
+        </div>
+
+        <h3 style="margin:26px 0 12px">What 50 conversations already tell us about cost</h3>
+        <p class="lead" style="margin-bottom:14px">The pilot is far too small to prove adoption. It is
+          large enough to expose the thing that will actually drive the bill at scale.</p>
+
+        <div class="card">
+          <div class="tbl-wrap" style="border:0; border-radius:5px 5px 0 0">
+            <table style="min-width:700px">
+              <thead><tr><th>Agent</th><th class="n">Conversations</th><th class="n">Tokens</th>
+                <th class="n">Per conversation</th><th class="n">Cost per conversation</th></tr></thead>
+              <tbody>
+                <tr><td class="rowh">Moov Compass &mdash; 4PL Expert</td><td class="n">38</td>
+                  <td class="n">118,630</td><td class="n">3,122</td><td class="n">&yen;0.0031</td></tr>
+                <tr><td class="rowh">MOOV AI User Guide</td><td class="n">8</td>
+                  <td class="n">224,218</td><td class="n" style="color:var(--s2);font-weight:600">28,027</td>
+                  <td class="n" style="color:var(--s2);font-weight:600">&yen;0.0280</td></tr>
+                <tr><td class="rowh">HR Assistant</td><td class="n">1</td>
+                  <td class="n">650</td><td class="n" style="color:var(--s1);font-weight:600">650</td>
+                  <td class="n" style="color:var(--s1);font-weight:600">&yen;0.0007</td></tr>
+                <tr style="color:var(--ink-3)"><td class="rowh" style="color:var(--ink-3)">Knowledge-base test agent</td>
+                  <td class="n">3</td><td class="n">10,779</td><td class="n">3,593</td><td class="n">&yen;0.0036</td></tr>
+                <tr style="background:var(--panel-2)"><td class="rowh">Total</td><td class="n">50</td>
+                  <td class="n">354,277</td><td class="n">7,086</td><td class="n">&yen;0.35 total</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="pad" style="border-top:1px solid var(--rule)">
+            <h4 style="margin-bottom:8px">Two agents on the same platform, 43&times; apart on cost</h4>
+            <p class="sub" style="max-width:82ch">The User Guide burns <strong>28,027 tokens per
+              question</strong>; the HR Assistant burns 650. Same model, same platform. The difference
+              is retrieval: an agent that pulls large passages from a knowledge base into every prompt
+              pays for that context on every single question.</p>
+            <p class="sub" style="max-width:82ch; margin-top:10px"><strong>The implication for
+              rollout:</strong> how we build the knowledge bases will move the model bill more than
+              which model we pick. A badly chunked knowledge base is not a quality problem that also
+              costs money &mdash; it is a cost problem first. This is a design standard IT needs to
+              set before departments start building their own.</p>
+            <p class="fine" style="margin-top:12px">The knowledge-base test agent is an IT test
+              artefact, not a real assistant; it appears in the platform dashboard's top-three tables
+              and is excluded from the reasoning above. The Finance Assistant is built but unpublished,
+              so it carries no usage. Source: Kymo platform dashboard, 1 July &ndash; 9 September 2026;
+              cost at the confirmed qwen-plus rate.</p>
+          </div>
+        </div>
+
+        <h3 style="margin:26px 0 14px">April 2026 &rarr; June 2027, and where the contract ends</h3>
+        <p class="lead" style="margin:-6px 0 16px">The roadmap deliberately runs past rollout to the
+          renewal decision. This is a project with a commercial end point, not an open commitment.</p>
+
+        <div class="card pad">
+          <div class="rmap">
+
+            <div class="rm done">
+              <div class="rm-d">Apr &ndash; Aug 26</div>
+              <div class="rm-ax"><i></i></div>
+              <div class="rm-c">
+                <b>Delivered</b>
+                <p>Kick-off and gap analysis (Apr) &middot; vendor evaluation and Kymo selected (May)
+                  &middot; contract signed, on-premise deployment on the Singapore server (Jun)
+                  &middot; IT internal testing and vendor optimisation cycle (Jul) &middot; IT-wide
+                  training, Legal joined the closed pilot (Aug).</p>
+              </div>
+            </div>
+
+            <div class="rm done">
+              <div class="rm-d">Sep 26</div>
+              <div class="rm-ax"><i></i></div>
+              <div class="rm-c">
+                <b>Pilot live &mdash; where we are today</b>
+                <p>15 agents built, 9 published, 4 on the enterprise home page. Usage confined to IT
+                  and Legal by design. Awaiting the rollout decision.</p>
+              </div>
+            </div>
+
+            <div class="rm next">
+              <div class="rm-d">Sep &ndash; Oct 26</div>
+              <div class="rm-ax"><i></i></div>
+              <div class="rm-c">
+                <b>Management briefing and governance sign-off<span class="rm-tag">Needs your decision</span></b>
+                <p>Demonstrate MOOV AI to department heads; agree the permission model per
+                  department; close the three open data questions (Bailian endpoint region, training
+                  on our inputs, self-hosted threshold); AI Policy signed off with Legal.
+                  <strong>Nothing downstream starts until this is done.</strong></p>
+              </div>
+            </div>
+
+            <div class="rm">
+              <div class="rm-d">Nov 26</div>
+              <div class="rm-ax"><i></i></div>
+              <div class="rm-c">
+                <b>Company-wide rollout, in department waves</b>
+                <p>Announce to all 300 staff and open access department by department rather than in
+                  one broadcast &mdash; each wave gets a short induction and at least one knowledge
+                  base that answers its own questions. Sequencing avoids a first experience of
+                  &ldquo;it does not know that yet&rdquo;.</p>
+              </div>
+            </div>
+
+            <div class="rm">
+              <div class="rm-d">Q4 26</div>
+              <div class="rm-ax"><i></i></div>
+              <div class="rm-c">
+                <b>smartMOOV integration</b>
+                <p>Embed a MOOV AI agent inside smartMOOV to answer milestone questions in context
+                  &mdash; where a shipment is, what a status means, what happens next. Rolled out
+                  <strong>per customer and per environment</strong>, starting with one of each,
+                  rather than switched on globally.</p>
+              </div>
+            </div>
+
+            <div class="rm">
+              <div class="rm-d">Q1 27</div>
+              <div class="rm-ax"><i></i></div>
+              <div class="rm-c">
+                <b>Departments build their own</b>
+                <p>Knowledge-builder access granted on request; each department owns the content
+                  behind its own agent. IT moves from building agents to approving and auditing
+                  them.</p>
+              </div>
+            </div>
+
+            <div class="rm gate">
+              <div class="rm-d">Q1 &ndash; Q2 27</div>
+              <div class="rm-ax"><i></i></div>
+              <div class="rm-c">
+                <b>Renewal review<span class="rm-tag">Decision gate</span></b>
+                <p>Six months of real adoption and real token spend against the targets below. Three
+                  outcomes on the table: renew, renegotiate on evidence of usage, or migrate the
+                  agents to our own Dify instance. The exportability of everything we have built is
+                  what makes the third option credible.</p>
+              </div>
+            </div>
+
+            <div class="rm">
+              <div class="rm-d">Jun 27</div>
+              <div class="rm-ax"><i></i></div>
+              <div class="rm-c">
+                <b>Contract expires</b>
+                <p>Approximate date &mdash; to be confirmed against the signed agreement.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <h3 style="margin:30px 0 6px">What we are committing to by December</h3>
+        <p class="lead" style="margin-bottom:16px">These are deliverables we control, not adoption we
+          hope for. Set as a floor we expect to clear &mdash; not a forecast.</p>
+
+        <div class="grid g2">
+          <div class="card pad">
+            <span class="eyebrow">Targets to 31 December 2026</span>
+            <div style="margin-top:14px">
+              <div class="mt-row mt-head"><span class="mt-n">Deliverable</span>
+                <span class="mt-v">Today</span><span class="mt-t">Dec</span></div>
+              <div class="mt-row"><span class="mt-n">Departments with at least one agent of their own</span>
+                <span class="mt-v">2</span><span class="mt-t">6</span></div>
+              <div class="mt-row"><span class="mt-n">Agents published on the enterprise home page</span>
+                <span class="mt-v">4</span><span class="mt-t">8</span></div>
+              <div class="mt-row"><span class="mt-n">Knowledge bases live</span>
+                <span class="mt-v">2</span><span class="mt-t">6</span></div>
+              <div class="mt-row"><span class="mt-n">smartMOOV Q&amp;A bot &mdash; customers &times; environments live</span>
+                <span class="mt-v">0</span><span class="mt-t">1 &times; 1</span></div>
+              <div class="mt-row"><span class="mt-n">Departments completing induction</span>
+                <span class="mt-v">1</span><span class="mt-t">All</span></div>
+            </div>
+          </div>
+          <div class="card pad" style="border-left:3px solid var(--rule-2)">
+            <span class="eyebrow">Deliberately not a target</span>
+            <h4 style="margin:12px 0 8px">Monthly active users</h4>
+            <p class="sub">We will measure and report it every month, but we are not committing to a
+              number. Nobody is required to use MOOV AI, and setting an adoption target before the
+              knowledge bases exist would measure the wrong thing &mdash; it rewards logins rather
+              than useful answers.</p>
+            <hr class="rule" style="margin:14px 0">
+            <h4 style="margin-bottom:8px">The honest constraint</h4>
+            <p class="sub">Answer quality today is limited by knowledge-base coverage, not by the
+              platform. Two bases are live. <strong>Every target above is a content target wearing a
+              technology label</strong> &mdash; the work is getting departments to own their own
+              documentation.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================== 05 DECISION -->
+<section class="panel stack" id="p-decision" role="tabpanel" aria-labelledby="t-decision" hidden>
+
+  <div class="sec-head">
+    <span class="eyebrow">05 / Decision</span>
+    <h2>Tier the estate, then gate the expensive tier</h2>
+    <p class="lead">The four tools are not competing for the same job. Ordered by cost per user, they
+      form a natural pyramid: the cheapest layer should reach everyone, and the most expensive layer
+      should be the one we qualify people for.</p>
+  </div>
+
+  <div class="card pad">
+    <span class="eyebrow">Proposed access model</span>
+    <div class="tiers">
+      <div class="tier t1">
+        <div class="tier-bar" style="width:100%; background:var(--s1)">
+          <span>Tier 1 &nbsp;&middot;&nbsp; Everyone</span><b>300 staff</b>
+        </div>
+        <div class="tier-txt">
+          <b>MOOV AI</b> &mdash; chat, corporate knowledge, department agents, simple automation.
+          <span class="mono" style="color:var(--s1)">&yen;4,083 / month fixed &middot; &yen;14&ndash;24 / user all-in</span>
+        </div>
+      </div>
+      <div class="tier t2">
+        <div class="tier-bar" style="width:46%; background:var(--s4)">
+          <span>Tier 2 &nbsp;&middot;&nbsp; Office suite users</span><b>112 seats</b>
+        </div>
+        <div class="tier-txt">
+          <b>Gemini / Copilot</b> &mdash; AI inside the documents and mail people already work in.
+          <span class="mono" style="color:var(--s4)">&yen;189&ndash;232 / user / month</span>
+        </div>
+      </div>
+      <div class="tier t3">
+        <div class="tier-bar" style="width:20%; background:var(--s2)">
+          <span>Tier 3 &nbsp;&middot;&nbsp; Builders</span><b>42 seats</b>
+        </div>
+        <div class="tier-txt">
+          <b>Qoder Work</b> &mdash; agentic coding, MOOV&nbsp;OS development, complex automation.
+          <span class="mono" style="color:var(--s2)">&yen;547 / user / month</span>
+        </div>
+      </div>
+    </div>
+    <p class="fine" style="margin-top:16px">Bar width shows population, not spend. The inversion is
+      the point: the widest tier costs &yen;4,083 a month in total, and the narrowest tier costs &yen;22,979.</p>
+  </div>
+
+  <div class="grid g2">
+    <div class="card" style="border-top:3px solid var(--s1)">
+      <div class="pad">
+        <span class="eyebrow">Decision 1</span>
+        <h3 style="margin:10px 0 10px">Confirm MOOV AI as the company-wide baseline layer</h3>
+        <p class="sub">Open it to all staff after the management briefing. Routine drafting,
+          summarising, policy and SOP questions move here. The subscription is already paid and does not
+          change with headcount, it is inside our perimeter, and it is the only platform where we can see
+          what the organisation is actually asking.</p>
+        <hr class="rule" style="margin:16px 0">
+        <div class="kv"><span class="k">What we need</span><span class="v">Endorsement of the sequence</span></div>
+        <div class="kv"><span class="k">Option A &mdash; recommended</span><span class="v">Management briefing &rarr; all staff</span></div>
+        <div class="kv"><span class="k">Option B</span><span class="v">2&ndash;3 department pilot first</span></div>
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--s2)">
+      <div class="pad">
+        <span class="eyebrow">Decision 2</span>
+        <h3 style="margin:10px 0 10px">Approve an access gate and a credit alert for Qoder</h3>
+        <p class="sub">Keep Qoder for the work only Qoder can do. IT assesses who qualifies &mdash;
+          engineering, the MOOV&nbsp;OS team, named automation owners &mdash; and reviews the list
+          quarterly. Because 73&nbsp;% of the spend is consumption, the control that matters is a
+          monthly credit threshold with an alert, not a licence count.</p>
+        <hr class="rule" style="margin:16px 0">
+        <div class="kv"><span class="k">What we need</span><span class="v">Approval of the gate</span></div>
+        <div class="kv"><span class="k">Proposed alert</span><span class="v">&yen;30,000 / month</span></div>
+        <div class="kv"><span class="k">Review cadence</span><span class="v">Quarterly, with IT</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card pad" style="border-left:3px solid var(--rule-2)">
+    <span class="eyebrow">Raised, not for decision today</span>
+    <h3 style="margin:10px 0 8px">Gemini and Copilot overlap on 112 seats and &yen;22,727 a month</h3>
+    <p class="sub" style="max-width:78ch">Both are office-suite assistants doing substantially the
+      same work in two different suites. There may be good reasons to run both &mdash; the underlying
+      suites are separate purchases, and the seat populations may not be the same people. But the
+      overlap is large enough that it should be a deliberate decision at renewal rather than a
+      default. IT can produce the actual usage split if that would help.</p>
+  </div>
+
+  <div class="card">
+    <div class="pad" style="border-bottom:1px solid var(--rule)">
+      <span class="eyebrow">Risk register</span>
+      <h3 style="margin:9px 0 6px">What could go wrong, and what we are doing about it</h3>
+      <p class="sub">Distinct from the open items below: those are questions awaiting an answer, these
+        are things that can fail even once every question is answered.</p>
+    </div>
+    <div class="tbl-wrap" style="border:0; border-radius:0">
+      <table style="min-width:860px">
+        <thead><tr><th style="width:190px">Risk</th><th style="width:76px">Likelihood</th>
+          <th style="width:76px">Impact</th><th>Why, and the mitigation</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rowh">Thin knowledge coverage sinks first impressions</td>
+            <td><span class="pill act">High</span></td>
+            <td><span class="pill act">High</span></td>
+            <td>Two knowledge bases are live against a 300-person rollout. A user whose first question
+              returns &ldquo;I do not have that&rdquo; does not come back, and adoption is very hard to
+              restart once lost. <strong>Mitigation:</strong> roll out in department waves, and do not
+              open a wave until that department has at least one knowledge base that answers its own
+              questions. This is why November is sequenced rather than announced in one broadcast.</td>
+          </tr>
+          <tr>
+            <td class="rowh">Qoder consumption keeps climbing</td>
+            <td><span class="pill act">High</span></td>
+            <td><span class="pill act">High</span></td>
+            <td>The five-month average is &yen;22,979, but July and August averaged <strong>&yen;42,668
+              &mdash; 86&nbsp;% above it</strong>. If the recent run-rate holds, Qoder alone is
+              &yen;512,000 a year rather than the &yen;276,000 modelled here, and nothing in the current
+              setup would stop it. <strong>Mitigation:</strong> the access gate and the &yen;30,000
+              monthly alert in Decision 2. Without them this figure has no ceiling.</td>
+          </tr>
+          <tr>
+            <td class="rowh">Shadow AI continues regardless</td>
+            <td><span class="pill act">Medium</span></td>
+            <td><span class="pill act">High</span></td>
+            <td>Free consumer AI is already in use and leaves no trace. Launching a sanctioned tool
+              does not displace it unless the sanctioned tool is genuinely easier. <strong>Mitigation:</strong>
+              MOOV AI is delivered inside Teams with no new login, and the AI Policy is communicated at
+              each rollout wave rather than published once and forgotten.</td>
+          </tr>
+          <tr>
+            <td class="rowh">Departments do not maintain their own content</td>
+            <td><span class="pill act">Medium</span></td>
+            <td><span class="pill">Medium</span></td>
+            <td>IT can build the first agents, but cannot own HR, Finance and Operations documentation
+              in the long run. If content ownership does not transfer, answers go stale and the platform
+              quietly decays. <strong>Mitigation:</strong> knowledge-builder role granted per department
+              with a named owner; Q1 2027 is explicitly the phase where IT stops building and starts
+              approving.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="pad" style="border-bottom:1px solid var(--rule)">
+      <span class="eyebrow">Open items</span>
+      <h3 style="margin:9px 0 0">What is not yet settled</h3>
+    </div>
+    <div class="tbl-wrap" style="border:0; border-radius:0">
+      <table style="min-width:640px">
+        <thead><tr><th style="width:210px">Item</th><th>Status</th><th style="width:150px">Owner</th></tr></thead>
+        <tbody>
+          <tr><td class="rowh">Bailian endpoint region</td>
+            <td>China or international endpoint determines where prompts are processed. Needs confirmation from the vendor before company-wide rollout.</td><td>IT</td></tr>
+          <tr><td class="rowh">Model training on our inputs</td>
+            <td>Contractual position to be confirmed in writing, not assumed.</td><td>IT / Legal</td></tr>
+          <tr><td class="rowh">Per-model Bailian rates</td>
+            <td>qwen-plus confirmed at &yen;0.50 in / &yen;2.00 out per million tokens, back-solved from actual pilot billing. qwen3-vl-plus and glm-4.7 are <strong>estimated from the list-price ladder</strong> &mdash; exact contracted rates still to be confirmed with Alibaba.</td><td>IT</td></tr>
+          <tr><td class="rowh">Bailian discount tier</td>
+            <td>A 0.7 discount tier is published for most models. We are paying list price and have not asked for it. Worth raising before volume grows.</td><td>IT</td></tr>
+          <tr><td class="rowh">Token split by model</td>
+            <td>The 354,277 pilot tokens are not yet broken down per model, so the usage mix behind the cost scenarios is assumed rather than measured.</td><td>IT</td></tr>
+          <tr><td class="rowh">Seat overlap across vendors</td>
+            <td>154 licences across three vendors; how many individuals hold two or three is not yet audited.</td><td>IT</td></tr>
+          <tr><td class="rowh">Gemini seat attribution</td>
+            <td>Some of the 76 Workspace seats were opened for Drive, Meet or Gmail rather than Gemini. Counted in full here as the upper bound.</td><td>IT</td></tr>
+          <tr><td class="rowh">AI Policy release</td>
+            <td>Drafted. Sign-off needed before the company-wide announcement.</td><td>IT / Legal</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</section>
+
+
+</div><!-- /wrap -->
+
+<div id="tip" role="status" aria-live="polite"></div>
+
+<style>
+/* ---------- MOOV AI tab layout ---------- */
+.moov-layout{display:grid; grid-template-columns:180px minmax(0,1fr); gap:36px; align-items:start}
+@media(max-width:900px){.moov-layout{grid-template-columns:minmax(0,1fr); gap:20px}}
+.moov-index{position:sticky; top:78px; display:flex; flex-direction:column; gap:1px}
+.moov-index a{display:block; padding:8px 12px; font-size:12.5px; color:var(--ink-2);
+  text-decoration:none; border-left:2px solid var(--rule); transition:.15s}
+.moov-index a:hover{color:var(--ink); border-left-color:var(--accent); background:var(--panel-2)}
+@media(max-width:900px){
+  .moov-index{position:static; flex-direction:row; flex-wrap:wrap; gap:6px}
+  .moov-index a{border:1px solid var(--rule); border-radius:3px; padding:6px 11px}
+}
+.moov-body{gap:46px}
+.moov-body>div{scroll-margin-top:84px}
+
+/* ---------- layer stack ---------- */
+.layer{display:grid; grid-template-columns:46px 190px minmax(0,1fr); gap:16px; align-items:center;
+  padding:15px 20px; border-bottom:1px solid var(--rule); border-left:3px solid var(--lc)}
+@media(max-width:720px){.layer{grid-template-columns:40px minmax(0,1fr); gap:10px}
+  .layer .ldesc{grid-column:1/-1}}
+.lnum{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--lc); font-weight:600}
+.lname{font-family:Archivo,sans-serif; font-weight:600; font-size:14.5px; line-height:1.25}
+.lname span{display:block; font-family:"IBM Plex Mono",monospace; font-weight:400; font-size:11px;
+  color:var(--ink-3); margin-top:3px}
+.ldesc{font-size:13px; color:var(--ink-2); line-height:1.5}
+
+/* ---------- tick lists ---------- */
+ul.tick{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px}
+ul.tick li{position:relative; padding-left:22px; font-size:13.5px; color:var(--ink-2); line-height:1.5}
+ul.tick li::before{position:absolute; left:0; top:0; font-family:"IBM Plex Mono",monospace; font-size:13px}
+ul.tick.pos li::before{content:"+"; color:var(--s1); font-weight:700}
+ul.tick.neg li::before{content:"\2212"; color:var(--ink-3); font-weight:700}
+
+/* ---------- data flow ---------- */
+.flow{display:flex; align-items:stretch; gap:14px; flex-wrap:wrap}
+.flow-node{border:1px solid var(--rule); border-radius:5px; padding:14px 16px; flex:1 1 150px;
+  display:flex; flex-direction:column; justify-content:center; min-width:0}
+.flow-node.user{background:var(--brand); border-color:transparent; color:#fff; flex:0 0 128px; text-align:center}
+.flow-node.user .fn-t{font-weight:600; font-size:15px}
+.flow-node.user .fn-d{font-family:"IBM Plex Mono",monospace; font-size:10.5px; color:rgba(255,255,255,.72); margin-top:3px}
+.flow-node.ext{background:var(--accent-soft); border-color:var(--accent); flex:1 1 210px}
+.flow-node.ext .fn-k{font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--accent); font-weight:600}
+.flow-node.ext .fn-t{font-family:Archivo,sans-serif; font-weight:600; font-size:15px; margin:6px 0 5px}
+.flow-node.ext .fn-d{font-size:12px; color:var(--ink-2); line-height:1.45}
+.flow-arrow{display:flex; align-items:center; justify-content:center; color:var(--brand-ink);
+  font-size:20px; flex:0 0 auto}
+.flow-arrow.two{flex-direction:column; gap:2px; justify-content:center}
+.flow-arrow.two .out{color:var(--accent); line-height:1}
+.flow-arrow.two .in{color:var(--brand-ink); line-height:1; margin-top:8px}
+.flow-arrow.two small{font-family:"IBM Plex Mono",monospace; font-size:8.5px; color:var(--ink-3);
+  white-space:nowrap; line-height:1.2}
+.perimeter{flex:3 1 380px; border:1.5px solid var(--brand); border-radius:5px; padding:14px 16px;
+  background:var(--panel-2)}
+.peri-label{font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--brand-ink); font-weight:600; margin-bottom:12px}
+.peri-grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px}
+@media(max-width:760px){.peri-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.chip{background:var(--panel); border:1px solid var(--rule); border-radius:4px; padding:9px 10px}
+.chip b{display:block; font-size:12.5px; font-weight:600}
+.chip span{display:block; font-family:"IBM Plex Mono",monospace; font-size:9.5px; color:var(--ink-3); margin-top:3px}
+
+/* ---------- timeline ---------- */
+ol.tl{list-style:none; margin:0; padding:0; display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr)); gap:0}
+@media(max-width:860px){ol.tl{grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px 0}}
+@media(max-width:520px){ol.tl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+ol.tl li{position:relative; padding:26px 14px 0 0; border-top:2px solid var(--rule)}
+ol.tl li::before{content:""; position:absolute; top:-6px; left:0; width:10px; height:10px;
+  border-radius:2px; background:var(--rule-2)}
+ol.tl li.now::before{background:var(--accent)}
+ol.tl li.now{border-top-color:var(--accent)}
+.tl-d{display:block; font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink-3); margin-bottom:5px}
+ol.tl b{display:block; font-size:13.5px; color:var(--brand-ink); margin-bottom:5px; line-height:1.25}
+ol.tl li.now b{color:var(--accent)}
+ol.tl span:not(.tl-d){display:block; font-size:11.5px; color:var(--ink-2); line-height:1.45}
+
+/* ---------- vendor cards ---------- */
+.vgrid{display:grid; gap:16px; grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:1160px){.vgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.vgrid{grid-template-columns:minmax(0,1fr)}}
+.vcard{background:var(--panel); border:1px solid var(--rule); border-top:3px solid var(--vc);
+  border-radius:5px; box-shadow:var(--shadow); padding:18px 18px 0; display:flex; flex-direction:column}
+.vc-name{font-family:Archivo,sans-serif; font-weight:700; font-size:19px; letter-spacing:-.02em}
+.vc-sup{font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--vc); margin-top:5px; display:block}
+.vc-pos{font-size:13.5px; color:var(--ink); margin:13px 0 0; line-height:1.5}
+.vc-dl{margin:15px 0 0; display:flex; flex-direction:column; gap:11px; flex:1}
+.vc-dl dt{font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:600;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-2); margin-bottom:5px}
+.vc-dl dd{margin:0; font-size:12.5px; color:var(--ink-2); line-height:1.5}
+.vc-foot{display:grid; grid-template-columns:auto 1fr; gap:6px 16px; margin-top:16px;
+  border-top:1px solid var(--rule); padding:12px 0 14px}
+.vc-foot>div{display:contents}
+.vc-foot .k{font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); align-self:center}
+.vc-foot .v{font-size:12.5px; font-weight:600; text-align:right}
+
+/* ---------- donut + drill-down ---------- */
+.donut-row{display:grid; grid-template-columns:330px minmax(0,1fr); gap:26px; padding:20px 22px}
+@media(max-width:900px){.donut-row{grid-template-columns:minmax(0,1fr)}}
+.drill{display:flex; flex-direction:column; align-self:start; width:100%}
+.dr-item{border-bottom:1px solid var(--rule)}
+.dr-item:first-child{border-top:1px solid var(--rule)}
+.dr{width:100%; display:grid; grid-template-columns:auto 1fr auto auto 18px; align-items:center;
+  gap:12px; background:none; border:0; cursor:pointer; padding:13px 4px; text-align:left;
+  font:inherit; color:var(--ink); transition:background .12s}
+.dr:hover{background:var(--panel-2)}
+.dr-n{font-weight:600; font-size:14px}
+.dr-a{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; font-size:13.5px}
+.dr-p{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-3); min-width:48px; text-align:right}
+.chev{width:8px; height:8px; border-right:1.6px solid var(--ink-3); border-bottom:1.6px solid var(--ink-3);
+  transform:rotate(45deg); transition:transform .18s; justify-self:end; margin-top:-3px}
+.dr[aria-expanded="true"] .chev{transform:rotate(-135deg); margin-top:3px}
+.dr[aria-expanded="true"]{background:var(--panel-2)}
+.dr-body{padding:4px 4px 20px}
+
+/* ---------- calculator ---------- */
+.calc-grid{display:grid; grid-template-columns:310px minmax(0,1fr)}
+@media(max-width:860px){.calc-grid{grid-template-columns:minmax(0,1fr)}}
+.calc-inputs{padding:20px 22px; border-right:1px solid var(--rule)}
+@media(max-width:860px){.calc-inputs{border-right:0; border-bottom:1px solid var(--rule)}}
+.calc-out{padding:16px 6px 18px}
+.co-head,.co-row{display:grid; grid-template-columns:14px minmax(0,1fr) 118px 118px 92px;
+  align-items:center; gap:14px; padding:11px 18px}
+@media(max-width:700px){
+  .co-head,.co-row{grid-template-columns:14px minmax(0,1fr) 100px; }
+  .co-y,.co-bar,.co-head span:nth-child(4),.co-head span:nth-child(5){display:none}
+}
+.co-head{font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--ink-3); padding-bottom:6px}
+.co-head .r{text-align:right}
+.co-row{border-top:1px solid var(--rule)}
+.co-n{font-size:14px; font-weight:600}
+.co-n span{display:block; font-family:"IBM Plex Mono",monospace; font-size:9.5px; font-weight:400;
+  color:var(--ink-3); margin-top:3px; letter-spacing:.04em}
+.co-m{text-align:right; font-size:15px; font-weight:600}
+.co-y{text-align:right; font-size:12.5px; color:var(--ink-2)}
+.co-bar{height:7px; background:var(--panel-3); border-radius:4px; overflow:hidden}
+.co-bar span{display:block; height:100%; border-radius:4px; transition:width .18s}
+
+/* ---------- tiers ---------- */
+.tiers{display:flex; flex-direction:column; gap:18px; margin-top:16px}
+.tier-bar{display:flex; align-items:center; justify-content:space-between; gap:14px;
+  min-width:210px; padding:10px 14px; border-radius:4px; color:#fff;
+  font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase}
+.tier-bar b{font-size:12px; letter-spacing:0; text-transform:none; white-space:nowrap}
+.tier-txt{font-size:13.5px; color:var(--ink-2); margin-top:8px; line-height:1.5}
+.tier-txt b{color:var(--ink); font-weight:600}
+.tier-txt .mono{margin-left:8px; font-weight:600; white-space:nowrap}
+
+/* ---------- session agenda ---------- */
+.agenda{display:flex; flex-direction:column}
+.ag{display:grid; grid-template-columns:54px minmax(0,1fr); gap:0 18px;
+  padding:18px 22px; border-bottom:1px solid var(--rule)}
+.ag:last-child{border-bottom:0}
+.ag-n{font-family:Archivo,sans-serif; font-weight:700; font-size:23px;
+  letter-spacing:-.03em; color:var(--accent); line-height:1.15}
+.ag-c b{display:block; font-family:Archivo,sans-serif; font-size:16px; font-weight:600;
+  letter-spacing:-.012em; margin-bottom:7px; line-height:1.3}
+.ag-c p{font-size:13.5px; color:var(--ink-2); line-height:1.55}
+.ag-x{display:inline-block; margin-top:11px; font-family:"IBM Plex Mono",monospace;
+  font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3);
+  border:1px solid var(--rule); border-radius:3px; padding:3px 9px}
+@media(max-width:620px){.ag{grid-template-columns:minmax(0,1fr); gap:6px}}
+
+/* ---------- segmented view switch ---------- */
+.viewbar{display:flex; align-items:center; justify-content:space-between;
+  gap:14px 20px; flex-wrap:wrap; margin-bottom:14px}
+.vswitch{display:inline-flex; gap:2px; background:var(--panel-2);
+  border:1px solid var(--rule); border-radius:5px; padding:3px}
+.segb{appearance:none; border:0; background:none; cursor:pointer; white-space:nowrap;
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); padding:7px 14px; border-radius:3px;
+  transition:background .15s, color .15s}
+.segb:hover{color:var(--ink)}
+.segb[aria-selected="true"]{background:var(--panel); color:var(--accent); font-weight:600;
+  box-shadow:0 1px 2px rgba(0,0,0,.12)}
+[role="tabpanel"][hidden]{display:none!important}
+
+/* ---------- 3-up readout strip ---------- */
+.readouts.r3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:820px){
+  .readouts.r3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .readouts.r3 .ro:nth-child(3){border-bottom:0}
+}
+@media(max-width:560px){.readouts.r3{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- model layer ---------- */
+.mrow{display:grid; grid-template-columns:minmax(0,2fr) 150px 82px 82px 118px 110px;
+  gap:14px; align-items:center; padding:12px 0; border-bottom:1px solid var(--rule)}
+.mrow:last-of-type{border-bottom:0}
+.mrow .r{text-align:right}
+.mrow.mhead{padding:0 0 9px; border-bottom:1px solid var(--rule-2);
+  font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink-3)}
+.mn{font-family:"IBM Plex Mono",monospace; font-size:13.5px; font-weight:500; color:var(--ink)}
+.mn small{display:block; font-family:"IBM Plex Sans",sans-serif; font-size:11.5px;
+  font-weight:400; color:var(--ink-3); margin-top:3px; letter-spacing:0}
+.mb{display:block; height:7px; background:var(--panel-3); border-radius:4px; overflow:hidden}
+.mb i{display:block; height:100%; border-radius:4px}
+.tag{font-style:normal; font-family:"IBM Plex Mono",monospace; font-size:9.5px;
+  letter-spacing:.09em; text-transform:uppercase; padding:3px 7px; border-radius:3px;
+  border:1px solid var(--rule-2); color:var(--ink-3); white-space:nowrap}
+.tag.ok{border-color:var(--s1); color:var(--s1)}
+.tag.est{border-color:var(--rule-2); color:var(--ink-3)}
+.mfig{font-family:Archivo,sans-serif; font-weight:700; font-size:26px; letter-spacing:-.028em;
+  margin:8px 0 7px; font-variant-numeric:tabular-nums; line-height:1}
+@media(max-width:820px){
+  .mrow{grid-template-columns:minmax(0,1fr) 1fr; gap:6px 12px}
+  .mrow.mhead{display:none}
+  .mrow .r{text-align:left}
+  .mb{grid-column:1/-1}
+}
+
+/* ---------- roadmap ---------- */
+.rmap{display:flex; flex-direction:column; gap:0}
+.rm{display:grid; grid-template-columns:104px 26px minmax(0,1fr); gap:0 16px; align-items:start}
+.rm-d{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); padding-top:14px; text-align:right}
+.rm-ax{position:relative; display:flex; justify-content:center}
+.rm-ax::before{content:""; position:absolute; top:0; bottom:0; width:2px; background:var(--rule)}
+.rm:first-child .rm-ax::before{top:18px}
+.rm:last-child .rm-ax::before{bottom:auto; height:18px}
+.rm-ax i{position:relative; width:11px; height:11px; border-radius:50%; margin-top:13px;
+  background:var(--panel); border:2px solid var(--rule-2); flex:none}
+.rm-c{padding:11px 0 20px}
+.rm-c b{display:block; font-family:Archivo,sans-serif; font-size:14.5px; font-weight:600;
+  color:var(--ink); margin-bottom:5px; line-height:1.25}
+.rm-c p{font-size:12.5px; color:var(--ink-2); line-height:1.5}
+.rm.done .rm-d{color:var(--ink-3)}
+.rm.done .rm-c b{color:var(--ink-3); font-weight:500}
+.rm.done .rm-ax i{background:var(--rule-2); border-color:var(--rule-2)}
+.rm.next .rm-ax i{background:var(--accent); border-color:var(--accent);
+  box-shadow:0 0 0 4px var(--accent-soft)}
+.rm.next .rm-d{color:var(--accent)}
+.rm.next .rm-c b{color:var(--accent)}
+.rm.gate .rm-ax i{background:var(--panel); border-color:var(--brand); border-width:3px}
+.rm.gate .rm-c{border-left:0}
+.rm.gate .rm-d{color:var(--brand-ink); font-weight:600}
+.rm-tag{display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:9.5px;
+  letter-spacing:.1em; text-transform:uppercase; padding:2px 7px; border-radius:3px;
+  margin-left:8px; vertical-align:2px; border:1px solid var(--rule-2); color:var(--ink-3)}
+@media(max-width:640px){
+  .rm{grid-template-columns:20px minmax(0,1fr); gap:0 12px}
+  .rm-d{grid-column:2; text-align:left; padding:12px 0 0}
+  .rm-ax{grid-row:1/3}
+  .rm-c{grid-column:2; padding-top:4px}
+}
+
+/* ---------- metric targets ---------- */
+.mt-row{display:grid; grid-template-columns:minmax(0,1fr) 96px 96px; gap:14px;
+  align-items:baseline; padding:11px 0; border-bottom:1px solid var(--rule)}
+.mt-row:last-child{border-bottom:0}
+.mt-row.mt-head{padding-top:0; font-family:"IBM Plex Mono",monospace; font-size:10px;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3);
+  border-bottom:1px solid var(--rule-2)}
+.mt-row .mt-n{font-size:13.5px; color:var(--ink-2)}
+.mt-row .mt-v{text-align:right; font-family:"IBM Plex Mono",monospace;
+  font-variant-numeric:tabular-nums; font-size:14px}
+.mt-row .mt-t{text-align:right; font-family:"IBM Plex Mono",monospace;
+  font-variant-numeric:tabular-nums; font-size:14px; font-weight:600; color:var(--s1)}
+</style>
+
+<script>
+(function(){
+  /* ---------- theme ---------- */
+  var root=document.documentElement, btn=document.getElementById('themeBtn');
+  btn.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme');
+    if(!cur){cur=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}
+    root.setAttribute('data-theme', cur==='dark'?'light':'dark');
+  });
+
+  /* ---------- tabs ---------- */
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  function show(id){
+    tabs.forEach(function(t){
+      var on=t.id===id, p=document.getElementById(t.getAttribute('aria-controls'));
+      t.setAttribute('aria-selected', on?'true':'false');
+      p.hidden=!on;
+    });
+    window.scrollTo({top:0, behavior:'instant' in window ? 'auto':'auto'});
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(){show(t.id);});
+    t.addEventListener('keydown',function(e){
+      var i=tabs.indexOf(t), n=null;
+      if(e.key==='ArrowRight') n=tabs[(i+1)%tabs.length];
+      if(e.key==='ArrowLeft')  n=tabs[(i-1+tabs.length)%tabs.length];
+      if(n){e.preventDefault(); n.focus(); show(n.id);}
+    });
+  });
+
+  /* ---------- segmented view switches ---------- */
+  document.querySelectorAll('.vswitch[role="tablist"]').forEach(function(grp){
+    var btns=[].slice.call(grp.querySelectorAll('.segb'));
+    function pick(b){
+      btns.forEach(function(o){
+        var on=o===b;
+        o.setAttribute('aria-selected', on?'true':'false');
+        document.getElementById(o.getAttribute('aria-controls')).hidden=!on;
+      });
+    }
+    btns.forEach(function(b){
+      b.addEventListener('click',function(){pick(b);});
+      b.addEventListener('keydown',function(e){
+        var i=btns.indexOf(b), n=null;
+        if(e.key==='ArrowRight') n=btns[(i+1)%btns.length];
+        if(e.key==='ArrowLeft')  n=btns[(i-1+btns.length)%btns.length];
+        if(n){e.preventDefault(); n.focus(); pick(n);}
+      });
+    });
+  });
+
+  /* ---------- chart tooltips ---------- */
+  var tip=document.getElementById('tip');
+  function move(e){
+    var pad=14, w=tip.offsetWidth, h=tip.offsetHeight;
+    var x=e.clientX+pad, y=e.clientY-h-10;
+    if(x+w>innerWidth-8) x=e.clientX-w-pad;
+    if(y<8) y=e.clientY+pad;
+    tip.style.left=x+'px'; tip.style.top=y+'px';
+  }
+  document.querySelectorAll('[data-t][data-d]').forEach(function(el){
+    el.style.cursor='default';
+    el.addEventListener('mouseenter',function(e){
+      tip.innerHTML='<span class="t">'+el.dataset.t+'</span><span class="d">'+el.dataset.d+'</span>';
+      tip.style.opacity='1'; move(e);
+    });
+    el.addEventListener('mousemove',move);
+    el.addEventListener('mouseleave',function(){tip.style.opacity='0';});
+  });
+
+  /* ---------- pie drill-down ---------- */
+  var drills=[].slice.call(document.querySelectorAll('.dr'));
+  function setDrill(v){
+    drills.forEach(function(b){
+      var body=document.getElementById(b.getAttribute('aria-controls'));
+      var on=(b.dataset.v===v);
+      b.setAttribute('aria-expanded', on?'true':'false');
+      body.hidden=!on;
+    });
+  }
+  drills.forEach(function(b){
+    b.addEventListener('click',function(){
+      setDrill(b.getAttribute('aria-expanded')==='true' ? null : b.dataset.v);
+    });
+  });
+  document.querySelectorAll('.seg[data-v]').forEach(function(sg){
+    sg.style.cursor='pointer';
+    sg.addEventListener('click',function(){
+      setDrill(sg.dataset.v);
+      var b=document.querySelector('.dr[data-v="'+sg.dataset.v+'"]');
+      if(b) b.scrollIntoView({block:'nearest', behavior:'smooth'});
+    });
+  });
+
+  /* ---------- four-vendor cost model ---------- */
+  var SEAT={gemini:26.64*7.10, copilot:2784/12, qoder:114897/5/42};
+  var MOOV_FIXED=49000/12, TIN=4724, TOUT=2362, PIN=0.5, POUT=2.0;
+  var uU=document.getElementById('uUsers'), uC=document.getElementById('uConv');
+  function fmt(n){
+    if(n>=1000) return '\u00a5'+Math.round(n).toLocaleString('en-US');
+    if(n>=10)   return '\u00a5'+Math.round(n);
+    if(n>=1)    return '\u00a5'+n.toFixed(1);
+    return '\u00a5'+n.toFixed(2);
+  }
+  function fmtU(n){ return '\u00a5'+n.toFixed(2); }
+  function calc(){
+    var u=+uU.value, c=+uC.value;
+    var m={
+      qoder:   u*SEAT.qoder,
+      copilot: u*SEAT.copilot,
+      gemini:  u*SEAT.gemini,
+      moov:    MOOV_FIXED + u*c*(TIN*PIN+TOUT*POUT)/1e6
+    };
+    var max=Math.max(m.qoder,m.copilot,m.gemini,m.moov)||1;
+    document.getElementById('oUsers').textContent=u;
+    document.getElementById('oConv').textContent=c;
+    [['Qoder','qoder'],['Copilot','copilot'],['Gemini','gemini'],['Moov','moov']].forEach(function(p){
+      document.getElementById('c'+p[0]+'M').textContent=fmt(m[p[1]]);
+      document.getElementById('c'+p[0]+'U').textContent=fmtU(m[p[1]]/u);
+      document.getElementById('b'+p[0]).style.width=Math.max(m[p[1]]/max*100,0.8)+'%';
+    });
+    document.getElementById('calcNote').innerHTML=
+      'At <strong>'+u+' users</strong> and <strong>'+c+' conversations</strong> each per month, '+
+      'MOOV AI costs '+fmt(m.moov)+' a month \u2014 '+fmt(MOOV_FIXED)+' of that is the fixed '+
+      'subscription and '+fmt(m.moov-MOOV_FIXED)+' is model tokens. The same population on Qoder '+
+      'Work would cost '+fmt(m.qoder)+', on Copilot '+fmt(m.copilot)+', on Gemini '+fmt(m.gemini)+'. '+
+      'Only MOOV AI\u2019s per-user cost falls as the population grows.';
+  }
+  [uU,uC].forEach(function(el){el.addEventListener('input',calc);});
+  calc();
+})();
+</script>
+
+</body></html>
