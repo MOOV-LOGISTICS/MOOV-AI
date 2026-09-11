@@ -236,7 +236,10 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
       <div class="meta">IT Department &middot; September 2026 &middot; Internal</div>
     </div>
     <div class="hdr-tools">
-      <button class="tbtn" id="themeBtn" type="button" aria-label="Switch colour theme">Theme</button>
+      <div class="langsw" role="group" aria-label="Language / 语言">
+        <button class="lbtn" type="button" id="langEn" aria-pressed="true">EN</button>
+        <button class="lbtn" type="button" id="langZh" aria-pressed="false">中文</button>
+      </div>
     </div>
   </div>
 </header>
@@ -1861,6 +1864,35 @@ ol.tl span:not(.tl-d){display:block; font-size:11.5px; color:var(--ink-2); line-
 .tier-txt b{color:var(--ink); font-weight:600}
 .tier-txt .mono{margin-left:8px; font-weight:600; white-space:nowrap}
 
+/* ---------- language switch ---------- */
+.langsw{display:inline-flex; gap:2px; background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.2); border-radius:4px; padding:2px}
+.lbtn{appearance:none; border:0; background:none; cursor:pointer; white-space:nowrap;
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.1em;
+  color:rgba(234,242,247,.6); padding:5px 11px; border-radius:3px; transition:.15s}
+.lbtn:hover{color:#fff}
+.lbtn[aria-pressed="true"]{background:rgba(255,255,255,.92); color:#004F7C; font-weight:600}
+
+/* ---------- Chinese typography ---------- */
+html[lang="zh"] body{font-family:"IBM Plex Sans","PingFang SC","Microsoft YaHei",
+  "Hiragino Sans GB","Noto Sans SC","Segoe UI",sans-serif}
+html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3,html[lang="zh"] h4{
+  font-family:Archivo,"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Noto Sans SC",sans-serif}
+html[lang="zh"] .mono,html[lang="zh"] .num,html[lang="zh"] .eyebrow,
+html[lang="zh"] .tag,html[lang="zh"] .pill,html[lang="zh"] .ag-x,html[lang="zh"] .rm-tag,
+html[lang="zh"] .rm-d,html[lang="zh"] thead th,html[lang="zh"] summary,
+html[lang="zh"] .kv .v,html[lang="zh"] .mn{
+  font-family:"IBM Plex Mono","PingFang SC","Microsoft YaHei","Noto Sans SC",monospace}
+html[lang="zh"] .eyebrow,html[lang="zh"] thead th,html[lang="zh"] summary,
+html[lang="zh"] .tag,html[lang="zh"] .pill,html[lang="zh"] .ag-x,html[lang="zh"] .rm-tag,
+html[lang="zh"] .peri-label,html[lang="zh"] .co-head,html[lang="zh"] .mrow.mhead,
+html[lang="zh"] .tier-bar,html[lang="zh"] .ro .k,html[lang="zh"] .vc-sup,
+html[lang="zh"] .vc-foot .k,html[lang="zh"] .chip span,html[lang="zh"] .co-n span{letter-spacing:.02em}
+html[lang="zh"] .lead,html[lang="zh"] .sub,html[lang="zh"] p,html[lang="zh"] li,
+html[lang="zh"] td,html[lang="zh"] dd{line-height:1.75}
+html[lang="zh"] .fine{line-height:1.7}
+html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3,html[lang="zh"] h4{letter-spacing:0; line-height:1.35}
+
 /* ---------- session agenda ---------- */
 .agenda{display:flex; flex-direction:column}
 .ag{display:grid; grid-template-columns:54px minmax(0,1fr); gap:0 18px;
@@ -1976,14 +2008,6 @@ ol.tl span:not(.tl-d){display:block; font-size:11.5px; color:var(--ink-2); line-
 
 <script>
 (function(){
-  /* ---------- theme ---------- */
-  var root=document.documentElement, btn=document.getElementById('themeBtn');
-  btn.addEventListener('click',function(){
-    var cur=root.getAttribute('data-theme');
-    if(!cur){cur=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}
-    root.setAttribute('data-theme', cur==='dark'?'light':'dark');
-  });
-
   /* ---------- tabs ---------- */
   var tabs=[].slice.call(document.querySelectorAll('.tab'));
   function show(id){
@@ -2095,15 +2119,639 @@ ol.tl span:not(.tl-d){display:block; font-size:11.5px; color:var(--ink-2); line-
       document.getElementById('c'+p[0]+'U').textContent=fmtU(m[p[1]]/u);
       document.getElementById('b'+p[0]).style.width=Math.max(m[p[1]]/max*100,0.8)+'%';
     });
-    document.getElementById('calcNote').innerHTML=
-      'At <strong>'+u+' users</strong> and <strong>'+c+' conversations</strong> each per month, '+
-      'MOOV AI costs '+fmt(m.moov)+' a month \u2014 '+fmt(MOOV_FIXED)+' of that is the fixed '+
-      'subscription and '+fmt(m.moov-MOOV_FIXED)+' is model tokens. The same population on Qoder '+
-      'Work would cost '+fmt(m.qoder)+', on Copilot '+fmt(m.copilot)+', on Gemini '+fmt(m.gemini)+'. '+
-      'Only MOOV AI\u2019s per-user cost falls as the population grows.';
+    var zh = document.documentElement.lang === 'zh';
+    document.getElementById('calcNote').innerHTML = zh
+      ? ('\u6309 <strong>'+u+' \u4eba</strong>\u3001\u6bcf\u4eba\u6bcf\u6708 <strong>'+c+' \u6b21\u5bf9\u8bdd</strong>\u8ba1\u7b97\uff0c'+
+         'MOOV AI \u6bcf\u6708 '+fmt(m.moov)+' \u2014\u2014 \u5176\u4e2d '+fmt(MOOV_FIXED)+' \u662f\u56fa\u5b9a\u8ba2\u9605\u8d39\uff0c'+
+         fmt(m.moov-MOOV_FIXED)+' \u662f\u6a21\u578b token\u3002\u540c\u6837\u8fd9\u4e9b\u4eba\u6570\uff0c\u8dd1 Qoder Work \u8981 '+fmt(m.qoder)+
+         '\uff0cCopilot \u8981 '+fmt(m.copilot)+'\uff0cGemini \u8981 '+fmt(m.gemini)+'\u3002'+
+         '\u53ea\u6709 MOOV AI \u7684\u4eba\u5747\u6210\u672c\u4f1a\u968f\u7740\u4eba\u6570\u589e\u52a0\u800c\u4e0b\u964d\u3002')
+      : ('At <strong>'+u+' users</strong> and <strong>'+c+' conversations</strong> each per month, '+
+         'MOOV AI costs '+fmt(m.moov)+' a month \u2014 '+fmt(MOOV_FIXED)+' of that is the fixed '+
+         'subscription and '+fmt(m.moov-MOOV_FIXED)+' is model tokens. The same population on Qoder '+
+         'Work would cost '+fmt(m.qoder)+', on Copilot '+fmt(m.copilot)+', on Gemini '+fmt(m.gemini)+'. '+
+         'Only MOOV AI\u2019s per-user cost falls as the population grows.');
   }
   [uU,uC].forEach(function(el){el.addEventListener('input',calc);});
+  window.__recalc = calc;
   calc();
+})();
+</script>
+
+<script>
+(function(){
+  var DICT = new Map([
+[`AI Estate Review`,`AI 应用盘点`],
+[`<span class="ix">01</span>Overview`,`<span class="ix">01</span>总览`],
+[`<span class="ix">02</span>Spend`,`<span class="ix">02</span>支出`],
+[`<span class="ix">03</span>Qoder Work`,`<span class="ix">03</span>Qoder Work`],
+[`<span class="ix">04</span>MOOV AI`,`<span class="ix">04</span>MOOV AI`],
+[`<span class="ix">05</span>Decision`,`<span class="ix">05</span>决策`],
+[`01 / Overview`,`01 / 总览`],
+[`The AI solution MOOV runs today`,`MOOV 今天在用的 AI`],
+[`We currently run four AI solutions from four suppliers, serving different populations.`,`我们目前运行着来自四家供应商的四套 AI 方案，面向不同的人群。`],
+[`Estimated annual AI spend`,`AI 年度支出（估算）`],
+[`¥49,790 a month at today’s run-rate, annualised. Four billed platforms; no platform has yet run a full year`,`按当前月度水平 ¥49,790 年化得出。四个有账单的平台；没有任何一家已完整运行满一年`],
+[`Concentration`,`集中度`],
+[`of all AI spend sits on one platform — Qoder Work, on 42 seats`,`的 AI 支出集中在一个平台上 —— Qoder Work，仅 42 个席位`],
+[`MOOV AI share`,`MOOV AI 占比`],
+[`the only platform whose cost does not rise with headcount`,`唯一一个成本不随人数增长的平台`],
+[`The four solutions`,`四套方案`],
+[`Cards`,`卡片`],
+[`Comparison table`,`对比表`],
+[`Gemini`,`Gemini`],
+[`Google · bundled with Workspace`,`Google · 随 Workspace 捆绑`],
+[`Google's assistant, included in the Workspace licences we already hold.`,`Google 的助手，包含在我们已购买的 Workspace 授权里。`],
+[`What it does`,`能做什么`],
+[`Drafting and summarising in Docs and Gmail, meeting notes in Meet, quick Q&amp;A in the browser.`,`在 Docs 和 Gmail 里起草与摘要，在 Meet 里生成会议记录，在浏览器里快速问答。`],
+[`Best fit`,`适合谁`],
+[`People whose working day runs inside Google Workspace.`,`整天在 Google Workspace 里工作的人。`],
+[`Billed as`,`计费方式`],
+[`Monthly subscription per seat, billed on the fiscal year.`,`按席位月度订阅，按财年结算。`],
+[`Data &amp; security`,`数据与安全`],
+[`Processed in Google Cloud under the Workspace terms; governed by Google's admin console, not ours.`,`在 Google Cloud 按 Workspace 条款处理；由 Google 的管理控制台管辖，不在我们手里。`],
+[`Watch out for`,`需要注意`],
+[`We pay per seat whether or not Gemini is used; attribution is unclear.`,`无论是否使用 Gemini，席位费照付；归属难以厘清。`],
+[`Copilot`,`Copilot`],
+[`Microsoft · M365 and Teams`,`Microsoft · M365 与 Teams`],
+[`Microsoft's assistant, embedded in the M365 estate most of MOOV already works in.`,`Microsoft 的助手，内嵌在 MOOV 大多数人日常使用的 M365 环境中。`],
+[`Drafting in Word and Outlook, formula and analysis help in Excel, meeting recap in Teams.`,`在 Word 和 Outlook 里起草，在 Excel 里辅助公式与分析，在 Teams 里生成会议纪要。`],
+[`People whose working day runs inside M365 — and who handle material we would rather keep in the Microsoft tenant.`,`整天在 M365 里工作的人 —— 以及处理那些我们更希望留在 Microsoft 租户内的材料的人。`],
+[`Annual subscription per seat.`,`按席位年度订阅。`],
+[`Inside the Microsoft tenant we already run — the strongest posture of the three external tools.`,`在我们自己已有的 Microsoft 租户内 —— 三个外部工具里安全态势最好的。`],
+[`Highest per-seat price of the two suites, and it overlaps Gemini.`,`两套办公套件中席位单价最高，而且与 Gemini 功能重叠。`],
+[`Qoder Work`,`Qoder Work`],
+[`Alibaba · credit-metered`,`阿里巴巴 · 按额度计量`],
+[`Alibaba's agent platform for doing the work, not describing it — it plans a task, then executes it end to end.`,`阿里的智能体平台，负责把活干完而不是描述怎么干 —— 它先规划任务，再端到端执行。`],
+[`Combines coding and document-generation capabilities in a single platform, producing finished Word, PowerPoint, Excel, and HTML outputs while also reading and acting on files on the user's computer.`,`在同一个平台里同时具备写代码和生成文档的能力，可直接产出成品 Word、PowerPoint、Excel 和 HTML，同时还能读取并操作用户电脑上的文件。`],
+[`MOOV&nbsp;OS development, and named automation owners — work that genuinely needs an agent, not an answer.`,`MOOV&nbsp;OS 开发，以及指定的自动化负责人 —— 那些真正需要智能体动手、而不只是要个答案的工作。`],
+[`Pre-paid credits consumed on use, plus seat subscriptions. No ceiling.`,`预付额度按使用量扣减，另加席位订阅。没有上限。`],
+[`Alibaba Cloud. Code and task context leave our perimeter, it can read local files on the user's machine, and there is no MOOV-side audit trail.`,`阿里云。代码和任务上下文会离开我们的边界，它能读取用户本机文件，而且 MOOV 这边没有审计日志。`],
+[`Unbounded cost — consumption, not seats, drives the bill.`,`成本无上限 —— 驱动账单的是用量，不是席位。`],
+[`MOOV AI`,`MOOV AI`],
+[`Kymo on a Dify engine · our own deployment`,`Kymo + Dify 引擎 · 我们自己的部署`],
+[`Our own enterprise portal — one governed entry point to chat, corporate knowledge and department agents.`,`我们自己的企业门户 —— 一个受管控的统一入口，通向对话、企业知识和部门智能体。`],
+[`Q&amp;A grounded in our own SOPs and policies with the source cited, low-code agent building, workflow automation.`,`基于我们自己的 SOP 和制度作答并标注来源，低代码搭建智能体，工作流自动化。`],
+[`Everyone. The baseline layer for routine knowledge and drafting work.`,`所有人。日常知识查询和文字工作的基础层。`],
+[`Fixed annual platform subscription plus metered model tokens. The subscription does not change with headcount.`,`固定的年度平台订阅费，加上按量计费的模型 token。订阅费不随人数变化。`],
+[`On-premise in Singapore. Teams SSO, RBAC, full audit log; only the inference call leaves.`,`本地部署在新加坡。Teams 单点登录、基于角色的权限、完整审计日志；只有推理请求会出境。`],
+[`Not a coding tool. Knowledge coverage is still thin — two bases live.`,`不是写代码的工具。知识覆盖仍然很薄 —— 只有两个知识库上线。`],
+[`The fifth category`,`第五类`],
+[`There is a layer underneath this that we cannot see`,`这四家底下还有一层，我们看不见`],
+[`Beyond the four tools in this table, staff also reach for free consumer AI — Doubao, the DeepSeek web app, the assistant built into DingTalk. These cost us nothing, which is exactly why there is no account list, no usage record and no way to know what has been pasted into them.`,`除了表里这四个工具，同事们还会用免费的消费级 AI —— 豆包、DeepSeek 网页版、钉钉内置的助手。它们不花我们一分钱，而这恰恰意味着：没有账号清单、没有使用记录，也无从知道有什么内容被粘贴了进去。`],
+[`<strong>This is the real argument for a sanctioned front door.</strong> The question is not only what we spend on AI; it is how much of our AI use we can actually see. Today the honest answer is: the four columns below, and nothing else.`,`<strong>这才是"需要一个官方入口"的真正理由。</strong>问题不只是我们在 AI 上花了多少钱，而是我们究竟能看见多少 AI 使用行为。今天诚实的答案是：只看得见下面这四列，别的都看不见。`],
+[`<i class="dot" style="background:var(--s3);display:inline-block;margin-right:7px"></i>Gemini`,`<i class="dot" style="background:var(--s3);display:inline-block;margin-right:7px"></i>Gemini`],
+[`<i class="dot" style="background:var(--s4);display:inline-block;margin-right:7px"></i>Copilot`,`<i class="dot" style="background:var(--s4);display:inline-block;margin-right:7px"></i>Copilot`],
+[`<i class="dot" style="background:var(--s2);display:inline-block;margin-right:7px"></i>Qoder Work`,`<i class="dot" style="background:var(--s2);display:inline-block;margin-right:7px"></i>Qoder Work`],
+[`<i class="dot" style="background:var(--s1);display:inline-block;margin-right:7px"></i>MOOV AI`,`<i class="dot" style="background:var(--s1);display:inline-block;margin-right:7px"></i>MOOV AI`],
+[`Position`,`定位`],
+[`Assistant inside Google Workspace`,`Google Workspace 内的助手`],
+[`Assistant inside Microsoft 365`,`Microsoft 365 内的助手`],
+[`Agentic platform that executes work`,`能动手干活的智能体平台`],
+[`Company-level AI front door`,`公司级 AI 入口`],
+[`Core capability`,`核心能力`],
+[`Draft, summarise, meeting notes, Q&amp;A`,`起草、摘要、会议记录、问答`],
+[`Draft, Excel analysis, Teams recap`,`起草、Excel 分析、Teams 纪要`],
+[`Writes and runs code; produces finished Word, PPT, Excel, HTML; reads local files`,`写代码并运行；产出成品 Word、PPT、Excel、HTML；读取本机文件`],
+[`Chat, RAG over MOOV knowledge, low-code agents, workflow automation`,`对话、基于 MOOV 知识的 RAG 检索、低代码智能体、工作流自动化`],
+[`Best used for`,`最适合的场景`],
+[`People living in Docs, Gmail, Meet`,`常驻 Docs、Gmail、Meet 的人`],
+[`People living in Word, Outlook, Excel, Teams`,`常驻 Word、Outlook、Excel、Teams 的人`],
+[`MOOV&nbsp;OS development, complex automation, prototyping`,`MOOV&nbsp;OS 开发、复杂自动化、快速原型`],
+[`Everyone — routine drafting, policy and SOP questions, department agents`,`所有人 —— 日常文字工作、制度与 SOP 查询、部门智能体`],
+[`Google Cloud, Workspace terms. Governed in Google's console, not ours`,`Google Cloud，适用 Workspace 条款。在 Google 的控制台管辖，不在我们这边`],
+[`Inside our own Microsoft tenant — strongest of the three external tools`,`在我们自己的 Microsoft 租户内 —— 三个外部工具里最稳妥的`],
+[`Alibaba Cloud. Code and task context leave; reads local files; <strong>no MOOV-side audit trail</strong>`,`阿里云。代码和任务上下文会出境；可读取本机文件；<strong>MOOV 侧没有审计日志</strong>`],
+[`On-premise Singapore. Teams SSO, RBAC, full audit log. <strong>Only the inference call leaves</strong>`,`新加坡本地部署。Teams 单点登录、角色权限、完整审计日志。<strong>只有推理请求出境</strong>`],
+[`Billing model`,`计费模式`],
+[`Monthly per seat`,`按席位月付`],
+[`Annual per seat`,`按席位年付`],
+[`<strong>Pre-paid credits consumed on use</strong> — no ceiling`,`<strong>预付额度按用量扣减</strong> —— 没有上限`],
+[`Fixed annual subscription + metered tokens`,`固定年度订阅 + 按量计费 token`],
+[`Cost per user`,`人均成本`],
+[`¥189 / month`,`¥189 / 月`],
+[`¥232 / month`,`¥232 / 月`],
+[`¥547 / month`,`¥547 / 月`],
+[`¥14–24 / month<br><span class="fine">at 300 staff, incl. tokens</span>`,`¥14–24 / 月<br><span class="fine">按 300 人计，含 token</span>`],
+[`Main risk`,`主要风险`],
+[`Paid per seat whether used or not; overlaps Copilot`,`不管用不用都按席位付费；与 Copilot 重叠`],
+[`Highest seat price; overlaps Gemini`,`席位单价最高；与 Gemini 重叠`],
+[`Unbounded spend — consumption, not seats, drives the bill`,`支出没有上限 —— 驱动账单的是用量，不是席位`],
+[`Not a coding tool. Answer quality limited by knowledge-base coverage`,`不是写代码的工具。回答质量受限于知识库覆盖面`],
+[`Purpose of this session`,`本次会议的目的`],
+[`Three things we would like to settle today`,`今天希望定下来的三件事`],
+[`Everything in the tabs that follow is evidence for one of these three.`,`后面各个页签里的所有内容，都是为这三件事提供依据。`],
+[`How MOOV AI moves forward`,`MOOV AI 下一步怎么推进`],
+[`The platform is deployed, tested and trained on — but it has never been announced. We are asking for endorsement of the rollout sequence: management briefing first, then department waves through November, then the smartMOOV integration in Q4. And for the open data questions to be closed before, not after, we tell 300 people it exists.`,`平台已经部署、测试、培训完毕 —— 但从来没有对外宣布过。我们希望您认可这个推广顺序：先向管理层演示，然后 11 月分部门分批开放，接着 Q4 做 smartMOOV 集成。并且，那几个悬而未决的数据问题应当在我们告诉 300 名员工它存在之前解决，而不是之后。`],
+[`Detail in 04 · decision in 05`,`详见 04 · 决策见 05`],
+[`How we govern AI use across the company`,`全公司的 AI 使用如何管起来`],
+[`An AI Policy is drafted but not signed off. Before access widens we need agreement on what may and may not be given to an AI, who approves knowledge bases and developer access, and what position we take on the free consumer tools already in use that leave no record at all. Governance has to land before the announcement, because it cannot be retrofitted onto habits people have already formed.`,`AI 政策已起草但尚未签发。在扩大开放范围之前，我们需要就以下几点达成一致：哪些内容可以、哪些绝不能交给 AI；谁来审批知识库和开发者权限；以及对那些已经在用、却完全不留痕迹的免费消费级工具，我们采取什么立场。治理必须赶在宣布之前落地，因为它没法事后补装到已经形成的习惯上。`],
+[`Detail in 04 · Governance &amp; data`,`详见 04 · 治理与数据`],
+[`Whose budget does AI spend actually belong to?`,`AI 的钱到底该算在谁头上？`],
+[`Most Qoder credit is consumed on work the business asked for — MOOV&nbsp;OS development, operational automation, prototypes raised by other departments. On the figures in this review, IT looks like the largest AI spender in the company; in substance, a large part of that is delivery on behalf of other functions.`,`Qoder 的额度大部分消耗在业务提出的需求上 —— MOOV&nbsp;OS 开发、运营自动化、其他部门提出的原型。按这份报告里的数字看，IT 是全公司最大的 AI 花钱方；但实质上，其中很大一部分是替其他部门在交付。`],
+[`We would like to agree a <strong>chargeback principle</strong>: consumption driven by a named business requirement is attributed to that department, and IT's own number is what remains.`,`我们希望确立一条<strong>成本分摊原则</strong>：由具名业务需求驱动的消耗归到对应部门，剩下的才算 IT 自己的数字。`],
+[`Raised here · no proposal yet — input wanted`,`此处仅提出 · 尚无方案 —— 希望听取意见`],
+[`02 / Spend`,`02 / 支出`],
+[`Monthly spend by vendor`,`各供应商月度支出`],
+[`What the four solutions cost us each month`,`这四套方案每个月花我们多少钱`],
+[`Everything converted to RMB per month: Gemini at USD/CNY 7.10, Copilot from its annual subscription, Qoder as the five-month April–August average, MOOV AI as its annual subscription divided by twelve. Select a vendor to open its detail.`,`全部折算为人民币每月：Gemini 按美元兑人民币 7.10 换算，Copilot 由年度订阅折算，Qoder 取 4 月至 8 月五个月均值，MOOV AI 取年度订阅除以十二。点击某家可展开明细。`],
+[`PER MONTH`,`每月`],
+[`¥597,476 a year at today's populations. MOOV AI's share is its fixed subscription — token consumption to date is ¥0.35 in total.`,`按目前人数计算，全年 ¥597,476。MOOV AI 的份额即其固定订阅费 —— 迄今为止 token 消耗合计仅 ¥0.35。`],
+[`Credits are consumed on use, so there is no ceiling. Actual spend April to August 2026 was <strong>¥114,897</strong> net of one refund — an average of <strong>¥22,979 a month</strong>, but very unevenly spread:`,`额度按使用量扣减，因此没有上限。2026 年 4 月至 8 月的实际支出为 <strong>¥114,897</strong>（已扣除一笔退款），平均 <strong>每月 ¥22,979</strong>，但分布极不均匀：`],
+[`APR`,`4月`],
+[`MAY`,`5月`],
+[`JUN`,`6月`],
+[`JUL`,`7月`],
+[`AUG`,`8月`],
+[`CNY per month · source: Qoder order ledger`,`人民币/月 · 来源：Qoder 订单台账`],
+[`5-month average ¥22,979`,`五个月均值 ¥22,979`],
+[`<span class="k">List price</span><span class="v">USD 26.64 / user / month</span>`,`<span class="k">标价</span><span class="v">USD 26.64 / 人 / 月</span>`],
+[`<span class="k">In RMB at 7.10</span><span class="v">¥189.14 / user / month</span>`,`<span class="k">按 7.10 折人民币</span><span class="v">¥189.14 / 人 / 月</span>`],
+[`<span class="k">Seats</span><span class="v">76</span>`,`<span class="k">席位数</span><span class="v">76</span>`],
+[`<span class="k">Monthly</span><span class="v">¥14,375</span>`,`<span class="k">每月</span><span class="v">¥14,375</span>`],
+[`These are Workspace licences that include Gemini. Some were opened for Drive, Meet or Gmail rather than for Gemini, so this figure is the upper bound of Gemini cost — counted in full here.`,`这些是包含 Gemini 的 Workspace 授权。其中一部分是为了 Drive、Meet 或 Gmail 而开通的，并非为了 Gemini，所以这个数字是 Gemini 成本的上限 —— 这里按全额计入。`],
+[`<span class="k">List price</span><span class="v">¥2,784 / user / year</span>`,`<span class="k">标价</span><span class="v">¥2,784 / 人 / 年</span>`],
+[`<span class="k">Monthly equivalent</span><span class="v">¥232.00 / user / month</span>`,`<span class="k">折合每月</span><span class="v">¥232.00 / 人 / 月</span>`],
+[`<span class="k">Seats</span><span class="v">36</span>`,`<span class="k">席位数</span><span class="v">36</span>`],
+[`<span class="k">Monthly</span><span class="v">¥8,352</span>`,`<span class="k">每月</span><span class="v">¥8,352</span>`],
+[`Fixed regardless of how much any individual uses it — the cost is the seat, not the usage.`,`不管个人用多少都是固定的 —— 成本来自席位，不是用量。`],
+[`<span class="k">Platform subscription</span><span class="v">¥49,000 / year</span>`,`<span class="k">平台订阅费</span><span class="v">¥49,000 / 年</span>`],
+[`<span class="k">Monthly equivalent</span><span class="v">¥4,083 — fixed</span>`,`<span class="k">折合每月</span><span class="v">¥4,083 —— 固定</span>`],
+[`<span class="k">Model rate — qwen-plus</span><span class="v">¥0.50 in / ¥2.00 out per M</span>`,`<span class="k">模型单价 —— qwen-plus</span><span class="v">每百万 token 入 ¥0.50 / 出 ¥2.00</span>`],
+[`<span class="k">Observed per conversation</span><span class="v">7,086 tokens</span>`,`<span class="k">实测单次对话</span><span class="v">7,086 tokens</span>`],
+[`<span class="k">Per user at 300 staff</span><span class="v">¥13.61 fixed · ¥14.32 all-in</span>`,`<span class="k">按 300 人摊到人均</span><span class="v">固定 ¥13.61 · 全含 ¥14.32</span>`],
+[`The subscription fee is the same whether 40 people use it or 300. Token consumption does rise with usage — but at the observed rate, the whole company on qwen-plus adds about ¥213 a month. See the model layer below.`,`不管是 40 个人用还是 300 个人用，订阅费都一样。token 消耗确实会随用量上升 —— 但按实测单价，全公司都跑 qwen-plus 每月也只增加约 ¥213。详见下方的模型层。`],
+[`What the numbers say`,`数字说明了什么`],
+[`Monthly spend by vendor, a model of what each solution would cost at a given scale, and the three things that stand out once all four are put on the same footing.`,`各供应商的月度支出、每套方案在给定规模下的成本测算，以及把四家放到同一口径后最值得注意的三件事。`],
+[`Findings`,`发现`],
+[`Three things stand out`,`三件事值得注意`],
+[`Finding 01`,`发现 01`],
+[`Spend is concentrated, and volatile`,`支出高度集中，且波动剧烈`],
+[`Qoder is ¥22,979 of a ¥49,790 monthly total — 46&nbsp;% of AI spend on 42 of 154 seats, at ¥547 per user per month. That is 2.4× Copilot and 2.9× Gemini.`,`月度总额 ¥49,790 中，Qoder 占 ¥22,979 —— 154 个席位里的 42 个吃掉了 46&nbsp;% 的 AI 支出，人均每月 ¥547。是 Copilot 的 2.4 倍、Gemini 的 2.9 倍。`],
+[`The monthly figure also swings hard: ¥3,162 in April, ¥48,870 in July. <strong>73&nbsp;% of it is credit consumption, not licences</strong> — so cutting seats would barely move it. A usage gate would.`,`月度数字波动也很大：4 月 ¥3,162，7 月 ¥48,870。<strong>其中 73&nbsp;% 是额度消耗而非授权费</strong> —— 所以砍席位几乎不起作用，设置用量门槛才有效。`],
+[`Finding 02`,`发现 02`],
+[`We run two overlapping office assistants`,`我们同时养着两个功能重叠的办公助手`],
+[`Gemini (76 seats) and Copilot (36 seats) do substantially the same job in two different office suites. Together that is <strong>112 seats and ¥22,727 a month</strong> — 46&nbsp;% of the total, the same share as Qoder.`,`Gemini（76 席）和 Copilot（36 席）在两套不同的办公软件里做着基本相同的事。合计 <strong>112 个席位、每月 ¥22,727</strong> —— 占总额 46&nbsp;%，与 Qoder 的份额相同。`],
+[`There may be good reasons: the suites are separate purchases and the populations may not overlap. But at renewal it should be a decision, not a default. IT can produce the actual usage split.`,`这可能有合理原因：两套办公软件是分开采购的，使用人群也未必重合。但到续约时，这应当是一个经过判断的决定，而不是默认延续。IT 可以提供实际的使用分布。`],
+[`Finding 03`,`发现 03`],
+[`Only one platform gets cheaper as it grows`,`只有一个平台越用越便宜`],
+[`Gemini, Copilot and Qoder all bill by the user, so their per-user cost is fixed by construction — ¥189, ¥232 and ¥547 a month, whatever we do.`,`Gemini、Copilot 和 Qoder 都按人计费，所以人均成本在结构上就是固定的 —— 每月 ¥189、¥232 和 ¥547，我们怎么做都一样。`],
+[`MOOV AI is a fixed ¥4,083 a month plus tokens. Across our <strong>300 staff</strong> that is ¥13.61 each before tokens and <strong>¥14.32 all-in</strong>; at 500 people it falls to ¥8.87. Rolling it out to more people lowers its unit cost instead of raising the bill.`,`MOOV AI 是每月固定 ¥4,083 加 token 费用。摊到 <strong>300 名员工</strong>，不含 token 是人均 ¥13.61，<strong>全含 ¥14.32</strong>；到 500 人则降至 ¥8.87。推广给更多人反而降低单位成本，而不是推高账单。`],
+[`Same footing`,`同一口径`],
+[`All four, RMB per month at today's populations`,`四家并列，按当前人数折算的人民币月度支出`],
+[`Platform`,`平台`],
+[`Users`,`用户数`],
+[`Per user / month`,`人均 / 月`],
+[`Per month`,`每月`],
+[`Per year`,`每年`],
+[`Cost driver`,`成本驱动因素`],
+[`<i class="dot" style="background:var(--s2);display:inline-block;margin-right:8px"></i>Qoder Work`,`<i class="dot" style="background:var(--s2);display:inline-block;margin-right:8px"></i>Qoder Work`],
+[`Credits consumed`,`额度消耗`],
+[`<i class="dot" style="background:var(--s3);display:inline-block;margin-right:8px"></i>Gemini`,`<i class="dot" style="background:var(--s3);display:inline-block;margin-right:8px"></i>Gemini`],
+[`Seats`,`席位`],
+[`<i class="dot" style="background:var(--s4);display:inline-block;margin-right:8px"></i>Copilot`,`<i class="dot" style="background:var(--s4);display:inline-block;margin-right:8px"></i>Copilot`],
+[`<i class="dot" style="background:var(--s1);display:inline-block;margin-right:8px"></i>MOOV AI`,`<i class="dot" style="background:var(--s1);display:inline-block;margin-right:8px"></i>MOOV AI`],
+[`300 <span class="fine">all staff</span>`,`300 <span class="fine">全体员工</span>`],
+[`Fixed subscription + tokens`,`固定订阅 + token`],
+[`Total`,`合计`],
+[`154 seats`,`154 个席位`],
+[`Model layer`,`模型层`],
+[`What we actually pay per answer`,`每个回答我们实际付多少钱`],
+[`MOOV AI is the only one of the four billed by consumption rather than by seat, so its cost is set by which model answers the question. Three models are connected today. Priced at an average pilot conversation — <span class="mono">4,724 input + 2,362 output = 7,086 tokens</span>.`,`四家里只有 MOOV AI 是按用量而非按席位计费的，所以它的成本取决于由哪个模型来回答。目前接入了三个模型。以试点期一次平均对话计价 —— <span class="mono">输入 4,724 + 输出 2,362 = 7,086 tokens</span>。`],
+[`Model`,`模型`],
+[`Basis`,`依据`],
+[`In ¥/M`,`输入 ¥/百万`],
+[`IT Department &middot; September 2026 &middot; Internal`,`IT 部门 · 2026 年 9 月 · 内部文件`],
+[`Current users`,`当前用户数`],
+[`Target user`,`目标用户`],
+[`All employees`,`全体员工`],
+[`What it is`,`它是什么`],
+[`How it is built`,`如何构建`],
+[`What it does`,`能做什么`],
+[`Governance &amp; data`,`治理与数据`],
+[`Pilot status`,`试点现状`],
+[`prompt + context`,`提示词 + 上下文`],
+[`response`,`返回结果`],
+[`Out ¥/M`,`输出 ¥/百万`],
+[`Per conversation`,`单次对话`],
+[`qwen-plus<small>1000K context · default model</small>`,`qwen-plus<small>1000K 上下文 · 默认模型</small>`],
+[`Confirmed`,`已确认`],
+[`qwen3-vl-plus<small>262K context · vision / document</small>`,`qwen3-vl-plus<small>262K 上下文 · 视觉 / 文档</small>`],
+[`Estimated`,`估算`],
+[`glm-4.7<small>202K context · long-document reasoning</small>`,`glm-4.7<small>202K 上下文 · 长文档推理</small>`],
+[`Proxy — upper bound`,`代理值 —— 上限`],
+[`<strong>How these three numbers were obtained — they are not equally solid.</strong> <em style="font-style:normal;color:var(--s1)">qwen-plus is measured, not estimated:</em> 354,277 tokens over the pilot cost ¥0.35, which back-solves exactly to ¥0.50 in / ¥2.00 out. <em style="font-style:normal;color:var(--ink-2)">qwen3-vl-plus is estimated</em> from the Bailian list-price ladder below, where every plus-tier model prices input at ¥2.00; the output rate takes the top of the plus band. <em style="font-style:normal;color:var(--ink-2)">glm-4.7 uses the GLM-5.2 list price as a proxy</em> — 4.7 is a generation older and should be cheaper, so this figure is a ceiling, not a forecast. All figures are list price; <strong>we are not on the 0.7 discount tier</strong>.`,`<strong>这三个数字的来源 —— 可靠程度并不相同。</strong><em style="font-style:normal;color:var(--s1)">qwen-plus 是实测值，不是估算：</em>试点期 354,277 个 token 花费 ¥0.35，正好反推出入 ¥0.50 / 出 ¥2.00。<em style="font-style:normal;color:var(--ink-2)">qwen3-vl-plus 是估算值</em>，依据下方百炼价目梯度 —— 其中所有 plus 档模型的输入价均为 ¥2.00，输出价取 plus 档的上沿。<em style="font-style:normal;color:var(--ink-2)">glm-4.7 用 GLM-5.2 的标价作为代理值</em> —— 4.7 是上一代，理应更便宜，所以这个数字是天花板，不是预测。所有数字均为标价；<strong>我们不在 0.7 折扣档内</strong>。`],
+[`The consequence: model choice moves the bill 14.7×`,`由此带来的结果：选哪个模型能让账单相差 14.7 倍`],
+[`At <strong>300 staff having 100 conversations each per month</strong> — 30,000 conversations, a deliberately generous assumption for a tool nobody is yet required to use:`,`按 <strong>300 名员工、每人每月 100 次对话</strong> 计算 —— 共 3 万次对话，对一个目前还没人被要求必须使用的工具而言，这是刻意放宽的假设：`],
+[`All on qwen-plus`,`全部走 qwen-plus`],
+[`¥4,083 subscription + ¥213 tokens<br> <strong style="color:var(--s1)">¥14.32 per user / month</strong>`,`订阅 ¥4,083 + token ¥213<br> <strong style="color:var(--s1)">人均每月 ¥14.32</strong>`],
+[`Mixed, vision-heavy`,`混合使用，视觉类居多`],
+[`¥4,083 subscription + ¥1,134 tokens<br> <strong>¥17.39 per user / month</strong>`,`订阅 ¥4,083 + token ¥1,134<br> <strong>人均每月 ¥17.39</strong>`],
+[`Worst case — all on glm`,`最坏情况 —— 全部走 glm`],
+[`¥4,083 subscription + ¥3,118 tokens<br> <strong>¥24.00 per user / month</strong>`,`订阅 ¥4,083 + token ¥3,118<br> <strong>人均每月 ¥24.00</strong>`],
+[`<strong>Even the worst case is ¥24 per user per month against Qoder’s ¥547 — a factor of 23.</strong> The point is not that tokens are free; it is that the entire model bill for the whole company, on the most expensive model we have connected, is roughly the size of the platform subscription we are already paying.`,`<strong>即便最坏情况，也是人均每月 ¥24 对 Qoder 的 ¥547 —— 相差 23 倍。</strong>重点不在于 token 免费；而在于全公司所有人、全部跑我们接入过的最贵模型，整个模型账单也不过和我们已经在付的平台订阅费差不多。`],
+[`Full Bailian list-price ladder — the models we could connect`,`百炼完整标价梯度 —— 我们可以接入的模型`],
+[`Model ID`,`模型 ID`],
+[`Note`,`备注`],
+[`qwen3.8-flash`,`qwen3.8-flash`],
+[`qwen3.6-flash`,`qwen3.6-flash`],
+[`deepseek-v4-flash-0731`,`deepseek-v4-flash-0731`],
+[`Off-peak 22:00–08:00 Beijing`,`空闲时段 北京时间 22:00–08:00`],
+[`qwen3.7-plus`,`qwen3.7-plus`],
+[`qwen3.6-plus`,`qwen3.6-plus`],
+[`Peak hours`,`高峰时段`],
+[`deepseek-v4-pro-0813`,`deepseek-v4-pro-0813`],
+[`GLM-5.2`,`GLM-5.2`],
+[`Used as the glm-4.7 proxy above`,`用作上方 glm-4.7 的代理值`],
+[`deepseek-v4-pro`,`deepseek-v4-pro`],
+[`qwen3.7-max`,`qwen3.7-max`],
+[`qwen3.8-max`,`qwen3.8-max`],
+[`List price, RMB per million tokens. A 0.7 discount tier exists on most of these models and a 0.85 tier on qwen3.8-max; <strong>we are on list price and have not negotiated the discount</strong> — worth raising with Alibaba before company-wide rollout. Cheapest to most expensive is a 13.9× spread, which is why the model catalogue is an IT control, not a user choice.`,`标价，单位为人民币每百万 token。大部分模型有 0.7 折扣档，qwen3.8-max 有 0.85 档；<strong>我们目前按标价付费，从未争取过折扣</strong> —— 值得在全公司推广前与阿里谈一次。最便宜到最贵相差 13.9 倍，这正是模型清单必须由 IT 管控、而不能让用户随意挑选的原因。`],
+[`Cost model`,`成本测算`],
+[`What would each platform cost at a given scale?`,`在给定规模下各平台要花多少钱？`],
+[`Set a population and a usage intensity, and each platform is priced on its own commercial model. All figures RMB per month.`,`设定人数和使用强度，每个平台按各自的商业模式计价。所有数字均为人民币每月。`],
+[`Gemini and Copilot are per-seat subscriptions, so their cost is set by the population alone. Qoder is priced at its observed consumption per user. MOOV AI is a fixed subscription plus model tokens — the only one of the four whose cost does not scale with headcount.`,`Gemini 和 Copilot 是按席位订阅，成本只取决于人数。Qoder 按其实测的人均消耗计价。MOOV AI 是固定订阅加模型 token —— 四家里唯一成本不随人数线性增长的。`],
+[`Calculation basis`,`计算依据`],
+[`<span class="k">Gemini</span><span class="v">¥189.14 / user / mo</span>`,`<span class="k">Gemini</span><span class="v">¥189.14 / 人 / 月</span>`],
+[`<span class="k">Copilot</span><span class="v">¥232.00 / user / mo</span>`,`<span class="k">Copilot</span><span class="v">¥232.00 / 人 / 月</span>`],
+[`<span class="k">Qoder Work</span><span class="v">¥547.13 / user / mo</span>`,`<span class="k">Qoder Work</span><span class="v">¥547.13 / 人 / 月</span>`],
+[`<span class="k">MOOV AI fixed</span><span class="v">¥4,083 / mo</span>`,`<span class="k">MOOV AI 固定部分</span><span class="v">¥4,083 / 月</span>`],
+[`<span class="k">MOOV AI tokens</span><span class="v">4,724 in + 2,362 out per conversation</span>`,`<span class="k">MOOV AI token</span><span class="v">单次对话 输入 4,724 + 输出 2,362</span>`],
+[`<span class="k">Token rates — qwen-plus</span><span class="v">¥0.50 in · ¥2.00 out per M</span>`,`<span class="k">token 单价 —— qwen-plus</span><span class="v">每百万 入 ¥0.50 · 出 ¥2.00</span>`],
+[`<span class="k">Total staff</span><span class="v">300 — Shanghai, Malaysia, Singapore, Netherlands</span>`,`<span class="k">员工总数</span><span class="v">300 —— 上海、马来西亚、新加坡、荷兰</span>`],
+[`Token volume per conversation is derived from actual pilot usage — 354,277 tokens over 50 conversations between 1 July and 9 September, an average of 7,086, split 2:1 input to output. Individual agents vary widely: a retrieval-heavy assistant used 28,027 tokens per conversation, a simple one 650.`,`单次对话的 token 量来自试点期实际用量 —— 7 月 1 日至 9 月 9 日共 50 次对话、354,277 个 token，平均 7,086，输入输出比约 2:1。各智能体之间差异极大：一个检索密集型助手单次用掉 28,027 个 token，而一个简单的只用 650 个。`],
+[`Per user`,`人均`],
+[`Qoder Work<span>credits, at observed intensity</span>`,`Qoder Work<span>额度制，按实测强度</span>`],
+[`Copilot<span>per seat, usage-independent</span>`,`Copilot<span>按席位，与用量无关</span>`],
+[`Gemini<span>per seat, usage-independent</span>`,`Gemini<span>按席位，与用量无关</span>`],
+[`MOOV AI<span>fixed subscription + tokens</span>`,`MOOV AI<span>固定订阅 + token</span>`],
+[`Assumptions &amp; sources`,`假设与数据来源`],
+[`<span class="k">USD / CNY</span><span class="v">7.10</span>`,`<span class="k">美元 / 人民币</span><span class="v">7.10</span>`],
+[`<span class="k">Gemini</span><span class="v">USD 26.64 × 7.10 × 76 seats</span>`,`<span class="k">Gemini</span><span class="v">USD 26.64 × 7.10 × 76 席</span>`],
+[`<span class="k">Copilot</span><span class="v">¥2,784 / 12 × 36 seats</span>`,`<span class="k">Copilot</span><span class="v">¥2,784 / 12 × 36 席</span>`],
+[`<span class="k">Qoder</span><span class="v">¥114,897 / 5 months</span>`,`<span class="k">Qoder</span><span class="v">¥114,897 / 5 个月</span>`],
+[`<span class="k">MOOV AI</span><span class="v">¥49,000 / 12 months</span>`,`<span class="k">MOOV AI</span><span class="v">¥49,000 / 12 个月</span>`],
+[`<span class="k">Headcount</span><span class="v">300 staff · 433 AD accounts</span>`,`<span class="k">人数</span><span class="v">300 名员工 · 433 个 AD 账号</span>`],
+[`<strong>Gemini seat attribution.</strong> The 76 seats are Google Workspace licences that include Gemini. Some were opened for Drive, Meet or Gmail rather than for Gemini, so this is the upper bound of Gemini cost, counted in full here.`,`<strong>Gemini 席位归属。</strong>这 76 个席位是包含 Gemini 的 Google Workspace 授权。其中一部分是为 Drive、Meet 或 Gmail 开通的，并非为了 Gemini，所以这是 Gemini 成本的上限，此处按全额计入。`],
+[`<strong>Qoder averaging.</strong> ¥114,897 spent between 16 April and 31 August is divided evenly across the five months. Actual monthly spend ranged from ¥3,162 to ¥48,870; the two most recent months averaged ¥42,668, so the forward run-rate may be materially higher than the average shown here.`,`<strong>Qoder 取均值说明。</strong>4 月 16 日至 8 月 31 日共支出 ¥114,897，按五个月平均分摊。实际月度支出在 ¥3,162 到 ¥48,870 之间；最近两个月均值为 ¥42,668，因此未来的实际运行水平可能显著高于这里显示的均值。`],
+[`<strong>Bailian token rates.</strong> ¥0.0005 and ¥0.002 per 1,000 tokens are confirmed from the billing ledger for the standard tier. The export did not carry the model column, so rates for qwen3-vl-plus, deepseek-r1 and glm-4.7 are still to be pulled from the console.`,`<strong>百炼 token 单价。</strong>每千 token ¥0.0005 和 ¥0.002 已由标准档的账单台账确认。导出数据中缺少模型列，因此 qwen3-vl-plus、deepseek-r1 和 glm-4.7 的单价仍需从控制台调取。`],
+[`<strong>Seat overlap.</strong> 154 licences across three vendors; how many individuals hold two or three is not yet audited.`,`<strong>席位重叠。</strong>三家供应商合计 154 个授权；有多少人同时持有两个或三个，尚未核查。`],
+[`Sources — Qoder order ledger, April–August 2026 (41 paid orders, net of one refund). Alibaba Bailian billing ledger. Kymo platform dashboard, 1 July – 9 September 2026. Google Workspace and Microsoft 365 subscription terms. Prepared by the IT Department, MOOV Logistics — September 2026. Internal use only.`,`数据来源 —— Qoder 订单台账，2026 年 4 月至 8 月（41 笔已付订单，已扣除一笔退款）。阿里百炼账单台账。Kymo 平台数据看板，2026 年 7 月 1 日至 9 月 9 日。Google Workspace 与 Microsoft 365 订阅条款。由 MOOV Logistics IT 部门编制 —— 2026 年 9 月。仅供内部使用。`],
+[`03 / Qoder Work`,`03 / Qoder Work`],
+[`What Qoder Work actually is`,`Qoder Work 到底是什么`],
+[`Qoder Work is Alibaba's agentic work platform, and it carries two capabilities at once: software development and office output. Unlike an assistant that answers in a chat window, it takes a task, plans the steps, executes it — writing and running code, or producing the document — and reports back. It can also read and act on files on the user's own computer. That is why it is the most capable tool we have — and why it is metered by consumption rather than by seat.`,`Qoder Work 是阿里的智能体工作平台，同时具备两种能力：软件开发和办公文档产出。它不像那种只在对话框里作答的助手 —— 它接下任务、规划步骤、动手执行（写代码并运行，或者直接把文档做出来），然后回报结果。它还能读取并操作用户自己电脑上的文件。这正是它成为我们手上能力最强的工具的原因 —— 也是它按用量而非按席位计费的原因。`],
+[`What we run on it`,`我们用它做什么`],
+[`<strong style="color:var(--ink)">MOOV&nbsp;OS development</strong> — the platform's code is written largely with Qoder`,`<strong style="color:var(--ink)">MOOV&nbsp;OS 开发</strong> —— 平台代码主要是用 Qoder 写的`],
+[`<strong style="color:var(--ink)">Operational automation</strong> — recurring jobs handed to an agent rather than scripted by hand`,`<strong style="color:var(--ink)">运营自动化</strong> —— 把重复性工作交给智能体，而不是手工写脚本`],
+[`<strong style="color:var(--ink)">Prototyping</strong> — standing up a working version of an idea before committing engineering time`,`<strong style="color:var(--ink)">快速原型</strong> —— 在投入正式开发资源之前，先把想法做成一个能跑的版本`],
+[`Where the ¥114,897 went`,`¥114,897 花在了哪里`],
+[`<span class="k">Credit top-ups — 15 orders</span><span class="v">¥84,507</span>`,`<span class="k">额度充值 —— 15 笔订单</span><span class="v">¥84,507</span>`],
+[`<span class="k">Teams subscriptions — 26 orders</span><span class="v">¥31,890</span>`,`<span class="k">团队订阅 —— 26 笔订单</span><span class="v">¥31,890</span>`],
+[`<span class="k">Discounts received</span><span class="v">−¥7,965</span>`,`<span class="k">获得的折扣</span><span class="v">−¥7,965</span>`],
+[`<span class="k">Refunded</span><span class="v">−¥1,500</span>`,`<span class="k">退款</span><span class="v">−¥1,500</span>`],
+[`<span class="k">Average per month, Apr–Aug</span><span class="v" style="color:var(--s2)">¥22,979</span>`,`<span class="k">4–8 月月均</span><span class="v" style="color:var(--s2)">¥22,979</span>`],
+[`<span style="color:var(--s2)">■</span> 73.5&nbsp;% consumption &nbsp;&nbsp;<span style="color:var(--s4)">■</span> 26.5&nbsp;% licences`,`<span style="color:var(--s2)">■</span> 73.5&nbsp;% 为用量消耗 &nbsp;&nbsp;<span style="color:var(--s4)">■</span> 26.5&nbsp;% 为授权费`],
+[`Why it matters here`,`这为什么重要`],
+[`Nearly three-quarters of Qoder spend is usage, not seats. Cutting licences would barely move the number; the only effective controls are <strong>who is allowed to consume credits</strong> and <strong>an alert when consumption crosses a threshold</strong>.`,`Qoder 的支出里近四分之三是用量而非席位。砍授权几乎动不了这个数字；真正有效的控制手段只有两个：<strong>谁有权消耗额度</strong>，以及<strong>消耗超过阈值时发出告警</strong>。`],
+[`The corollary: work that does not need an agentic coding platform should not be done on one. That is the case for a cheaper baseline layer underneath it — which is what MOOV AI is for.`,`由此可以推出：不需要智能体编程平台的工作，就不该在这种平台上做。这正是需要在它下面垫一层更便宜的基础层的理由 —— 而 MOOV AI 就是干这个的。`],
+[`Order ledger`,`订单台账`],
+[`Monthly detail, April – August 2026`,`2026 年 4 月至 8 月逐月明细`],
+[`Month`,`月份`],
+[`Subscription orders`,`订阅订单数`],
+[`Subscriptions`,`订阅费`],
+[`Credit orders`,`额度订单数`],
+[`Credits`,`额度充值`],
+[`Net spend`,`净支出`],
+[`April 2026`,`2026 年 4 月`],
+[`May 2026`,`2026 年 5 月`],
+[`June 2026`,`2026 年 6 月`],
+[`July 2026`,`2026 年 7 月`],
+[`August 2026`,`2026 年 8 月`],
+[`Net of ¥7,965 in discounts received and one ¥1,500 refund. Nine further orders were voided before payment and are excluded. Source: Qoder order ledger.`,`已扣除获得的 ¥7,965 折扣和一笔 ¥1,500 退款。另有九笔订单在付款前作废，未计入。来源：Qoder 订单台账。`],
+[`A / What it is`,`A / 它是什么`],
+[`MOOV AI is the company-level AI front door`,`MOOV AI 是公司级的 AI 入口`],
+[`Not another chat tool — a single door that people actually walk through.`,`它不是又一个聊天工具 —— 而是一扇人们真的会走进去的门。`],
+[`It lives where people already work`,`它就在大家本来工作的地方`],
+[`Delivered inside Microsoft Teams — nothing to install, no new account, no new password. Every employee already has the client.`,`通过 Microsoft Teams 交付 —— 无需安装、无需新账号、无需新密码。每位员工电脑上都已经有客户端。`],
+[`The easiest option is now also the sanctioned one, instead of a personal ChatGPT account.`,`现在最省事的那个选择，同时也是公司认可的那个 —— 而不是个人的 ChatGPT 账号。`],
+[`It answers as MOOV, not as the internet`,`它以 MOOV 的身份回答，而不是以互联网的身份`],
+[`We build our own knowledge bases and our own agents on top of them. A general model explains how expense claims usually work.`,`我们在自己的知识库之上搭建自己的智能体。通用模型只会告诉你报销一般是怎么回事。`],
+[`Our Finance Assistant explains how MOOV's work, and cites the SOP it came from.`,`而我们的财务助手会告诉你 MOOV 的报销怎么走，并标注依据的是哪份 SOP。`],
+[`Central control becomes management insight`,`集中管控转化为管理洞察`],
+[`IT owns permissions, the model catalogue and the audit trail, and every agent, question and knowledge base is logged on our own server.`,`IT 掌握权限、模型清单和审计记录，每一个智能体、每一次提问、每一个知识库都记录在我们自己的服务器上。`],
+[`So we can see which teams build what, which topics keep recurring, and where the workload and knowledge gaps really sit.`,`于是我们能看到：哪些团队在建什么、哪些问题反复出现、工作量和知识缺口究竟在哪里。`],
+[`Without a front door`,`没有统一入口时`],
+[`People use personal AI accounts — uncontrolled uploads, generic answers, no visibility for IT.`,`大家各用各的个人 AI 账号 —— 上传不受控、答案很泛泛、IT 完全看不见。`],
+[`With MOOV AI`,`有了 MOOV AI`],
+[`The same convenience, inside our perimeter — grounded in our own content and fully logged.`,`同样方便，但在我们自己的边界内 —— 基于我们自己的内容作答，并且全程留痕。`],
+[`B / How it is built`,`B / 它是怎么搭起来的`],
+[`Four layers — and we own the three that matter`,`四层架构 —— 其中关键的三层在我们手里`],
+[`Kymo is a Dify reseller. Saying that first removes it as a gotcha: what we paid for is the enterprise layer above the engine, not the engine.`,`Kymo 是 Dify 的分销商。先把这点讲明，它就不再是个可以被拿来将军的把柄：我们买的是引擎之上的企业管控层，不是引擎本身。`],
+[`Portal layer<span>Kymo</span>`,`门户层<span>Kymo</span>`],
+[`Single sign-on, role-based access, agent directory, approval flow, audit logs, sensitive-word filtering`,`单点登录、基于角色的权限、智能体目录、审批流、审计日志、敏感词过滤`],
+[`Build layer<span>Dify</span>`,`搭建层<span>Dify</span>`],
+[`Agents, chatflows, workflows and RAG knowledge bases — standard Dify applications, exportable at any time`,`智能体、对话流、工作流和 RAG 知识库 —— 都是标准的 Dify 应用，随时可导出`],
+[`Model layer<span>Alibaba Bailian</span>`,`模型层<span>阿里百炼</span>`],
+[`Approved model catalogue: qwen-plus, qwen3-vl-plus, deepseek-r1, glm-4.7. Self-hosted open-source models can be attached for sensitive work`,`已批准的模型清单：qwen-plus、qwen3-vl-plus、deepseek-r1、glm-4.7。涉及敏感内容的工作可挂接自建的开源模型`],
+[`Data layer<span>MOOV Singapore server</span>`,`数据层<span>MOOV 新加坡服务器</span>`],
+[`Knowledge bases, conversation history and audit logs stay on our own infrastructure`,`知识库、对话历史和审计日志都留在我们自己的基础设施上`],
+[`Dify gives us the engine. Kymo gives us the front door.`,`Dify 给我们引擎，Kymo 给我们门户。`],
+[`Dify alone`,`只用 Dify`],
+[`A developer toolbox`,`一套开发者工具箱`],
+[`No SSO integration — separate accounts to manage`,`没有单点登录集成 —— 要单独管理一套账号`],
+[`Basic permissions that do not map to a company hierarchy`,`权限体系粗糙，无法对应公司组织架构`],
+[`Every user reaches every knowledge base directly`,`每个用户都能直接访问每一个知识库`],
+[`IT builds the portal, access control and audit layer itself`,`门户、访问控制和审计层都得 IT 自己造`],
+[`With Kymo`,`加上 Kymo`],
+[`An enterprise portal over the same engine`,`同一个引擎之上的企业门户`],
+[`Unified Teams SSO login`,`统一的 Teams 单点登录`],
+[`Granular RBAC aligned to the org structure`,`与组织架构对齐的细粒度角色权限`],
+[`Application directory with an approval flow`,`带审批流的应用目录`],
+[`Security audit logs on our own server`,`安全审计日志存在我们自己的服务器上`],
+[`<strong>Same engine, different control, different audience.</strong> Business teams get a guided front door; developers keep the full Dify workspace. The split is what keeps low-value build work out of the IT queue without giving up control of what reaches production.`,`<strong>同一个引擎，不同的管控方式，不同的受众。</strong>业务团队拿到的是一个有引导的门户；开发人员保留完整的 Dify 工作区。这种分工既能把低价值的搭建工作挡在 IT 的排期之外，又不放弃对最终上线内容的控制权。`],
+[`C / What it does`,`C / 它能做什么`],
+[`Four modules, one interface`,`四个模块，一个界面`],
+[`From asking a question to automating a process.`,`从问一个问题，到把一整套流程自动化。`],
+[`AI Chat`,`AI 对话`],
+[`Writing, summarising, translation and analysis. Word, PDF, Excel and PowerPoint files can be uploaded for document analysis.`,`写作、摘要、翻译和分析。可上传 Word、PDF、Excel 和 PowerPoint 文件做文档分析。`],
+[`RAG Knowledge Base`,`RAG 知识库`],
+[`Answers built from MOOV SOPs, policies and manuals, returned with the source passage cited.`,`基于 MOOV 的 SOP、制度和手册作答，并附上引用的原文段落。`],
+[`AI Agents`,`AI 智能体`],
+[`Pre-configured role, knowledge and tools for HR, Finance, Operations, Customer Service and IT.`,`为人力、财务、运营、客服和 IT 预先配置好角色、知识和工具。`],
+[`Workflow Automation`,`工作流自动化`],
+[`Chained steps such as complaint triage, daily operations reports, CV screening and weekly roll-ups.`,`把多个步骤串起来，例如投诉分流、每日运营报表、简历初筛和周报汇总。`],
+[`Four roles, permissions unlocked step by step`,`四种角色，权限逐级开放`],
+[`Capability`,`能力`],
+[`General user<br><span class="fine">Every employee</span>`,`普通用户<br><span class="fine">全体员工</span>`],
+[`Knowledge builder<br><span class="fine">On request</span>`,`知识库建设者<br><span class="fine">按申请开通</span>`],
+[`Developer<br><span class="fine">Manager + IT</span>`,`开发者<br><span class="fine">主管 + IT 审批</span>`],
+[`IT admin<br><span class="fine">IT department</span>`,`IT 管理员<br><span class="fine">IT 部门</span>`],
+[`Chat, writing, translation and document analysis`,`对话、写作、翻译和文档分析`],
+[`Use knowledge bases and agents shared with you`,`使用他人共享给你的知识库和智能体`],
+[`Create RAG knowledge bases and set access rights`,`创建 RAG 知识库并设置访问权限`],
+[`Build a simple knowledge-base Q&amp;A agent`,`搭建简单的知识库问答智能体`],
+[`Admin console and Dify orchestration`,`管理控制台与 Dify 编排`],
+[`Build Chatflow / Workflow automations`,`搭建 Chatflow / Workflow 自动化`],
+[`Accounts, data governance and usage audit`,`账号、数据治理与使用审计`],
+[`Developer access is requested through the department manager and approved by IT on business value, data security and delivery priority.`,`开发者权限由部门主管提出申请，IT 依据业务价值、数据安全和交付优先级审批。`],
+[`D / Governance &amp; data`,`D / 治理与数据`],
+[`Where the data actually goes`,`数据究竟流向了哪里`],
+[`Everything at rest stays on our Singapore server. Only the inference request leaves the perimeter.`,`所有静态数据都留在我们的新加坡服务器上。只有推理请求会离开边界。`],
+[`User`,`用户`],
+[`Teams SSO`,`Teams 单点登录`],
+[`MOOV perimeter · Singapore server, on-premise`,`MOOV 边界内 · 新加坡服务器，本地部署`],
+[`<b>Kymo portal</b><span>SSO · RBAC · directory</span>`,`<b>Kymo 门户</b><span>单点登录 · 角色权限 · 目录</span>`],
+[`<b>Dify engine</b><span>Agents · workflows</span>`,`<b>Dify 引擎</b><span>智能体 · 工作流</span>`],
+[`<b>Knowledge bases</b><span>SOPs · policies · files</span>`,`<b>知识库</b><span>SOP · 制度 · 文件</span>`],
+[`<b>Audit logs</b><span>Access · conversations</span>`,`<b>审计日志</b><span>访问记录 · 对话记录</span>`],
+[`Conversation history, uploaded files and knowledge bases never transit to the vendor.`,`对话历史、上传的文件和知识库从不经过供应商。`],
+[`Outside the perimeter`,`边界之外`],
+[`Alibaba Bailian model API`,`阿里百炼模型 API`],
+[`Inference only. Receives the prompt plus any retrieved knowledge passages; returns the answer.`,`仅做推理。接收提示词以及检索到的知识片段，返回答案。`],
+[`No separate accounts or passwords; joiners and leavers follow the existing process.`,`不需要另设账号和密码；入职离职沿用现有流程。`],
+[`Role-based access`,`基于角色的访问控制`],
+[`Permissions set per role and per knowledge base, aligned to the org structure.`,`按角色、按知识库分别设置权限，与组织架构对齐。`],
+[`Audit logs`,`审计日志`],
+[`Conversations, access and agent changes recorded on our own server.`,`对话、访问和智能体变更都记录在我们自己的服务器上。`],
+[`AI Policy`,`AI 使用政策`],
+[`No sensitive data. Communicated to and enforced for every pilot user since July.`,`不得输入敏感数据。自 7 月起已向每一位试点用户明确告知并执行。`],
+[`To be confirmed before company-wide rollout`,`全公司推广前需要确认的事项`],
+[`1 &nbsp;Bailian endpoint region`,`1 &nbsp;百炼接入节点所在地区`],
+[`China or international endpoint — this determines where prompts are processed.`,`是国内节点还是国际节点 —— 这决定了提示词在哪里被处理。`],
+[`2 &nbsp;Training on our inputs`,`2 &nbsp;我们的输入是否用于训练`],
+[`Contractual position on whether our prompts may be used for model training.`,`合同层面需明确：我们的提示词是否可能被用于模型训练。`],
+[`3 &nbsp;Self-hosted threshold`,`3 &nbsp;自建部署的门槛`],
+[`Which workloads justify open-source models on MOOV GPUs, and at what cost.`,`哪些任务值得放到 MOOV 自己的 GPU 上跑开源模型，代价是多少。`],
+[`If we ever leave Kymo, the agents come with us`,`万一我们离开 Kymo，智能体也能一起带走`],
+[`MOOV owns the intellectual property`,`知识产权归 MOOV 所有`],
+[`All agents, skills and knowledge bases built on the platform belong to MOOV, confirmed by the vendor during contracting.`,`在该平台上搭建的所有智能体、技能和知识库都归 MOOV 所有，供应商在签约时已确认这一点。`],
+[`The artefacts are standard Dify applications`,`产物都是标准的 Dify 应用`],
+[`They can be exported and moved to our own Dify instance or to another reseller.`,`它们可以导出，迁移到我们自建的 Dify 实例或另一家分销商那里。`],
+[`The vendor never holds our data`,`供应商从不持有我们的数据`],
+[`Kymo runs on our Singapore server, so conversations and files do not transit to the vendor.`,`Kymo 跑在我们自己的新加坡服务器上，所以对话和文件不会流经供应商。`],
+[`E / Pilot status`,`E / 试点现状`],
+[`A deliberately small pilot`,`一个刻意控制规模的试点`],
+[`Capacity is provisioned; usage is still confined to IT and Legal — by design.`,`容量已经开通；使用范围仍限于 IT 和法务 —— 这是有意为之。`],
+[`Agents built`,`已搭建智能体`],
+[`9 published, 4 live on the enterprise home page`,`9 个已发布，4 个已上线企业首页`],
+[`Accounts provisioned`,`已开通账号`],
+[`AD-synced, leavers not yet purged — against <strong>300 actual staff</strong>. 1–2 active per day; access exists but has not been announced`,`由 AD 同步生成，离职人员尚未清理 —— 对应 <strong>实际 300 名员工</strong>。日活 1–2 人；权限已开通但尚未对外宣布`],
+[`Tokens consumed`,`token 消耗`],
+[`~50 conversations, 1 Jul – 9 Sep. Total cost: ¥0.35`,`约 50 次对话，7 月 1 日至 9 月 9 日。总成本：¥0.35`],
+[`Knowledge bases`,`知识库`],
+[`Coverage, not capability, is the constraint on answer quality`,`制约回答质量的是覆盖面，不是平台能力`],
+[`Live`,`已上线`],
+[`HR Assistant`,`人力助手`],
+[`Answers employee questions on HR policy.`,`回答员工关于人事制度的问题。`],
+[`Closed test`,`内测中`],
+[`Finance Assistant`,`财务助手`],
+[`Explains expense and reimbursement rules. Built but not published, which is why it carries no usage in the dashboard.`,`解答费用和报销规则。已搭建但尚未发布，所以看板上没有使用量。`],
+[`Moov Compass — 4PL Expert`,`Moov Compass —— 4PL 专家`],
+[`Shipping, air freight and 4PL concepts in plain language. <strong>Most used in the pilot — 38 conversations.</strong>`,`用通俗语言讲解海运、空运和 4PL 概念。<strong>试点期使用最多 —— 38 次对话。</strong>`],
+[`MOOV AI User Guide`,`MOOV AI 使用助手`],
+[`Answers questions about how to use the platform itself.`,`回答关于如何使用平台本身的问题。`],
+[`What 50 conversations already tell us about cost`,`50 次对话已经告诉了我们什么成本规律`],
+[`The pilot is far too small to prove adoption. It is large enough to expose the thing that will actually drive the bill at scale.`,`这个试点的规模远不足以证明推广效果。但它已经足够暴露出真正会在规模化后推高账单的因素。`],
+[`Agent`,`智能体`],
+[`Conversations`,`对话次数`],
+[`Tokens`,`token 数`],
+[`Cost per conversation`,`单次对话成本`],
+[`Knowledge-base test agent`,`知识库测试智能体`],
+[`¥0.35 total`,`合计 ¥0.35`],
+[`Two agents on the same platform, 43× apart on cost`,`同一平台上的两个智能体，成本相差 43 倍`],
+[`The User Guide burns <strong>28,027 tokens per question</strong>; the HR Assistant burns 650. Same model, same platform. The difference is retrieval: an agent that pulls large passages from a knowledge base into every prompt pays for that context on every single question.`,`使用助手<strong>每个问题烧掉 28,027 个 token</strong>；人力助手只用 650 个。同一个模型、同一个平台。差别在于检索：一个每次都把大段知识库内容塞进提示词的智能体，每问一次就要为这些上下文付一次钱。`],
+[`<strong>The implication for rollout:</strong> how we build the knowledge bases will move the model bill more than which model we pick. A badly chunked knowledge base is not a quality problem that also costs money — it is a cost problem first. This is a design standard IT needs to set before departments start building their own.`,`<strong>这对推广意味着：</strong>知识库怎么建，对模型账单的影响比选哪个模型更大。一个切分得糟糕的知识库，不是"质量有问题顺带还费钱"——它首先就是个成本问题。这是 IT 必须在各部门开始自建之前定下来的设计标准。`],
+[`The knowledge-base test agent is an IT test artefact, not a real assistant; it appears in the platform dashboard's top-three tables and is excluded from the reasoning above. The Finance Assistant is built but unpublished, so it carries no usage. Source: Kymo platform dashboard, 1 July – 9 September 2026; cost at the confirmed qwen-plus rate.`,`知识库测试智能体是 IT 的测试产物，不是真正的助手；它出现在平台看板的前三名表格里，但未计入上述推论。财务助手已搭建但未发布，因此没有使用量。来源：Kymo 平台看板，2026 年 7 月 1 日至 9 月 9 日；成本按已确认的 qwen-plus 单价计算。`],
+[`April 2026 → June 2027, and where the contract ends`,`2026 年 4 月 → 2027 年 6 月，以及合同到期的节点`],
+[`The roadmap deliberately runs past rollout to the renewal decision. This is a project with a commercial end point, not an open commitment.`,`这份路线图刻意越过推广阶段，一直画到续约决策。这是一个有明确商业终点的项目，而不是一项开口的长期承诺。`],
+[`Apr – Aug 26`,`26年4–8月`],
+[`Delivered`,`已完成`],
+[`Kick-off and gap analysis (Apr) · vendor evaluation and Kymo selected (May) · contract signed, on-premise deployment on the Singapore server (Jun) · IT internal testing and vendor optimisation cycle (Jul) · IT-wide training, Legal joined the closed pilot (Aug).`,`立项与差距分析（4 月）· 供应商评估并选定 Kymo（5 月）· 合同签署，在新加坡服务器完成本地部署（6 月）· IT 内部测试与供应商优化周期（7 月）· IT 全员培训，法务加入封闭试点（8 月）。`],
+[`Sep 26`,`26年9月`],
+[`Pilot live — where we are today`,`试点运行中 —— 我们目前所处的位置`],
+[`15 agents built, 9 published, 4 on the enterprise home page. Usage confined to IT and Legal by design. Awaiting the rollout decision.`,`已搭建 15 个智能体，9 个已发布，4 个上线企业首页。使用范围按计划限于 IT 和法务。等待推广决策。`],
+[`Sep – Oct 26`,`26年9–10月`],
+[`Management briefing and governance sign-off<span class="rm-tag">Needs your decision</span>`,`管理层演示与治理签发<span class="rm-tag">需要您拍板</span>`],
+[`Demonstrate MOOV AI to department heads; agree the permission model per department; close the three open data questions (Bailian endpoint region, training on our inputs, self-hosted threshold); AI Policy signed off with Legal. <strong>Nothing downstream starts until this is done.</strong>`,`向各部门负责人演示 MOOV AI；就各部门的权限模型达成一致；解决三个悬而未决的数据问题（百炼节点地区、我们的输入是否用于训练、自建部署门槛）；与法务共同签发 AI 使用政策。<strong>这一步不完成，后面的都不启动。</strong>`],
+[`Nov 26`,`26年11月`],
+[`Company-wide rollout, in department waves`,`全公司推广，分部门分批进行`],
+[`Announce to all 300 staff and open access department by department rather than in one broadcast — each wave gets a short induction and at least one knowledge base that answers its own questions. Sequencing avoids a first experience of “it does not know that yet”.`,`向全体 300 名员工宣布，并按部门逐批开放权限，而不是一次性广播 —— 每一批都配一次简短的导入培训，以及至少一个能回答本部门问题的知识库。分批推进是为了避免第一次使用就撞上"它还不知道这个"。`],
+[`smartMOOV integration`,`smartMOOV 集成`],
+[`Embed a MOOV AI agent inside smartMOOV to answer milestone questions in context — where a shipment is, what a status means, what happens next. Rolled out <strong>per customer and per environment</strong>, starting with one of each, rather than switched on globally.`,`在 smartMOOV 内嵌入一个 MOOV AI 智能体，就地回答节点相关的问题 —— 货到哪了、某个状态是什么意思、下一步会发生什么。按<strong>分客户、分环境</strong>逐步上线，先各做一个，而不是全局一次性开启。`],
+[`Departments build their own`,`各部门自建`],
+[`Knowledge-builder access granted on request; each department owns the content behind its own agent. IT moves from building agents to approving and auditing them.`,`知识库建设权限按申请开通；每个部门对自己智能体背后的内容负责。IT 从"搭建智能体"转为"审批和审计智能体"。`],
+[`Renewal review<span class="rm-tag">Decision gate</span>`,`续约评估<span class="rm-tag">决策关口</span>`],
+[`Six months of real adoption and real token spend against the targets below. Three outcomes on the table: renew, renegotiate on evidence of usage, or migrate the agents to our own Dify instance. The exportability of everything we have built is what makes the third option credible.`,`用六个月的真实使用情况和真实 token 支出，对照下方的目标来评估。摆在桌面上的有三个结果：续约、拿使用数据重新议价、或者把智能体迁移到我们自建的 Dify 实例。我们搭建的一切都可导出，这正是第三个选项站得住脚的原因。`],
+[`Jun 27`,`27年6月`],
+[`Contract expires`,`合同到期`],
+[`Approximate date — to be confirmed against the signed agreement.`,`大致时间 —— 需对照已签合同确认。`],
+[`What we are committing to by December`,`我们对 12 月底的承诺`],
+[`These are deliverables we control, not adoption we hope for. Set as a floor we expect to clear — not a forecast.`,`这些是我们能控制的交付物，不是我们期望达成的使用率。设定为我们有把握完成的下限 —— 不是预测。`],
+[`Targets to 31 December 2026`,`截至 2026 年 12 月 31 日的目标`],
+[`<span class="mt-n">Deliverable</span> <span class="mt-v">Today</span><span class="mt-t">Dec</span>`,`<span class="mt-n">交付物</span> <span class="mt-v">现状</span><span class="mt-t">12月</span>`],
+[`<span class="mt-n">Departments with at least one agent of their own</span> <span class="mt-v">2</span><span class="mt-t">6</span>`,`<span class="mt-n">拥有至少一个自建智能体的部门数</span> <span class="mt-v">2</span><span class="mt-t">6</span>`],
+[`<span class="mt-n">Agents published on the enterprise home page</span> <span class="mt-v">4</span><span class="mt-t">8</span>`,`<span class="mt-n">发布到企业首页的智能体数</span> <span class="mt-v">4</span><span class="mt-t">8</span>`],
+[`<span class="mt-n">Knowledge bases live</span> <span class="mt-v">2</span><span class="mt-t">6</span>`,`<span class="mt-n">已上线知识库数</span> <span class="mt-v">2</span><span class="mt-t">6</span>`],
+[`<span class="mt-n">smartMOOV Q&amp;A bot — customers × environments live</span> <span class="mt-v">0</span><span class="mt-t">1 × 1</span>`,`<span class="mt-n">smartMOOV 问答机器人 —— 已上线客户 × 环境</span> <span class="mt-v">0</span><span class="mt-t">1 × 1</span>`],
+[`<span class="mt-n">Departments completing induction</span> <span class="mt-v">1</span><span class="mt-t">All</span>`,`<span class="mt-n">完成导入培训的部门数</span> <span class="mt-v">1</span><span class="mt-t">全部</span>`],
+[`Deliberately not a target`,`刻意不设为目标`],
+[`Monthly active users`,`月活跃用户数`],
+[`We will measure and report it every month, but we are not committing to a number. Nobody is required to use MOOV AI, and setting an adoption target before the knowledge bases exist would measure the wrong thing — it rewards logins rather than useful answers.`,`我们每月都会统计并汇报，但不承诺具体数字。没有人被要求必须使用 MOOV AI；在知识库还没建起来之前就设定使用率目标，衡量的会是错的东西 —— 它奖励的是登录次数，而不是有用的回答。`],
+[`The honest constraint`,`坦率地说，瓶颈在哪`],
+[`Answer quality today is limited by knowledge-base coverage, not by the platform. Two bases are live. <strong>Every target above is a content target wearing a technology label</strong> — the work is getting departments to own their own documentation.`,`目前制约回答质量的是知识库覆盖面，不是平台。现在只有两个知识库上线。<strong>上面每一个目标，本质上都是披着技术外衣的内容目标</strong> —— 真正的工作是让各部门愿意维护自己的文档。`],
+[`05 / Decision`,`05 / 决策`],
+[`Tier the estate, then gate the expensive tier`,`先分层，再给最贵的那一层设门槛`],
+[`The four tools are not competing for the same job. Ordered by cost per user, they form a natural pyramid: the cheapest layer should reach everyone, and the most expensive layer should be the one we qualify people for.`,`这四个工具并不是在抢同一份活。按人均成本排序，它们天然构成一个金字塔：最便宜的一层应当人人可用，最贵的一层应当是需要资格审核才能进的。`],
+[`Proposed access model`,`建议的权限模型`],
+[`<span>Tier 1 &nbsp;·&nbsp; Everyone</span><b>300 staff</b>`,`<span>第一层 &nbsp;·&nbsp; 所有人</span><b>300 名员工</b>`],
+[`<b>MOOV AI</b> — chat, corporate knowledge, department agents, simple automation. <span class="mono" style="color:var(--s1)">¥4,083 / month fixed · ¥14–24 / user all-in</span>`,`<b>MOOV AI</b> —— 对话、企业知识、部门智能体、简单自动化。<span class="mono" style="color:var(--s1)">每月固定 ¥4,083 · 人均全含 ¥14–24</span>`],
+[`<span>Tier 2 &nbsp;·&nbsp; Office suite users</span><b>112 seats</b>`,`<span>第二层 &nbsp;·&nbsp; 办公套件用户</span><b>112 个席位</b>`],
+[`<b>Gemini / Copilot</b> — AI inside the documents and mail people already work in. <span class="mono" style="color:var(--s4)">¥189–232 / user / month</span>`,`<b>Gemini / Copilot</b> —— 嵌在大家本来就在用的文档和邮件里的 AI。<span class="mono" style="color:var(--s4)">人均每月 ¥189–232</span>`],
+[`<span>Tier 3 &nbsp;·&nbsp; Builders</span><b>42 seats</b>`,`<span>第三层 &nbsp;·&nbsp; 建设者</span><b>42 个席位</b>`],
+[`<b>Qoder Work</b> — agentic coding, MOOV&nbsp;OS development, complex automation. <span class="mono" style="color:var(--s2)">¥547 / user / month</span>`,`<b>Qoder Work</b> —— 智能体编程、MOOV&nbsp;OS 开发、复杂自动化。<span class="mono" style="color:var(--s2)">人均每月 ¥547</span>`],
+[`Bar width shows population, not spend. The inversion is the point: the widest tier costs ¥4,083 a month in total, and the narrowest tier costs ¥22,979.`,`条形的宽度表示人数，不是支出。这个倒挂正是重点：最宽的那一层每月总共花 ¥4,083，最窄的那一层每月花 ¥22,979。`],
+[`Decision 1`,`决策 1`],
+[`Confirm MOOV AI as the company-wide baseline layer`,`确认 MOOV AI 作为全公司的基础层`],
+[`Open it to all staff after the management briefing. Routine drafting, summarising, policy and SOP questions move here. The subscription is already paid and does not change with headcount, it is inside our perimeter, and it is the only platform where we can see what the organisation is actually asking.`,`在管理层演示之后向全体员工开放。日常起草、摘要、制度和 SOP 类问题都迁到这里。订阅费已经付了且不随人数变化，它在我们自己的边界内，而且它是唯一一个能让我们看见"组织究竟在问什么"的平台。`],
+[`<span class="k">What we need</span><span class="v">Endorsement of the sequence</span>`,`<span class="k">需要您</span><span class="v">认可这个推进顺序</span>`],
+[`<span class="k">Option A — recommended</span><span class="v">Management briefing → all staff</span>`,`<span class="k">方案 A —— 推荐</span><span class="v">管理层演示 → 全体员工</span>`],
+[`<span class="k">Option B</span><span class="v">2–3 department pilot first</span>`,`<span class="k">方案 B</span><span class="v">先做 2–3 个部门的试点</span>`],
+[`Decision 2`,`决策 2`],
+[`Approve an access gate and a credit alert for Qoder`,`批准为 Qoder 设立准入门槛和额度告警`],
+[`Keep Qoder for the work only Qoder can do. IT assesses who qualifies — engineering, the MOOV&nbsp;OS team, named automation owners — and reviews the list quarterly. Because 73&nbsp;% of the spend is consumption, the control that matters is a monthly credit threshold with an alert, not a licence count.`,`把 Qoder 留给只有它能干的活。由 IT 评估谁符合资格 —— 工程团队、MOOV&nbsp;OS 团队、指定的自动化负责人 —— 并每季度复核名单。由于 73&nbsp;% 的支出来自用量，真正有效的控制是每月额度阈值加告警，而不是数授权数量。`],
+[`<span class="k">What we need</span><span class="v">Approval of the gate</span>`,`<span class="k">需要您</span><span class="v">批准这个准入门槛</span>`],
+[`<span class="k">Proposed alert</span><span class="v">¥30,000 / month</span>`,`<span class="k">建议告警线</span><span class="v">每月 ¥30,000</span>`],
+[`<span class="k">Review cadence</span><span class="v">Quarterly, with IT</span>`,`<span class="k">复核频率</span><span class="v">每季度，由 IT 牵头</span>`],
+[`Raised, not for decision today`,`仅提出，今天不做决策`],
+[`Gemini and Copilot overlap on 112 seats and ¥22,727 a month`,`Gemini 和 Copilot 在 112 个席位、每月 ¥22,727 上存在重叠`],
+[`Both are office-suite assistants doing substantially the same work in two different suites. There may be good reasons to run both — the underlying suites are separate purchases, and the seat populations may not be the same people. But the overlap is large enough that it should be a deliberate decision at renewal rather than a default. IT can produce the actual usage split if that would help.`,`两者都是办公套件助手，在两套不同的软件里做着基本相同的事。同时保留可能有合理理由 —— 底层的办公套件是分开采购的，席位人群也未必是同一批人。但重叠的规模已经大到：续约时这应当是一个经过判断的决定，而不是默认延续。如果有帮助，IT 可以提供实际的使用分布。`],
+[`Risk register`,`风险登记表`],
+[`What could go wrong, and what we are doing about it`,`哪些地方可能出问题，我们打算怎么应对`],
+[`Distinct from the open items below: those are questions awaiting an answer, these are things that can fail even once every question is answered.`,`这与下方的"待解决事项"不同：那些是等待答案的问题，而这些是即便所有问题都有了答案、仍然可能失败的事。`],
+[`Risk`,`风险`],
+[`Likelihood`,`可能性`],
+[`Impact`,`影响`],
+[`Why, and the mitigation`,`原因与缓解措施`],
+[`Thin knowledge coverage sinks first impressions`,`知识覆盖太薄，毁掉第一印象`],
+[`<span class="pill act">High</span>`,`<span class="pill act">高</span>`],
+[`Two knowledge bases are live against a 300-person rollout. A user whose first question returns “I do not have that” does not come back, and adoption is very hard to restart once lost. <strong>Mitigation:</strong> roll out in department waves, and do not open a wave until that department has at least one knowledge base that answers its own questions. This is why November is sequenced rather than announced in one broadcast.`,`面向 300 人推广，却只有两个知识库上线。一个用户如果第一次提问就得到"我没有这方面信息"，他就不会再来了，而使用习惯一旦失去极难重建。<strong>缓解措施：</strong>按部门分批推广，某个部门没有至少一个能回答自身问题的知识库，就不开放该批次。这正是 11 月要分批而不是一次性广播的原因。`],
+[`Qoder consumption keeps climbing`,`Qoder 的消耗持续攀升`],
+[`The five-month average is ¥22,979, but July and August averaged <strong>¥42,668 — 86&nbsp;% above it</strong>. If the recent run-rate holds, Qoder alone is ¥512,000 a year rather than the ¥276,000 modelled here, and nothing in the current setup would stop it. <strong>Mitigation:</strong> the access gate and the ¥30,000 monthly alert in Decision 2. Without them this figure has no ceiling.`,`五个月均值是 ¥22,979，但 7 月和 8 月的均值达到 <strong>¥42,668 —— 高出 86&nbsp;%</strong>。如果按最近的水平延续，仅 Qoder 一项一年就是 ¥512,000，而不是这里测算的 ¥276,000，而目前的机制里没有任何东西能拦住它。<strong>缓解措施：</strong>决策 2 中的准入门槛和每月 ¥30,000 告警线。没有这两样，这个数字就没有上限。`],
+[`Shadow AI continues regardless`,`影子 AI 照样存在`],
+[`<span class="pill act">Medium</span>`,`<span class="pill act">中</span>`],
+[`Free consumer AI is already in use and leaves no trace. Launching a sanctioned tool does not displace it unless the sanctioned tool is genuinely easier. <strong>Mitigation:</strong> MOOV AI is delivered inside Teams with no new login, and the AI Policy is communicated at each rollout wave rather than published once and forgotten.`,`免费的消费级 AI 已经在被使用，并且不留任何痕迹。推出一个官方工具并不会自动取代它们 —— 除非官方工具确实更省事。<strong>缓解措施：</strong>MOOV AI 通过 Teams 交付、无需新登录；AI 使用政策在每一批推广时都重新宣讲，而不是发布一次就束之高阁。`],
+[`Departments do not maintain their own content`,`各部门不维护自己的内容`],
+[`<span class="pill">Medium</span>`,`<span class="pill">中</span>`],
+[`IT can build the first agents, but cannot own HR, Finance and Operations documentation in the long run. If content ownership does not transfer, answers go stale and the platform quietly decays. <strong>Mitigation:</strong> knowledge-builder role granted per department with a named owner; Q1 2027 is explicitly the phase where IT stops building and starts approving.`,`IT 可以搭出第一批智能体，但长期来看无法承担人力、财务和运营文档的维护责任。如果内容归属没有真正移交，答案会逐渐过时，平台会悄无声息地衰败。<strong>缓解措施：</strong>按部门授予知识库建设者角色并指定具名负责人；2027 年第一季度被明确定义为 IT 从"搭建"转向"审批"的阶段。`],
+[`Open items`,`待解决事项`],
+[`What is not yet settled`,`还没有定下来的事`],
+[`Item`,`事项`],
+[`Status`,`状态`],
+[`Owner`,`责任方`],
+[`Bailian endpoint region`,`百炼接入节点地区`],
+[`China or international endpoint determines where prompts are processed. Needs confirmation from the vendor before company-wide rollout.`,`国内节点还是国际节点，决定了提示词在哪里被处理。需在全公司推广前向供应商确认。`],
+[`Model training on our inputs`,`我们的输入是否用于模型训练`],
+[`Contractual position to be confirmed in writing, not assumed.`,`合同立场需要书面确认，不能靠推测。`],
+[`IT / Legal`,`IT / 法务`],
+[`Per-model Bailian rates`,`百炼各模型单价`],
+[`qwen-plus confirmed at ¥0.50 in / ¥2.00 out per million tokens, back-solved from actual pilot billing. qwen3-vl-plus and glm-4.7 are <strong>estimated from the list-price ladder</strong> — exact contracted rates still to be confirmed with Alibaba.`,`qwen-plus 已确认为每百万 token 入 ¥0.50 / 出 ¥2.00，由试点期实际账单反推得出。qwen3-vl-plus 和 glm-4.7 是<strong>依据标价梯度估算的</strong> —— 确切的合同价仍需与阿里确认。`],
+[`Bailian discount tier`,`百炼折扣档`],
+[`A 0.7 discount tier is published for most models. We are paying list price and have not asked for it. Worth raising before volume grows.`,`大部分模型都公布了 0.7 折扣档。我们目前按标价付费，也从未提出过申请。值得在用量增长之前谈一次。`],
+[`Token split by model`,`token 按模型的分布`],
+[`The 354,277 pilot tokens are not yet broken down per model, so the usage mix behind the cost scenarios is assumed rather than measured.`,`试点期的 354,277 个 token 尚未按模型拆分，因此成本情景背后的使用结构是假设的，而非实测。`],
+[`Seat overlap across vendors`,`跨供应商的席位重叠`],
+[`154 licences across three vendors; how many individuals hold two or three is not yet audited.`,`三家供应商合计 154 个授权；有多少人同时持有两个或三个，尚未核查。`],
+[`Gemini seat attribution`,`Gemini 席位归属`],
+[`Some of the 76 Workspace seats were opened for Drive, Meet or Gmail rather than Gemini. Counted in full here as the upper bound.`,`76 个 Workspace 席位中，有一部分是为 Drive、Meet 或 Gmail 开通的，并非为了 Gemini。此处按上限全额计入。`],
+[`AI Policy release`,`AI 使用政策发布`],
+[`Drafted. Sign-off needed before the company-wide announcement.`,`已起草。需在全公司宣布之前完成签发。`],
+  ]);
+  var SEL = "h1,h2,h3,h4,p,li,dt,dd,td,th,summary,figcaption,label,b,.eyebrow,.kv,.mt-row,.ag-x,.rm-tag,.rm-d,.tag,.pill,.dr-n,.co-n,.lname,.ldesc,.mn,.vc-name,.vc-sup,.vc-pos,.chip,.fn-t,.fn-d,.fn-k,.peri-label,.tier-bar,.tier-txt,.mfig,.ro .k,.ro .v,.ro .n,.segb,.tab,.tbtn,.mrow.mhead span,.co-head span,text,.dr-a,.dr-p,.moov-index a,.vc-foot .k,.vc-foot .v,.title-block .meta,.flow-arrow small";
+  var ATTRS = new Map([
+    ['\u00a522,979 / month \u00b7 46.2%','\u00a522,979 / \u6708 \u00b7 46.2%'],
+    ['\u00a514,375 / month \u00b7 28.9%','\u00a514,375 / \u6708 \u00b7 28.9%'],
+    ['\u00a58,352 / month \u00b7 16.8%','\u00a58,352 / \u6708 \u00b7 16.8%'],
+    ['\u00a54,083 / month \u00b7 8.2%','\u00a54,083 / \u6708 \u00b7 8.2%'],
+    ['April 2026','2026 \u5e74 4 \u6708'],
+    ['May 2026','2026 \u5e74 5 \u6708'],
+    ['June 2026','2026 \u5e74 6 \u6708'],
+    ['July 2026','2026 \u5e74 7 \u6708'],
+    ['August 2026','2026 \u5e74 8 \u6708']
+  ]);
+  var LABELS = {uUsers:'\u6d3b\u8dc3\u7528\u6237\u6570', uConv:'\u4eba\u5747\u6bcf\u6708\u5bf9\u8bdd\u6b21\u6570'};
+  var root = document.documentElement;
+  var enBtn = document.getElementById('langEn'), zhBtn = document.getElementById('langZh');
+
+  function norm(h){ return h.replace(/\s+/g,' ').trim(); }
+  function units(){
+    var all = [].slice.call(document.querySelectorAll(SEL));
+    return all.filter(function(el){
+      return !all.some(function(o){ return o !== el && o.contains(el); });
+    });
+  }
+  function labelNode(id){
+    var lab = document.querySelector('label[for="' + id + '"]');
+    if (!lab) return null;
+    for (var i = 0; i < lab.childNodes.length; i++)
+      if (lab.childNodes[i].nodeType === 3 && lab.childNodes[i].nodeValue.trim()) return lab.childNodes[i];
+    return null;
+  }
+
+  function apply(lang){
+    if (lang === 'zh') {
+      units().forEach(function(el){
+        var v = DICT.get(norm(el.innerHTML));
+        if (v === undefined) return;
+        if (!el.hasAttribute('data-en')) el.setAttribute('data-en', el.innerHTML);
+        el.innerHTML = v;
+      });
+      Object.keys(LABELS).forEach(function(id){
+        var n = labelNode(id);
+        if (!n) return;
+        if (!n.__en) n.__en = n.nodeValue;
+        n.nodeValue = LABELS[id];
+      });
+      [].slice.call(document.querySelectorAll('[data-t],[data-d]')).forEach(function(el){
+        ['t','d'].forEach(function(a){
+          var cur = el.getAttribute('data-' + a);
+          if (cur === null) return;
+          var v = ATTRS.get(cur);
+          if (v === undefined) return;
+          if (!el.hasAttribute('data-' + a + '-en')) el.setAttribute('data-' + a + '-en', cur);
+          el.setAttribute('data-' + a, v);
+        });
+      });
+    } else {
+      [].slice.call(document.querySelectorAll('[data-en]')).forEach(function(el){
+        el.innerHTML = el.getAttribute('data-en');
+        el.removeAttribute('data-en');
+      });
+      Object.keys(LABELS).forEach(function(id){
+        var n = labelNode(id);
+        if (n && n.__en) n.nodeValue = n.__en;
+      });
+      [].slice.call(document.querySelectorAll('[data-t-en],[data-d-en]')).forEach(function(el){
+        ['t','d'].forEach(function(a){
+          if (!el.hasAttribute('data-' + a + '-en')) return;
+          el.setAttribute('data-' + a, el.getAttribute('data-' + a + '-en'));
+          el.removeAttribute('data-' + a + '-en');
+        });
+      });
+    }
+    root.lang = lang;
+    document.title = lang === 'zh' ? 'MOOV AI \u5e94\u7528\u76d8\u70b9' : 'MOOV AI Estate Review';
+    enBtn.setAttribute('aria-pressed', lang === 'en' ? 'true' : 'false');
+    zhBtn.setAttribute('aria-pressed', lang === 'zh' ? 'true' : 'false');
+    if (typeof window.__recalc === 'function') window.__recalc();
+    try { localStorage.setItem('moov-lang', lang); } catch (e) {}
+  }
+
+  enBtn.addEventListener('click', function(){ apply('en'); });
+  zhBtn.addEventListener('click', function(){ apply('zh'); });
+
+  var saved = null;
+  try { saved = localStorage.getItem('moov-lang'); } catch (e) {}
+  if (saved === 'zh') apply('zh'); else root.lang = 'en';
 })();
 </script>
 
