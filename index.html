@@ -64,7 +64,7 @@ a{color:var(--brand-ink)}
 .num{font-family:"IBM Plex Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums}
 .eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px;
   letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); font-weight:500}
-.lead{font-size:16px; color:var(--ink-2); max-width:68ch; line-height:1.6}
+.lead{font-size:16px; color:var(--ink-2); line-height:1.6}
 .sub{font-size:13px; color:var(--ink-2); line-height:1.55}
 .fine{font-size:11.5px; color:var(--ink-3); line-height:1.5}
 strong{font-weight:600}
@@ -971,7 +971,7 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
   <div class="sec-head">
     <span class="eyebrow">03 / Qoder Work</span>
     <h2>What Qoder Work actually is</h2>
-    <p class="lead" style="max-width:none">Qoder Work is Alibaba's agentic work platform, and it carries two capabilities at once: software development and office output. Unlike an assistant that answers in a chat window, it takes a task, plans the steps, executes it &mdash; writing and running code, or producing the document &mdash; and reports back. It can also read and act on files on the user's own computer. That is why it is the most capable tool we have &mdash; and why it is
+    <p class="lead">Qoder Work is Alibaba's agentic work platform, and it carries two capabilities at once: software development and office output. Unlike an assistant that answers in a chat window, it takes a task, plans the steps, executes it &mdash; writing and running code, or producing the document &mdash; and reports back. It can also read and act on files on the user's own computer. That is why it is the most capable tool we have &mdash; and why it is
       metered by consumption rather than by seat.</p>
   </div>
 
@@ -1308,14 +1308,11 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
       <!-- ---------- E. status ---------- -->
       <div id="m-status">
         <span class="eyebrow">E / Pilot status</span>
-        <h2 style="margin:8px 0 6px; font-size:23px">A deliberately small pilot</h2>
-        <p class="lead" style="margin-bottom:18px">Capacity is provisioned; usage is still confined to
-          IT and Legal &mdash; by design.</p>
-
+        <h2 style="margin:8px 0 18px; font-size:23px">A deliberately small pilot</h2>
         <div class="readouts">
           <div class="ro"><span class="bar" style="background:var(--s1)"></span>
-            <div class="k">Agents built</div><div class="v">15</div>
-            <div class="n">9 published, 4 live on the enterprise home page</div></div>
+            <div class="k">Agents built</div><div class="v">9</div>
+            <div class="n">4 live on the enterprise home page</div></div>
           <div class="ro"><span class="bar" style="background:var(--s1)"></span>
             <div class="k">Accounts provisioned</div><div class="v">433</div>
             <div class="n">AD-synced, leavers not yet purged &mdash; against <strong>300 actual
@@ -1345,50 +1342,6 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
             <p class="sub">Answers questions about how to use the platform itself.</p></div>
         </div>
 
-        <h3 style="margin:26px 0 12px">What 50 conversations already tell us about cost</h3>
-        <p class="lead" style="margin-bottom:14px">The pilot is far too small to prove adoption. It is
-          large enough to expose the thing that will actually drive the bill at scale.</p>
-
-        <div class="card">
-          <div class="tbl-wrap" style="border:0; border-radius:5px 5px 0 0">
-            <table style="min-width:700px">
-              <thead><tr><th>Agent</th><th class="n">Conversations</th><th class="n">Tokens</th>
-                <th class="n">Per conversation</th><th class="n">Cost per conversation</th></tr></thead>
-              <tbody>
-                <tr><td class="rowh">Moov Compass &mdash; 4PL Expert</td><td class="n">38</td>
-                  <td class="n">118,630</td><td class="n">3,122</td><td class="n">&yen;0.0031</td></tr>
-                <tr><td class="rowh">MOOV AI User Guide</td><td class="n">8</td>
-                  <td class="n">224,218</td><td class="n" style="color:var(--s2);font-weight:600">28,027</td>
-                  <td class="n" style="color:var(--s2);font-weight:600">&yen;0.0280</td></tr>
-                <tr><td class="rowh">HR Assistant</td><td class="n">1</td>
-                  <td class="n">650</td><td class="n" style="color:var(--s1);font-weight:600">650</td>
-                  <td class="n" style="color:var(--s1);font-weight:600">&yen;0.0007</td></tr>
-                <tr style="color:var(--ink-3)"><td class="rowh" style="color:var(--ink-3)">Knowledge-base test agent</td>
-                  <td class="n">3</td><td class="n">10,779</td><td class="n">3,593</td><td class="n">&yen;0.0036</td></tr>
-                <tr style="background:var(--panel-2)"><td class="rowh">Total</td><td class="n">50</td>
-                  <td class="n">354,277</td><td class="n">7,086</td><td class="n">&yen;0.35 total</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="pad" style="border-top:1px solid var(--rule)">
-            <h4 style="margin-bottom:8px">Two agents on the same platform, 43&times; apart on cost</h4>
-            <p class="sub" style="max-width:82ch">The User Guide burns <strong>28,027 tokens per
-              question</strong>; the HR Assistant burns 650. Same model, same platform. The difference
-              is retrieval: an agent that pulls large passages from a knowledge base into every prompt
-              pays for that context on every single question.</p>
-            <p class="sub" style="max-width:82ch; margin-top:10px"><strong>The implication for
-              rollout:</strong> how we build the knowledge bases will move the model bill more than
-              which model we pick. A badly chunked knowledge base is not a quality problem that also
-              costs money &mdash; it is a cost problem first. This is a design standard IT needs to
-              set before departments start building their own.</p>
-            <p class="fine" style="margin-top:12px">The knowledge-base test agent is an IT test
-              artefact, not a real assistant; it appears in the platform dashboard's top-three tables
-              and is excluded from the reasoning above. The Finance Assistant is built but unpublished,
-              so it carries no usage. Source: Kymo platform dashboard, 1 July &ndash; 9 September 2026;
-              cost at the confirmed qwen-plus rate.</p>
-          </div>
-        </div>
-
         <h3 style="margin:26px 0 14px">April 2026 &rarr; June 2027, and where the contract ends</h3>
         <p class="lead" style="margin:-6px 0 16px">The roadmap deliberately runs past rollout to the
           renewal decision. This is a project with a commercial end point, not an open commitment.</p>
@@ -1413,7 +1366,7 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
               <div class="rm-ax"><i></i></div>
               <div class="rm-c">
                 <b>Pilot live &mdash; where we are today</b>
-                <p>15 agents built, 9 published, 4 on the enterprise home page. Usage confined to IT
+                <p>9 agents built, 4 on the enterprise home page. Usage confined to IT
                   and Legal by design. Awaiting the rollout decision.</p>
               </div>
             </div>
@@ -1612,7 +1565,7 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
   <div class="card pad" style="border-left:3px solid var(--rule-2)">
     <span class="eyebrow">Raised, not for decision today</span>
     <h3 style="margin:10px 0 8px">Gemini and Copilot overlap on 112 seats and &yen;22,727 a month</h3>
-    <p class="sub" style="max-width:78ch">Both are office-suite assistants doing substantially the
+    <p class="sub">Both are office-suite assistants doing substantially the
       same work in two different suites. There may be good reasons to run both &mdash; the underlying
       suites are separate purchases, and the seat populations may not be the same people. But the
       overlap is large enough that it should be a deliberate decision at renewal rather than a
@@ -2531,9 +2484,8 @@ html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3,html[lang="zh"] h4{lett
 [`Kymo runs on our Singapore server, so conversations and files do not transit to the vendor.`,`Kymo 跑在我们自己的新加坡服务器上，所以对话和文件不会流经供应商。`],
 [`E / Pilot status`,`E / 试点现状`],
 [`A deliberately small pilot`,`一个刻意控制规模的试点`],
-[`Capacity is provisioned; usage is still confined to IT and Legal — by design.`,`容量已经开通；使用范围仍限于 IT 和法务 —— 这是有意为之。`],
 [`Agents built`,`已搭建智能体`],
-[`9 published, 4 live on the enterprise home page`,`9 个已发布，4 个已上线企业首页`],
+[`4 live on the enterprise home page`,`4 个已上线企业首页`],
 [`Accounts provisioned`,`已开通账号`],
 [`AD-synced, leavers not yet purged — against <strong>300 actual staff</strong>. 1–2 active per day; access exists but has not been announced`,`由 AD 同步生成，离职人员尚未清理 —— 对应 <strong>实际 300 名员工</strong>。日活 1–2 人；权限已开通但尚未对外宣布`],
 [`Tokens consumed`,`token 消耗`],
@@ -2569,7 +2521,7 @@ html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3,html[lang="zh"] h4{lett
 [`Kick-off and gap analysis (Apr) · vendor evaluation and Kymo selected (May) · contract signed, on-premise deployment on the Singapore server (Jun) · IT internal testing and vendor optimisation cycle (Jul) · IT-wide training, Legal joined the closed pilot (Aug).`,`立项与差距分析（4 月）· 供应商评估并选定 Kymo（5 月）· 合同签署，在新加坡服务器完成本地部署（6 月）· IT 内部测试与供应商优化周期（7 月）· IT 全员培训，法务加入封闭试点（8 月）。`],
 [`Sep 26`,`26年9月`],
 [`Pilot live — where we are today`,`试点运行中 —— 我们目前所处的位置`],
-[`15 agents built, 9 published, 4 on the enterprise home page. Usage confined to IT and Legal by design. Awaiting the rollout decision.`,`已搭建 15 个智能体，9 个已发布，4 个上线企业首页。使用范围按计划限于 IT 和法务。等待推广决策。`],
+[`9 agents built, 4 on the enterprise home page. Usage confined to IT and Legal by design. Awaiting the rollout decision.`,`已搭建 9 个智能体，4 个上线企业首页。使用范围按计划限于 IT 和法务。等待推广决策。`],
 [`Sep – Oct 26`,`26年9–10月`],
 [`Management briefing and governance sign-off<span class="rm-tag">Needs your decision</span>`,`管理层演示与治理签发<span class="rm-tag">需要您拍板</span>`],
 [`Demonstrate MOOV AI to department heads; agree the permission model per department; close the three open data questions (Bailian endpoint region, training on our inputs, self-hosted threshold); AI Policy signed off with Legal. <strong>Nothing downstream starts until this is done.</strong>`,`向各部门负责人演示 MOOV AI；就各部门的权限模型达成一致；解决三个悬而未决的数据问题（百炼节点地区、我们的输入是否用于训练、自建部署门槛）；与法务共同签发 AI 使用政策。<strong>这一步不完成，后面的都不启动。</strong>`],
