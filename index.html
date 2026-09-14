@@ -260,20 +260,20 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
 
   <div class="readouts r3">
     <div class="ro"><span class="bar" style="background:var(--brand)"></span>
-      <div class="k">Annualised cost estimate</div><div class="v">&yen;597,476</div>
-      <div class="n">¥49,790 monthly equivalent, annualised using the assumptions in Spend.</div></div>
+      <div class="k">Annualised cost estimate</div><div class="v">&yen;424,977</div>
+      <div class="n">¥35,415 monthly equivalent, annualised using the assumptions in Spend.</div></div>
     <div class="ro"><span class="bar" style="background:var(--s2)"></span>
-      <div class="k">Concentration</div><div class="v">46<span class="u">%</span></div>
+      <div class="k">Concentration</div><div class="v">64.9<span class="u">%</span></div>
       <div class="n">Qoder share of the monthly cost estimate</div></div>
     <div class="ro"><span class="bar" style="background:var(--s1)"></span>
-      <div class="k">MOOV AI share</div><div class="v">8.2<span class="u">%</span></div></div>
+      <div class="k">MOOV AI share</div><div class="v">11.5<span class="u">%</span></div></div>
   </div>
 
 <div class="brief-agenda"><span class="eyebrow">Session plan</span><p>Overview · 5 min &nbsp; / &nbsp; Spend · 8 min &nbsp; / &nbsp; Qoder Work · 5 min &nbsp; / &nbsp; MOOV AI · 12–17 min &nbsp; / &nbsp; Discussion points · 5 min</p></div>
   <!-- ---------- vendor views: cards / comparison table ---------- -->
   <div>
     <div class="viewbar">
-      <span class="eyebrow">The four solutions</span>
+      <span class="eyebrow">The three solutions</span>
       <div class="vswitch" role="tablist" aria-label="Choose a view">
         <button class="segb" type="button" role="tab" id="vb-cards"
                 aria-controls="vw-cards" aria-selected="true">Cards</button>
@@ -284,29 +284,6 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
 
     <div id="vw-cards" role="tabpanel" aria-labelledby="vb-cards">
     <div class="vgrid">
-
-      <article class="vcard" style="--vc:var(--s3)">
-        <div class="vc-head">
-          <div class="vc-name">Gemini</div>
-          <div class="vc-sup">Google &middot; bundled with Workspace</div>
-        </div>
-        <p class="vc-pos">Gemini is included in the Google Workspace licences held by MOOV.</p>
-        <dl class="vc-dl">
-          <dt>What it does</dt>
-          <dd>Drafting and summarising in Docs and Gmail, meeting notes in Meet, quick Q&amp;A in the browser.</dd>
-          <dt>Best fit</dt>
-          <dd>Employees using Google Docs, Gmail and Meet.</dd>
-          <dt>Billed as</dt>
-          <dd>Monthly subscription per seat, billed on the fiscal year.</dd>
-          <dt>Data &amp; security</dt>
-          <dd>Covered by Google Workspace terms. Administration and available controls depend on our Workspace edition and configuration.</dd>
-          <dt>Considerations</dt>
-          <dd>Workspace fees are paid per seat; the share attributable specifically to Gemini has not been separated.</dd>
-        </dl>
-        <div class="vc-foot">
-          <div><span class="k">Assigned seats</span><span class="v">76</span></div>
-        </div>
-      </article>
 
       <article class="vcard" style="--vc:var(--s4)">
         <div class="vc-head">
@@ -324,7 +301,7 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
           <dt>Data &amp; security</dt>
           <dd>Uses the Microsoft 365 identity and permission framework. The controls enabled in our tenant should be documented.</dd>
           <dt>Considerations</dt>
-          <dd>Higher per-seat cost than the Workspace figure shown here; review licence requirements and usage at renewal.</dd>
+          <dd>Seat cost is fixed regardless of use; review licence requirements and usage at renewal.</dd>
         </dl>
         <div class="vc-foot">
           <div><span class="k">Assigned seats</span><span class="v">36</span></div>
@@ -383,16 +360,15 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
     <div id="vw-table" role="tabpanel" aria-labelledby="vb-table" hidden>
       <div class="card">
         <div class="pad" style="border-bottom:1px solid var(--rule)">
-          <span class="eyebrow">The fifth category</span>
+          <span class="eyebrow">The fourth category</span>
           <h3 style="margin:10px 0 8px">AI use outside the purchased platforms</h3>
           <p class="sub">Staff also use consumer AI tools, including Doubao, DeepSeek and the DingTalk assistant. We do not yet have a consolidated account or usage inventory for these tools.</p>
         </div>
     <div class="tbl-wrap" style="border:0; border-radius:0">
-      <table style="min-width:900px">
+      <table style="min-width:760px">
         <thead>
           <tr>
             <th style="width:132px"></th>
-            <th><i class="dot" style="background:var(--s3);display:inline-block;margin-right:7px"></i>Gemini</th>
             <th><i class="dot" style="background:var(--s4);display:inline-block;margin-right:7px"></i>Copilot</th>
             <th><i class="dot" style="background:var(--s2);display:inline-block;margin-right:7px"></i>Qoder Work</th>
             <th><i class="dot" style="background:var(--s1);display:inline-block;margin-right:7px"></i>MOOV AI</th>
@@ -401,50 +377,43 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
         <tbody>
           <tr>
             <td class="rowh">Position</td>
-            <td>Assistant inside Google Workspace</td>
             <td>Assistant inside Microsoft 365</td>
             <td>Agentic platform that executes work</td>
             <td>Company-level AI front door</td>
           </tr>
           <tr>
             <td class="rowh">Core capability</td>
-            <td>Draft, summarise, meeting notes, Q&amp;A</td>
             <td>Draft, Excel analysis, Teams recap</td>
             <td>Writes and runs code; produces finished Word, PPT, Excel, HTML; reads local files</td>
             <td>Chat, RAG over MOOV knowledge, low-code agents, workflow automation</td>
           </tr>
           <tr>
             <td class="rowh">Best used for</td>
-            <td>People living in Docs, Gmail, Meet</td>
             <td>People living in Word, Outlook, Excel, Teams</td>
             <td>MOOV&nbsp;OS development, complex automation, prototyping</td>
             <td>Everyone &mdash; routine drafting, policy and SOP questions, department agents</td>
           </tr>
           <tr>
             <td class="rowh">Data &amp; security</td>
-            <td>Google Workspace terms; controls depend on the purchased edition and tenant configuration.</td>
             <td>Microsoft 365 identity and permissions; subject to our tenant configuration.</td>
             <td>External model processing and local-file access; confirm configured limits and available logs.</td>
             <td>MOOV-hosted in Singapore; SSO, role permissions and logs. External API inference.</td>
           </tr>
           <tr>
             <td class="rowh">Billing model</td>
-            <td>Monthly per seat</td>
             <td>Annual per seat</td>
             <td>Seat subscriptions plus prepaid credits.</td>
             <td>Fixed annual subscription + metered tokens</td>
           </tr>
           <tr>
             <td class="rowh">Cost per user</td>
-            <td class="num">&yen;189 / month</td>
             <td class="num">&yen;232 / month</td>
             <td class="num" style="color:var(--s2);font-weight:600">&yen;547 / month</td>
             <td class="num" style="color:var(--s1);font-weight:600"><span data-copy-en="Depends on planned usage" data-copy-zh="取决于计划用量">Depends on planned usage</span><br><span data-copy-en="See Future budget for an adjustable scenario" data-copy-zh="可在“未来预算”中调整情景">See Future budget for an adjustable scenario</span></td>
           </tr>
           <tr>
             <td class="rowh">Main risk</td>
-            <td>Paid per seat whether used or not; overlaps Copilot</td>
-            <td>Highest seat price; overlaps Gemini</td>
+            <td>Paid per seat whether used or not; actual usage not yet reviewed</td>
             <td>Variable credit purchases; project budgets and usage monitoring required.</td>
             <td>Not a coding tool. Answer quality limited by knowledge-base coverage</td>
           </tr>
@@ -505,29 +474,27 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
   <div class="card">
     <div class="pad" style="border-bottom:1px solid var(--rule)">
       <span class="eyebrow">Monthly cost equivalent by vendor</span>
-      <h3 style="margin:9px 0 6px">What the four solutions cost us each month</h3>
-      <p class="sub">Amounts are shown as RMB monthly equivalents: Gemini at USD/CNY 7.10; Copilot and MOOV AI annual fees divided by 12; Qoder net payments averaged across April–August. These are different cost bases, not a consolidated actual-spend statement.</p>
+      <h3 style="margin:9px 0 6px">What the three solutions cost us each month</h3>
+      <p class="sub">Amounts are shown as RMB monthly equivalents: Copilot and MOOV AI annual fees divided by 12; Qoder net payments averaged across April–August. These are different cost bases, not a consolidated actual-spend statement.</p>
     </div>
     <div class="donut-row">
       <figure class="chart-fig" style="margin:0">
         <svg class="chart" viewBox="0 0 300 300" role="img"
-             aria-label="Donut chart of monthly AI spend: Qoder Work 22,979 CNY 46.2 percent, Gemini 14,375 CNY 28.9 percent, Copilot 8,352 CNY 16.8 percent, MOOV AI 4,083 CNY 8.2 percent">
+             aria-label="Donut chart of monthly AI spend: Qoder Work 22,979 CNY 64.9 percent, Copilot 8,352 CNY 23.6 percent, MOOV AI 4,083 CNY 11.5 percent">
           <g transform="translate(150,150) rotate(-90) translate(-150,-150)">
-            <circle class="seg" data-v="qoder"   data-t="Qoder Work" data-d="&yen;22,979 / month · 46.2%" cx="150" cy="150" r="118"
-              fill="none" stroke="var(--s2)" stroke-width="34" stroke-dasharray="339.19 741.42" stroke-dashoffset="0"/>
-            <circle class="seg" data-v="gemini"  data-t="Gemini" data-d="&yen;14,375 / month · 28.9%" cx="150" cy="150" r="118"
-              fill="none" stroke="var(--s3)" stroke-width="34" stroke-dasharray="211.06 741.42" stroke-dashoffset="-342.19"/>
-            <circle class="seg" data-v="copilot" data-t="Copilot" data-d="&yen;8,352 / month · 16.8%" cx="150" cy="150" r="118"
-              fill="none" stroke="var(--s4)" stroke-width="34" stroke-dasharray="121.37 741.42" stroke-dashoffset="-556.24"/>
-            <circle class="seg" data-v="moov"    data-t="MOOV AI" data-d="&yen;4,083 / month · 8.2%" cx="150" cy="150" r="118"
-              fill="none" stroke="var(--s1)" stroke-width="34" stroke-dasharray="57.80 741.42" stroke-dashoffset="-680.61"/>
+            <circle class="seg" data-v="qoder"   data-t="Qoder Work" data-d="&yen;22,979 / month · 64.9%" cx="150" cy="150" r="118"
+              fill="none" stroke="var(--s2)" stroke-width="34" stroke-dasharray="475.25 741.42" stroke-dashoffset="0"/>
+            <circle class="seg" data-v="copilot" data-t="Copilot" data-d="&yen;8,352 / month · 23.6%" cx="150" cy="150" r="118"
+              fill="none" stroke="var(--s4)" stroke-width="34" stroke-dasharray="172.73 741.42" stroke-dashoffset="-478.25"/>
+            <circle class="seg" data-v="moov"    data-t="MOOV AI" data-d="&yen;4,083 / month · 11.5%" cx="150" cy="150" r="118"
+              fill="none" stroke="var(--s1)" stroke-width="34" stroke-dasharray="84.45 741.42" stroke-dashoffset="-653.98"/>
           </g>
           <text x="150" y="144" text-anchor="middle" fill="var(--ink)" font-family="Archivo,sans-serif"
-                font-size="30" font-weight="700" letter-spacing="-1">&yen;49,790</text>
+                font-size="30" font-weight="700" letter-spacing="-1">&yen;35,415</text>
           <text x="150" y="164" text-anchor="middle" fill="var(--ink-3)" font-family="IBM Plex Mono,monospace"
                 font-size="8.5" letter-spacing="1.4">PER MONTH</text>
         </svg>
-        <figcaption>¥597,476 annualised under the stated assumptions. MOOV AI includes the fixed platform subscription only.</figcaption>
+        <figcaption>¥424,977 annualised under the stated assumptions. MOOV AI includes the fixed platform subscription only.</figcaption>
       </figure>
 
       <div class="drill">
@@ -536,7 +503,7 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
             <i class="dot" style="background:var(--s2)"></i>
             <span class="dr-n">Qoder Work</span>
             <span class="dr-a num">&yen;22,979</span>
-            <span class="dr-p num">46.2%</span>
+            <span class="dr-p num">64.9%</span>
             <span class="chev" aria-hidden="true"></span>
           </button>
           <div class="dr-body" id="d-qoder" hidden>
@@ -576,30 +543,11 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
         </div>
 
         <div class="dr-item">
-          <button class="dr" data-v="gemini" aria-expanded="false" aria-controls="d-gemini" type="button">
-            <i class="dot" style="background:var(--s3)"></i>
-            <span class="dr-n">Gemini</span>
-            <span class="dr-a num">&yen;14,375</span>
-            <span class="dr-p num">28.9%</span>
-            <span class="chev" aria-hidden="true"></span>
-          </button>
-          <div class="dr-body" id="d-gemini" hidden>
-            <div class="kv"><span class="k">List price</span><span class="v">USD 26.64 / user / month</span></div>
-            <div class="kv"><span class="k">In RMB at 7.10</span><span class="v">&yen;189.14 / user / month</span></div>
-            <div class="kv"><span class="k">Seats</span><span class="v">76</span></div>
-            <div class="kv"><span class="k">Monthly</span><span class="v">&yen;14,375</span></div>
-            <p class="fine" style="margin-top:12px">These are Workspace licences that include Gemini.
-              Some were opened for Drive, Meet or Gmail rather than for Gemini, so this figure is the
-              upper bound of Gemini cost &mdash; counted in full here.</p>
-          </div>
-        </div>
-
-        <div class="dr-item">
           <button class="dr" data-v="copilot" aria-expanded="false" aria-controls="d-copilot" type="button">
             <i class="dot" style="background:var(--s4)"></i>
             <span class="dr-n">Copilot</span>
             <span class="dr-a num">&yen;8,352</span>
-            <span class="dr-p num">16.8%</span>
+            <span class="dr-p num">23.6%</span>
             <span class="chev" aria-hidden="true"></span>
           </button>
           <div class="dr-body" id="d-copilot" hidden>
@@ -617,7 +565,7 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
             <i class="dot" style="background:var(--s1)"></i>
             <span class="dr-n">MOOV AI</span>
             <span class="dr-a num">&yen;4,083</span>
-            <span class="dr-p num">8.2%</span>
+            <span class="dr-p num">11.5%</span>
             <span class="chev" aria-hidden="true"></span>
           </button>
           <div class="dr-body" id="d-moov" hidden>
@@ -632,26 +580,20 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
     </div>
   </div>
 
-</div><div id="sp-monthly" role="tabpanel" aria-labelledby="sv-monthly" hidden><div class="tbl-wrap"><table><thead><tr><th><span data-copy-en="Platform" data-copy-zh="平台">Platform</span></th><th><span data-copy-en="Monthly equivalent" data-copy-zh="月度等值">Monthly equivalent</span></th><th><span data-copy-en="Annualised" data-copy-zh="年化等值">Annualised</span></th><th><span data-copy-en="Basis" data-copy-zh="口径">Basis</span></th></tr></thead><tbody><tr><td>Gemini</td><td>¥14,374.94</td><td>¥172,499.33</td><td><span data-copy-en="USD 26.64 × 7.10 × 76 seats; full Workspace cost." data-copy-zh="USD 26.64 × 7.10 × 76 席位；Workspace 全额费用。">USD 26.64 × 7.10 × 76 seats; full Workspace cost.</span></td></tr><tr><td>Copilot</td><td>¥8,352.00</td><td>¥100,224.00</td><td><span data-copy-en="¥2,784/year × 36 seats ÷ 12." data-copy-zh="¥2,784/年 × 36 席位 ÷ 12。">¥2,784/year × 36 seats ÷ 12.</span></td></tr><tr><td>Qoder Work</td><td>¥22,979.40</td><td>¥275,752.80</td><td><span data-copy-en="¥114,897 ÷ 5 calendar months; historical payment average, not a fixed subscription." data-copy-zh="¥114,897 ÷ 5 个自然月；历史付款均值，并非固定订阅费。">¥114,897 ÷ 5 calendar months; historical payment average, not a fixed subscription.</span></td></tr><tr><td>MOOV AI</td><td>¥4,083.33</td><td>¥49,000.00</td><td><span data-copy-en="¥49,000 ÷ 12; platform fee only." data-copy-zh="¥49,000 ÷ 12；仅平台费用。">¥49,000 ÷ 12; platform fee only.</span></td></tr><tr><td><span data-copy-en="Combined reference" data-copy-zh="合并参考值">Combined reference</span></td><td>¥49,789.68</td><td>¥597,476.13</td><td><span data-copy-en="Mixed bases; calculated before rounding. Excludes MOOV AI model and operating costs." data-copy-zh="混合口径；未四舍五入前汇总。不含 MOOV AI 模型及运营费用。">Mixed bases; calculated before rounding. Excludes MOOV AI model and operating costs.</span></td></tr></tbody></table></div></div>  <div class="sec-head" style="margin-bottom:-16px">
+</div><div id="sp-monthly" role="tabpanel" aria-labelledby="sv-monthly" hidden><div class="tbl-wrap"><table><thead><tr><th><span data-copy-en="Platform" data-copy-zh="平台">Platform</span></th><th><span data-copy-en="Monthly equivalent" data-copy-zh="月度等值">Monthly equivalent</span></th><th><span data-copy-en="Annualised" data-copy-zh="年化等值">Annualised</span></th><th><span data-copy-en="Basis" data-copy-zh="口径">Basis</span></th></tr></thead><tbody><tr><td>Copilot</td><td>¥8,352.00</td><td>¥100,224.00</td><td><span data-copy-en="¥2,784/year × 36 seats ÷ 12." data-copy-zh="¥2,784/年 × 36 席位 ÷ 12。">¥2,784/year × 36 seats ÷ 12.</span></td></tr><tr><td>Qoder Work</td><td>¥22,979.40</td><td>¥275,752.80</td><td><span data-copy-en="¥114,897 ÷ 5 calendar months; historical payment average, not a fixed subscription." data-copy-zh="¥114,897 ÷ 5 个自然月；历史付款均值，并非固定订阅费。">¥114,897 ÷ 5 calendar months; historical payment average, not a fixed subscription.</span></td></tr><tr><td>MOOV AI</td><td>¥4,083.33</td><td>¥49,000.00</td><td><span data-copy-en="¥49,000 ÷ 12; platform fee only." data-copy-zh="¥49,000 ÷ 12；仅平台费用。">¥49,000 ÷ 12; platform fee only.</span></td></tr><tr><td><span data-copy-en="Combined reference" data-copy-zh="合并参考值">Combined reference</span></td><td>¥35,414.73</td><td>¥424,976.80</td><td><span data-copy-en="Mixed bases; calculated before rounding. Excludes MOOV AI model and operating costs." data-copy-zh="混合口径；未四舍五入前汇总。不含 MOOV AI 模型及运营费用。">Mixed bases; calculated before rounding. Excludes MOOV AI model and operating costs.</span></td></tr></tbody></table></div></div>  <div class="sec-head" style="margin-bottom:-16px">
     <span class="eyebrow">Findings</span>
   </div>
 
-  <div class="grid g2">
+  <div class="grid">
     <div class="card pad" style="border-top:3px solid var(--s2)">
       <span class="eyebrow">Finding 01</span>
       <h3 style="margin:10px 0 8px">Match the tool to the task</h3>
       <p class="sub">Qoder is used for software development and automation. Routine drafting and knowledge queries may be suitable for MOOV AI; confirm output quality before moving a workflow.</p>
     </div>
-    <div class="card pad" style="border-top:3px solid var(--s4)">
-      <span class="eyebrow">Finding 02</span>
-      <h3 style="margin:10px 0 8px">Review office-assistant licences at renewal</h3>
-      <p class="sub">Gemini (76 seats) and Copilot (36 seats) provide similar assistance within different office suites. Renewal decisions should consider actual use, user overlap and the continued need for the underlying licences.</p>
-      <p class="sub" style="margin-top:10px">IT to review the actual user overlap and usage before renewal.</p>
-    </div>
   </div>
 
 <div id="sp-forecast" role="region" aria-label="Future budget"><div class="card"><div class="pad"><span class="eyebrow"><span data-copy-en="Cost model" data-copy-zh="成本测算">Cost model</span></span><h3 style="margin:10px 0"><span data-copy-en="Future budget scenarios" data-copy-zh="未来预算情景">Future budget scenarios</span></h3><p class="sub"><span data-copy-en="Editable planning assumptions, not approved budgets. Platform populations are independent; no company-wide headcount is assumed." data-copy-zh="以下为可调整的测算假设，并非已批准预算。各平台人数独立设置，不以公司总人数直接推算。">Editable planning assumptions, not approved budgets. Platform populations are independent; no company-wide headcount is assumed.</span></p></div><div class="calc-grid"><div class="calc-inputs">
-<div class="calc-row"><label for="gSeats"><span data-copy-en="Gemini paid seats" data-copy-zh="Gemini 付费席位">Gemini paid seats</span></label><input type="number" id="gSeats" min="0" step="1" value="76"></div><div class="calc-row"><label for="cSeats"><span data-copy-en="Copilot paid seats" data-copy-zh="Copilot 付费席位">Copilot paid seats</span></label><input type="number" id="cSeats" min="0" step="1" value="36"></div>
+<div class="calc-row"><label for="cSeats"><span data-copy-en="Copilot paid seats" data-copy-zh="Copilot 付费席位">Copilot paid seats</span></label><input type="number" id="cSeats" min="0" step="1" value="36"></div>
 <hr class="rule" style="margin:16px 0"><h4>Qoder Work</h4>
 <div class="calc-row"><label for="qSub"><span data-copy-en="Seat subscription budget · RMB/month" data-copy-zh="席位订阅预算 · 元/月">Seat subscription budget · RMB/month</span></label><input type="number" id="qSub" min="0" step="0.01" placeholder="—"></div><div class="calc-row"><label for="qCredits"><span data-copy-en="Project credit budget · RMB/month" data-copy-zh="项目额度预算 · 元/月">Project credit budget · RMB/month</span></label><input type="number" id="qCredits" min="0" step="0.01" placeholder="—"></div>
 <p class="fine"><span data-copy-en="Enter the total subscription budget for planned Qoder seats and the total monthly credits allocated to projects. Blank means not provided; enter 0 only if no budget is planned." data-copy-zh="填写计划席位的订阅总预算，以及各项目每月额度预算之和。留空表示未提供；明确不安排预算时才填写 0。">Enter the total subscription budget for planned Qoder seats and the total monthly credits allocated to projects. Blank means not provided; enter 0 only if no budget is planned.</span></p>
@@ -660,7 +602,7 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
 <div class="calc-row"><label for="uConv"><span data-copy-en="Conversations per user / month" data-copy-zh="人均每月对话次数">Conversations per user / month</span><output id="oConv">100</output></label><input type="range" id="uConv" min="10" max="300" step="10" value="100"></div>
 <p class="fine"><span data-copy-en="100 users is an illustrative starting point. Company headcount is roughly estimated at 300 and is not a confirmed active-user count." data-copy-zh="100 人仅为示例起点。公司人数粗略估计约为 300 人，并非已确认的活跃用户数。">100 users is an illustrative starting point. Company headcount is roughly estimated at 300 and is not a confirmed active-user count.</span></p></div><div class="calc-out">
 <div class="co-head"><span></span><span><span data-copy-en="Platform" data-copy-zh="平台">Platform</span></span><span class="r"><span data-copy-en="Per month" data-copy-zh="每月">Per month</span></span><span class="r"><span data-copy-en="Annualised" data-copy-zh="年化">Annualised</span></span><span></span></div>
-<div class="co-row"><i class="dot" style="background:var(--s2)"></i><div class="co-n">Qoder Work<span data-copy-en="seat subscriptions + project credits" data-copy-zh="席位订阅＋项目额度">seat subscriptions + project credits</span></div><div class="co-m num" id="cQoderM">—</div><div class="co-y num" id="cQoderU">—</div><div class="co-bar"><span id="bQoder" style="background:var(--s2)"></span></div></div><div class="co-row"><i class="dot" style="background:var(--s4)"></i><div class="co-n">Copilot<span data-copy-en="paid seats × subscription rate" data-copy-zh="付费席位 × 订阅单价">paid seats × subscription rate</span></div><div class="co-m num" id="cCopilotM">—</div><div class="co-y num" id="cCopilotU">—</div><div class="co-bar"><span id="bCopilot" style="background:var(--s4)"></span></div></div><div class="co-row"><i class="dot" style="background:var(--s3)"></i><div class="co-n">Gemini<span data-copy-en="Workspace licences in full" data-copy-zh="Workspace 许可证全额">Workspace licences in full</span></div><div class="co-m num" id="cGeminiM">—</div><div class="co-y num" id="cGeminiU">—</div><div class="co-bar"><span id="bGemini" style="background:var(--s3)"></span></div></div><div class="co-row"><i class="dot" style="background:var(--s1)"></i><div class="co-n">MOOV AI<span data-copy-en="platform fee + model scenario" data-copy-zh="平台费＋模型情景">platform fee + model scenario</span></div><div class="co-m num" id="cMoovM">—</div><div class="co-y num" id="cMoovU">—</div><div class="co-bar"><span id="bMoov" style="background:var(--s1)"></span></div></div>
+<div class="co-row"><i class="dot" style="background:var(--s2)"></i><div class="co-n">Qoder Work<span data-copy-en="seat subscriptions + project credits" data-copy-zh="席位订阅＋项目额度">seat subscriptions + project credits</span></div><div class="co-m num" id="cQoderM">—</div><div class="co-y num" id="cQoderU">—</div><div class="co-bar"><span id="bQoder" style="background:var(--s2)"></span></div></div><div class="co-row"><i class="dot" style="background:var(--s4)"></i><div class="co-n">Copilot<span data-copy-en="paid seats × subscription rate" data-copy-zh="付费席位 × 订阅单价">paid seats × subscription rate</span></div><div class="co-m num" id="cCopilotM">—</div><div class="co-y num" id="cCopilotU">—</div><div class="co-bar"><span id="bCopilot" style="background:var(--s4)"></span></div></div><div class="co-row"><i class="dot" style="background:var(--s1)"></i><div class="co-n">MOOV AI<span data-copy-en="platform fee + model scenario" data-copy-zh="平台费＋模型情景">platform fee + model scenario</span></div><div class="co-m num" id="cMoovM">—</div><div class="co-y num" id="cMoovU">—</div><div class="co-bar"><span id="bMoov" style="background:var(--s1)"></span></div></div>
 <div class="budget-total"><p><span data-copy-en="Scenario total" data-copy-zh="情景合计">Scenario total</span></p><strong id="budgetTotal">—</strong><p class="fine" id="budgetStatus"></p></div>
 <p class="fine" style="margin:16px 0"><span data-copy-en="Qoder calculation: subscription budget + project credit budget. The historical ¥547.13 per current seat is a reference only and is not used to project costs." data-copy-zh="Qoder 公式：订阅预算＋项目额度预算。历史按当前席位分摊的 ¥547.13 仅供参考，不参与预算外推。">Qoder calculation: subscription budget + project credit budget. The historical ¥547.13 per current seat is a reference only and is not used to project costs.</span></p>
 <p class="fine"><span data-copy-en="MOOV AI assumes 4,724 input and 2,362 output tokens per conversation (7,086 total), at ¥0.50/¥2.00 per million tokens. This input/output split is a scenario assumption, not a verified measurement. Infrastructure, operations and knowledge maintenance are excluded." data-copy-zh="MOOV AI 假设每次对话输入 4,724、输出 2,362 tokens（合计 7,086），每百万 tokens 输入／输出价格为 ¥0.50／¥2.00。输入输出比例属于情景假设，尚非已核实测量值。不含基础设施、运维和知识维护。">MOOV AI assumes 4,724 input and 2,362 output tokens per conversation (7,086 total), at ¥0.50/¥2.00 per million tokens. This input/output split is a scenario assumption, not a verified measurement. Infrastructure, operations and knowledge maintenance are excluded.</span></p>
@@ -670,7 +612,6 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
     <div class="grid g2" style="gap:22px">
       <div>
         <div class="kv"><span class="k">USD / CNY</span><span class="v">7.10</span></div>
-        <div class="kv"><span class="k">Gemini</span><span class="v">USD 26.64 &times; 7.10 &times; 76 seats</span></div>
         <div class="kv"><span class="k">Copilot</span><span class="v">&yen;2,784 / 12 &times; 36 seats</span></div>
         <div class="kv"><span class="k">Qoder</span><span class="v">&yen;114,897 / 5 months</span></div>
         <div class="kv"><span class="k">MOOV AI</span><span class="v">&yen;49,000 / 12 months</span></div>
@@ -678,21 +619,18 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
         <div class="kv"><span data-copy-en="Headcount: approximately 300 (rough estimate); AD account count is not employee or active-user count." data-copy-zh="公司人数：约 300 人（粗略估计）；AD 账号数不等于员工数或活跃用户数。">Headcount: approximately 300 (rough estimate); AD account count is not employee or active-user count.</span></div>
       </div>
       <div>
-        <p class="fine"><strong>Gemini seat attribution.</strong> The 76 seats are Google Workspace
-          licences that include Gemini. Some were opened for Drive, Meet or Gmail rather than for
-          Gemini, so this is the upper bound of Gemini cost, counted in full here.</p>
-        <p class="fine" style="margin-top:10px"><strong>Qoder averaging.</strong> Net payments from 16 April to 31 August are divided by five calendar months. April is partial. July–August payments averaged ¥42,668/month; top-up timing does not establish the underlying consumption rate.</p>
+        <p class="fine"><strong>Qoder averaging.</strong> Net payments from 16 April to 31 August are divided by five calendar months. April is partial. July–August payments averaged ¥42,668/month; top-up timing does not establish the underlying consumption rate.</p>
         <p class="fine" style="margin-top:10px"><strong>Bailian token rates.</strong> &yen;0.0005 and
           &yen;0.002 per 1,000 tokens are confirmed from the billing ledger for the standard tier.</p>
-        <p class="fine" style="margin-top:10px"><strong>Seat overlap.</strong> 154 licences across
-          three vendors; how many individuals hold two or three is not yet audited.</p>
+        <p class="fine" style="margin-top:10px"><strong>Seat overlap.</strong> 78 licences across
+          two vendors; how many individuals hold both is not yet audited.</p>
       </div>
     </div>
   </details>
 
   <p class="fine" style="margin-top:-6px">Sources &mdash; Qoder order ledger, April&ndash;August 2026
     (41 paid orders, net of one refund). Alibaba Bailian billing ledger. Kymo platform dashboard,
-    1 July &ndash; 9 September 2026. Google Workspace and Microsoft 365 subscription terms. Prepared
+    1 July &ndash; 9 September 2026. Microsoft 365 subscription terms. Prepared
     by the IT Department, MOOV Logistics &mdash; September 2026. Internal use only.</p>
 
 </section>
@@ -1201,7 +1139,7 @@ footer.site{border-top:1px solid var(--rule); margin-top:8px; padding:22px 0 40p
           <tr><td class="rowh"><span data-copy-en="Bailian model pricing" data-copy-zh="百炼模型计费单价">Bailian model pricing</span></td>
             <td><span data-copy-en="Pilot billing indicates qwen-plus rates of ¥0.50 for input and ¥2.00 for output per million tokens. IT to confirm the applicable rates for qwen3-vl-plus and glm-4.7 with Alibaba; current estimates use reference prices." data-copy-zh="按试点账单推算，qwen-plus 每百万 token 输入／输出费用分别为 ¥0.50／¥2.00。qwen3-vl-plus 和 glm-4.7 目前采用参考价格估算，实际适用单价由 IT 向阿里确认。">Pilot billing indicates qwen-plus rates of ¥0.50 for input and ¥2.00 for output per million tokens. IT to confirm the applicable rates for qwen3-vl-plus and glm-4.7 with Alibaba; current estimates use reference prices.</span></td><td>IT</td></tr>
           <tr><td class="rowh"><span data-copy-en="Users with multiple licences" data-copy-zh="跨平台重复授权">Users with multiple licences</span></td>
-            <td><span data-copy-en="The three platforms have 154 licences in total. IT to reconcile the user lists and identify employees with licences on more than one platform." data-copy-zh="三个平台合计 154 个许可证。由 IT 核对用户清单，确认同时持有多个平台授权的人员及数量。">The three platforms have 154 licences in total. IT to reconcile the user lists and identify employees with licences on more than one platform.</span></td><td>IT</td></tr>
+            <td><span data-copy-en="The two seat-based platforms have 78 licences in total. IT to reconcile the user lists and identify employees with licences on more than one platform." data-copy-zh="两个按席位计费的平台合计 78 个许可证。由 IT 核对用户清单，确认同时持有多个平台授权的人员及数量。">The two seat-based platforms have 78 licences in total. IT to reconcile the user lists and identify employees with licences on more than one platform.</span></td><td>IT</td></tr>
           <tr><td class="rowh"><span data-copy-en="AI Policy approval" data-copy-zh="AI 使用政策审批">AI Policy approval</span></td>
             <td><span data-copy-en="The draft is complete and awaiting approval. IT and Legal to coordinate the review and confirm the release date." data-copy-zh="政策草案已完成，尚待审批。由 IT 与法务协调审核，并确认发布时间。">The draft is complete and awaiting approval. IT and Legal to coordinate the review and confirm the release date.</span></td><td>IT / Legal</td></tr>
         </tbody>
@@ -1295,8 +1233,8 @@ ol.tl li.now b{color:var(--accent)}
 ol.tl span:not(.tl-d){display:block; font-size:11.5px; color:var(--ink-2); line-height:1.45}
 
 /* ---------- vendor cards ---------- */
-.vgrid{display:grid; gap:16px; grid-template-columns:repeat(4,minmax(0,1fr))}
-@media(max-width:1160px){.vgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.vgrid{display:grid; gap:16px; grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:1160px){.vgrid{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:640px){.vgrid{grid-template-columns:minmax(0,1fr)}}
 .vcard{background:var(--panel); border:1px solid var(--rule); border-top:3px solid var(--vc);
   border-radius:5px; box-shadow:var(--shadow); padding:18px 18px 0; display:flex; flex-direction:column}
@@ -1586,14 +1524,14 @@ html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3,html[lang="zh"] h4{lett
     });
   });
 
-  /* ---------- four-vendor cost model ---------- */
+  /* ---------- three-vendor cost model ---------- */
   var MOOV_FIXED=49000/12, TIN=4724, TOUT=2362, PIN=0.5, POUT=2;
   function amount(id){var el=document.getElementById(id);return el.value.trim()===''||!el.validity.valid?null:Number(el.value);}
   function money(n){return n===null?'—':'¥'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
   function calc(){
     var u=+document.getElementById('uUsers').value,c=+document.getElementById('uConv').value;
-    var qs=amount('qSub'),qc=amount('qCredits'),g=amount('gSeats'),cp=amount('cSeats');
-    var m={Qoder:qs===null||qc===null?null:qs+qc,Copilot:cp===null?null:cp*232,Gemini:g===null?null:g*26.64*7.10,Moov:MOOV_FIXED+u*c*(TIN*PIN+TOUT*POUT)/1e6};
+    var qs=amount('qSub'),qc=amount('qCredits'),cp=amount('cSeats');
+    var m={Qoder:qs===null||qc===null?null:qs+qc,Copilot:cp===null?null:cp*232,Moov:MOOV_FIXED+u*c*(TIN*PIN+TOUT*POUT)/1e6};
     var max=Math.max(...Object.values(m).filter(v=>v!==null),1);
     document.getElementById('oUsers').textContent=u;document.getElementById('oConv').textContent=c;
     Object.entries(m).forEach(([key,v])=>{document.getElementById('c'+key+'M').textContent=money(v);document.getElementById('c'+key+'U').textContent=money(v===null?null:v*12);document.getElementById('b'+key).style.width=(v===null?0:v/max*100)+'%';});
@@ -1602,7 +1540,7 @@ html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3,html[lang="zh"] h4{lett
     document.getElementById('budgetTotal').textContent=complete?money(sum)+(zh?' / 月':' / month'):'—';
     document.getElementById('budgetStatus').textContent=complete?(zh?'年化：':'Annualised: ')+money(sum*12):(zh?'请补齐预算输入后查看合计。留空不按零处理。':'Complete all budget inputs to view the total. Blank entries are not treated as zero.');
   }
-  ['gSeats','cSeats','qSub','qCredits','uUsers','uConv'].forEach(id=>document.getElementById(id).addEventListener('input',calc));
+  ['cSeats','qSub','qCredits','uUsers','uConv'].forEach(id=>document.getElementById(id).addEventListener('input',calc));
   window.__recalc = calc;
   calc();
 })();
@@ -1625,22 +1563,16 @@ html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3,html[lang="zh"] h4{lett
 [`Concentration`,`集中度`],
 [`of all AI spend sits on one platform`,`的 AI 支出集中在一个平台上`],
 [`MOOV AI share`,`MOOV AI 占比`],
-[`The four solutions`,`四套方案`],
+[`The three solutions`,`三套方案`],
 [`Cards`,`卡片`],
 [`Comparison table`,`对比表`],
-[`Gemini`,`Gemini`],
-[`Google · bundled with Workspace`,`Google · 随 Workspace 捆绑`],
-[`Google's assistant, included in the Workspace licences we already hold.`,`Google 的助手，包含在我们已购买的 Workspace 授权里。`],
 [`What it does`,`能做什么`],
 [`Drafting and summarising in Docs and Gmail, meeting notes in Meet, quick Q&amp;A in the browser.`,`在 Docs 和 Gmail 里起草与摘要，在 Meet 里生成会议记录，在浏览器里快速问答。`],
 [`Best fit`,`适合谁`],
-[`People whose working day runs inside Google Workspace.`,`整天在 Google Workspace 里工作的人。`],
 [`Billed as`,`计费方式`],
 [`Monthly subscription per seat, billed on the fiscal year.`,`按席位月度订阅，按财年结算。`],
 [`Data &amp; security`,`数据与安全`],
-[`Processed in Google Cloud under the Workspace terms; governed by Google's admin console, not ours.`,`在 Google Cloud 按 Workspace 条款处理；由 Google 的管理控制台管辖，不在我们手里。`],
 [`Watch out for`,`需要注意`],
-[`We pay per seat whether or not Gemini is used; attribution is unclear.`,`无论是否使用 Gemini，席位费照付；归属难以厘清。`],
 [`Copilot`,`Copilot`],
 [`Microsoft · M365 and Teams`,`Microsoft · M365 与 Teams`],
 [`Microsoft's assistant, embedded in the M365 estate most of MOOV already works in.`,`Microsoft 的助手，内嵌在 MOOV 大多数人日常使用的 M365 环境中。`],
@@ -1648,7 +1580,6 @@ html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3,html[lang="zh"] h4{lett
 [`People whose working day runs inside M365 — and who handle material we would rather keep in the Microsoft tenant.`,`整天在 M365 里工作的人 —— 以及处理那些我们更希望留在 Microsoft 租户内的材料的人。`],
 [`Annual subscription per seat.`,`按席位年度订阅。`],
 [`Inside the Microsoft tenant we already run — the strongest posture of the three external tools.`,`在我们自己已有的 Microsoft 租户内 —— 三个外部工具里安全态势最好的。`],
-[`Highest per-seat price of the two suites, and it overlaps Gemini.`,`两套办公套件中席位单价最高，而且与 Gemini 功能重叠。`],
 [`Qoder Work`,`Qoder Work`],
 [`Alibaba · credit-metered`,`阿里巴巴 · 按额度计量`],
 [`Alibaba's agent platform for doing the work, not describing it — it plans a task, then executes it end to end.`,`阿里的智能体平台，负责把活干完而不是描述怎么干 —— 它先规划任务，再端到端执行。`],
@@ -1665,15 +1596,13 @@ html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3,html[lang="zh"] h4{lett
 [`Fixed annual platform subscription plus metered model tokens. The subscription does not change with headcount.`,`固定的年度平台订阅费，加上按量计费的模型 token。订阅费不随人数变化。`],
 [`On-premise in Singapore. Teams SSO, RBAC, full audit log; only the inference call leaves.`,`本地部署在新加坡。Teams 单点登录、基于角色的权限、完整审计日志；只有推理请求会出境。`],
 [`Not a coding tool. Knowledge coverage is still thin — two bases live.`,`不是写代码的工具。知识覆盖仍然很薄 —— 只有两个知识库上线。`],
-[`The fifth category`,`第五类`],
+[`The fourth category`,`第四类`],
 [`There is a layer underneath this that we cannot see`,`这四家底下还有一层，我们看不见`],
 [`Beyond the four tools in this table, staff also reach for free consumer AI — Doubao, the DeepSeek web app, the assistant built into DingTalk. There is no account list, no usage record and no way to know what has been pasted into them.`,`除了表里这四个工具，同事们还会用免费的消费级 AI —— 豆包、DeepSeek 网页版、钉钉内置的助手。没有账号清单、没有使用记录，也无从知道有什么内容被粘贴了进去。`],
-[`<i class="dot" style="background:var(--s3);display:inline-block;margin-right:7px"></i>Gemini`,`<i class="dot" style="background:var(--s3);display:inline-block;margin-right:7px"></i>Gemini`],
 [`<i class="dot" style="background:var(--s4);display:inline-block;margin-right:7px"></i>Copilot`,`<i class="dot" style="background:var(--s4);display:inline-block;margin-right:7px"></i>Copilot`],
 [`<i class="dot" style="background:var(--s2);display:inline-block;margin-right:7px"></i>Qoder Work`,`<i class="dot" style="background:var(--s2);display:inline-block;margin-right:7px"></i>Qoder Work`],
 [`<i class="dot" style="background:var(--s1);display:inline-block;margin-right:7px"></i>MOOV AI`,`<i class="dot" style="background:var(--s1);display:inline-block;margin-right:7px"></i>MOOV AI`],
 [`Position`,`定位`],
-[`Assistant inside Google Workspace`,`Google Workspace 内的助手`],
 [`Assistant inside Microsoft 365`,`Microsoft 365 内的助手`],
 [`Agentic platform that executes work`,`能动手干活的智能体平台`],
 [`Company-level AI front door`,`公司级 AI 入口`],
@@ -1687,7 +1616,6 @@ html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3,html[lang="zh"] h4{lett
 [`People living in Word, Outlook, Excel, Teams`,`常驻 Word、Outlook、Excel、Teams 的人`],
 [`MOOV&nbsp;OS development, complex automation, prototyping`,`MOOV&nbsp;OS 开发、复杂自动化、快速原型`],
 [`Everyone — routine drafting, policy and SOP questions, department agents`,`所有人 —— 日常文字工作、制度与 SOP 查询、部门智能体`],
-[`Google Cloud, Workspace terms. Governed in Google's console, not ours`,`Google Cloud，适用 Workspace 条款。在 Google 的控制台管辖，不在我们这边`],
 [`Inside our own Microsoft tenant — strongest of the three external tools`,`在我们自己的 Microsoft 租户内 —— 三个外部工具里最稳妥的`],
 [`Alibaba Cloud. Code and task context leave; reads local files; <strong>no MOOV-side audit trail</strong>`,`阿里云。代码和任务上下文会出境；可读取本机文件；<strong>MOOV 侧没有审计日志</strong>`],
 [`On-premise Singapore. Teams SSO, RBAC, full audit log. <strong>Only the inference call leaves</strong>`,`新加坡本地部署。Teams 单点登录、角色权限、完整审计日志。<strong>只有推理请求出境</strong>`],
@@ -1702,8 +1630,7 @@ html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3,html[lang="zh"] h4{lett
 [`¥547 / month`,`¥547 / 月`],
 [`¥14–24 / month<br><span class="fine">at 300 staff, incl. tokens</span>`,`¥14–24 / 月<br><span class="fine">按 300 人计，含 token</span>`],
 [`Main risk`,`主要风险`],
-[`Paid per seat whether used or not; overlaps Copilot`,`不管用不用都按席位付费；与 Copilot 重叠`],
-[`Highest seat price; overlaps Gemini`,`席位单价最高；与 Gemini 重叠`],
+[`Paid per seat whether used or not; actual usage not yet reviewed`,`不管用不用都按席位付费；实际使用情况尚未评估`],
 [`Unbounded spend — consumption, not seats, drives the bill`,`支出没有上限 —— 驱动账单的是用量，不是席位`],
 [`Not a coding tool. Answer quality limited by knowledge-base coverage`,`不是写代码的工具。回答质量受限于知识库覆盖面`],
 [`Purpose of this session`,`本次会议的目的`],
@@ -1717,8 +1644,7 @@ html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3,html[lang="zh"] h4{lett
 [`We would like to agree a <strong>chargeback principle</strong>: consumption driven by a named business requirement is attributed to that department, and IT's own number is what remains.`,`我们希望确立一条<strong>成本分摊原则</strong>：由具名业务需求驱动的消耗归到对应部门，剩下的才算 IT 自己的数字。`],
 [`02 / Spend`,`02 / 支出`],
 [`Monthly spend by vendor`,`各供应商月度支出`],
-[`What the four solutions cost us each month`,`这四套方案每个月花我们多少钱`],
-[`Everything converted to RMB per month: Gemini at USD/CNY 7.10, Copilot from its annual subscription, Qoder as the five-month April–August average, MOOV AI as its annual subscription divided by twelve. Select a vendor to open its detail.`,`全部折算为人民币每月：Gemini 按美元兑人民币 7.10 换算，Copilot 由年度订阅折算，Qoder 取 4 月至 8 月五个月均值，MOOV AI 取年度订阅除以十二。点击某家可展开明细。`],
+[`What the three solutions cost us each month`,`这三套方案每个月花我们多少钱`],
 [`PER MONTH`,`每月`],
 [`¥597,476 a year at today's populations. MOOV AI's share is its fixed subscription.`,`按目前人数计算，全年 ¥597,476。MOOV AI 的份额即其固定订阅费。`],
 [`Credits are consumed on use, so there is no ceiling. Actual spend April to August 2026 was <strong>¥114,897</strong> net of one refund — an average of <strong>¥22,979 a month</strong>, but very unevenly spread:`,`额度按使用量扣减，因此没有上限。2026 年 4 月至 8 月的实际支出为 <strong>¥114,897</strong>（已扣除一笔退款），平均 <strong>每月 ¥22,979</strong>，但分布极不均匀：`],
@@ -1733,7 +1659,6 @@ html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3,html[lang="zh"] h4{lett
 [`<span class="k">In RMB at 7.10</span><span class="v">¥189.14 / user / month</span>`,`<span class="k">按 7.10 折人民币</span><span class="v">¥189.14 / 人 / 月</span>`],
 [`<span class="k">Seats</span><span class="v">76</span>`,`<span class="k">席位数</span><span class="v">76</span>`],
 [`<span class="k">Monthly</span><span class="v">¥14,375</span>`,`<span class="k">每月</span><span class="v">¥14,375</span>`],
-[`These are Workspace licences that include Gemini. Some were opened for Drive, Meet or Gmail rather than for Gemini, so this figure is the upper bound of Gemini cost — counted in full here.`,`这些是包含 Gemini 的 Workspace 授权。其中一部分是为了 Drive、Meet 或 Gmail 而开通的，并非为了 Gemini，所以这个数字是 Gemini 成本的上限 —— 这里按全额计入。`],
 [`<span class="k">List price</span><span class="v">¥2,784 / user / year</span>`,`<span class="k">标价</span><span class="v">¥2,784 / 人 / 年</span>`],
 [`<span class="k">Monthly equivalent</span><span class="v">¥232.00 / user / month</span>`,`<span class="k">折合每月</span><span class="v">¥232.00 / 人 / 月</span>`],
 [`<span class="k">Seats</span><span class="v">36</span>`,`<span class="k">席位数</span><span class="v">36</span>`],
@@ -1750,7 +1675,6 @@ html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3,html[lang="zh"] h4{lett
 [`Qoder is the most capable and the most expensive. No rule currently states which class of task belongs on which tier. Without one, part of the work running on Qoder is work a far cheaper platform could have done.`,`Qoder 能力最强，单价也最高。公司目前没有规定哪一类任务应当用哪一档工具。在缺少规则的情况下，Qoder 上运行的工作中，必然有一部分是更便宜的平台就能完成的。`],
 [`Finding 02`,`发现 02`],
 [`We run two overlapping office assistants`,`我们同时养着两个功能重叠的办公助手`],
-[`Gemini (76 seats) and Copilot (36 seats) do substantially the same job in two different office suites.`,`Gemini（76 席）和 Copilot（36 席）在两套不同的办公软件里做着基本相同的事。`],
 [`There may be good reasons: the suites are separate purchases and the populations may not overlap. But at renewal it should be a decision, not a default. IT can produce the actual usage split.`,`这可能有合理原因：两套办公软件是分开采购的，使用人群也未必重合。但到续约时，这应当是一个经过判断的决定，而不是默认延续。IT 可以提供实际的使用分布。`],
 [`Platform`,`平台`],
 [`Per month`,`每月`],
@@ -1789,25 +1713,21 @@ html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3,html[lang="zh"] h4{lett
 [`Cost model`,`成本测算`],
 [`What would each platform cost at a given scale?`,`在给定规模下各平台要花多少钱？`],
 [`Set a population and a usage intensity, and each platform is priced on its own commercial model. All figures RMB per month.`,`设定人数和使用强度，每个平台按各自的商业模式计价。所有数字均为人民币每月。`],
-[`Gemini and Copilot are per-seat subscriptions, so their cost is set by the population alone. Qoder is priced at its observed consumption per user. MOOV AI is a fixed subscription plus model tokens.`,`Gemini 和 Copilot 是按席位订阅，成本只取决于人数。Qoder 按其实测的人均消耗计价。MOOV AI 是固定订阅加模型 token。`],
 [`<span class="k">Token rates — qwen-plus</span><span class="v">¥0.50 in · ¥2.00 out per M</span>`,`<span class="k">token 单价 —— qwen-plus</span><span class="v">每百万 入 ¥0.50 · 出 ¥2.00</span>`],
 [`Per user`,`人均`],
 [`Qoder Work<span>credits, at observed intensity</span>`,`Qoder Work<span>额度制，按实测强度</span>`],
 [`Copilot<span>per seat, usage-independent</span>`,`Copilot<span>按席位，与用量无关</span>`],
-[`Gemini<span>per seat, usage-independent</span>`,`Gemini<span>按席位，与用量无关</span>`],
 [`MOOV AI<span>fixed subscription + tokens</span>`,`MOOV AI<span>固定订阅 + token</span>`],
 [`Assumptions &amp; sources`,`假设与数据来源`],
 [`<span class="k">USD / CNY</span><span class="v">7.10</span>`,`<span class="k">美元 / 人民币</span><span class="v">7.10</span>`],
-[`<span class="k">Gemini</span><span class="v">USD 26.64 × 7.10 × 76 seats</span>`,`<span class="k">Gemini</span><span class="v">USD 26.64 × 7.10 × 76 席</span>`],
 [`<span class="k">Copilot</span><span class="v">¥2,784 / 12 × 36 seats</span>`,`<span class="k">Copilot</span><span class="v">¥2,784 / 12 × 36 席</span>`],
 [`<span class="k">Qoder</span><span class="v">¥114,897 / 5 months</span>`,`<span class="k">Qoder</span><span class="v">¥114,897 / 5 个月</span>`],
 [`<span class="k">MOOV AI</span><span class="v">¥49,000 / 12 months</span>`,`<span class="k">MOOV AI</span><span class="v">¥49,000 / 12 个月</span>`],
 [`<span class="k">Headcount</span><span class="v">300 staff · 433 AD accounts</span>`,`<span class="k">人数</span><span class="v">300 名员工 · 433 个 AD 账号</span>`],
-[`<strong>Gemini seat attribution.</strong> The 76 seats are Google Workspace licences that include Gemini. Some were opened for Drive, Meet or Gmail rather than for Gemini, so this is the upper bound of Gemini cost, counted in full here.`,`<strong>Gemini 席位归属。</strong>这 76 个席位是包含 Gemini 的 Google Workspace 授权。其中一部分是为 Drive、Meet 或 Gmail 开通的，并非为了 Gemini，所以这是 Gemini 成本的上限，此处按全额计入。`],
 [`<strong>Qoder averaging.</strong> ¥114,897 spent between 16 April and 31 August is divided evenly across the five months. Actual monthly spend ranged from ¥3,162 to ¥48,870; the two most recent months averaged ¥42,668, so the forward run-rate may be materially higher than the average shown here.`,`<strong>Qoder 取均值说明。</strong>4 月 16 日至 8 月 31 日共支出 ¥114,897，按五个月平均分摊。实际月度支出在 ¥3,162 到 ¥48,870 之间；最近两个月均值为 ¥42,668，因此未来的实际运行水平可能显著高于这里显示的均值。`],
 [`<strong>Bailian token rates.</strong> ¥0.0005 and ¥0.002 per 1,000 tokens are confirmed from the billing ledger for the standard tier.`,`<strong>百炼 token 单价。</strong>每千 token ¥0.0005 和 ¥0.002 已由标准档的账单台账确认。`],
-[`<strong>Seat overlap.</strong> 154 licences across three vendors; how many individuals hold two or three is not yet audited.`,`<strong>席位重叠。</strong>三家供应商合计 154 个授权；有多少人同时持有两个或三个，尚未核查。`],
-[`Sources — Qoder order ledger, April–August 2026 (41 paid orders, net of one refund). Alibaba Bailian billing ledger. Kymo platform dashboard, 1 July – 9 September 2026. Google Workspace and Microsoft 365 subscription terms. Prepared by the IT Department, MOOV Logistics — September 2026. Internal use only.`,`数据来源 —— Qoder 订单台账，2026 年 4 月至 8 月（41 笔已付订单，已扣除一笔退款）。阿里百炼账单台账。Kymo 平台数据看板，2026 年 7 月 1 日至 9 月 9 日。Google Workspace 与 Microsoft 365 订阅条款。由 MOOV Logistics IT 部门编制 —— 2026 年 9 月。仅供内部使用。`],
+[`<strong>Seat overlap.</strong> 78 licences across two vendors; how many individuals hold both is not yet audited.`,`<strong>席位重叠。</strong>两家供应商合计 78 个授权；有多少人同时持有两个，尚未核查。`],
+[`Sources — Qoder order ledger, April–August 2026 (41 paid orders, net of one refund). Alibaba Bailian billing ledger. Kymo platform dashboard, 1 July – 9 September 2026. Microsoft 365 subscription terms. Prepared by the IT Department, MOOV Logistics — September 2026. Internal use only.`,`数据来源 —— Qoder 订单台账，2026 年 4 月至 8 月（41 笔已付订单，已扣除一笔退款）。阿里百炼账单台账。Kymo 平台数据看板，2026 年 7 月 1 日至 9 月 9 日。Microsoft 365 订阅条款。由 MOOV Logistics IT 部门编制 —— 2026 年 9 月。仅供内部使用。`],
 [`03 / Qoder Work`,`03 / Qoder Work`],
 [`What Qoder Work actually is`,`Qoder Work 到底是什么`],
 [`Qoder Work is Alibaba's agentic work platform, and it carries two capabilities at once: software development and office output. Unlike an assistant that answers in a chat window, it takes a task, plans the steps, executes it — writing and running code, or producing the document — and reports back. It can also read and act on files on the user's own computer. That is why it is the most capable tool we have — and why it is metered by consumption rather than by seat.`,`Qoder Work 是阿里的智能体工作平台，同时具备两种能力：软件开发和办公文档产出。它不像那种只在对话框里作答的助手 —— 它接下任务、规划步骤、动手执行（写代码并运行，或者直接把文档做出来），然后回报结果。它还能读取并操作用户自己电脑上的文件。这正是它成为我们手上能力最强的工具的原因 —— 也是它按用量而非按席位计费的原因。`],
@@ -1980,7 +1900,6 @@ html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3,html[lang="zh"] h4{lett
 [`<span>Tier 1 &nbsp;·&nbsp; Everyone</span><b>300 staff</b>`,`<span>第一层 &nbsp;·&nbsp; 所有人</span><b>300 名员工</b>`],
 [`<b>MOOV AI</b> — chat, corporate knowledge, department agents, simple automation. <span class="mono" style="color:var(--s1)">¥4,083 / month fixed · ¥14–24 / user all-in</span>`,`<b>MOOV AI</b> —— 对话、企业知识、部门智能体、简单自动化。<span class="mono" style="color:var(--s1)">每月固定 ¥4,083 · 人均全含 ¥14–24</span>`],
 [`<span>Tier 2 &nbsp;·&nbsp; Office suite users</span><b>112 seats</b>`,`<span>第二层 &nbsp;·&nbsp; 办公套件用户</span><b>112 个席位</b>`],
-[`<b>Gemini / Copilot</b> — AI inside the documents and mail people already work in. <span class="mono" style="color:var(--s4)">¥189–232 / user / month</span>`,`<b>Gemini / Copilot</b> —— 嵌在大家本来就在用的文档和邮件里的 AI。<span class="mono" style="color:var(--s4)">人均每月 ¥189–232</span>`],
 [`<span>Tier 3 &nbsp;·&nbsp; Builders</span><b>42 seats</b>`,`<span>第三层 &nbsp;·&nbsp; 建设者</span><b>42 个席位</b>`],
 [`<b>Qoder Work</b> — agentic coding, MOOV&nbsp;OS development, complex automation. <span class="mono" style="color:var(--s2)">¥547 / user / month</span>`,`<b>Qoder Work</b> —— 智能体编程、MOOV&nbsp;OS 开发、复杂自动化。<span class="mono" style="color:var(--s2)">人均每月 ¥547</span>`],
 [`Bar width shows population, not spend. The inversion is the point: the widest tier costs ¥4,083 a month in total, and the narrowest tier costs ¥22,979.`,`条形的宽度表示人数，不是支出。这个倒挂正是重点：最宽的那一层每月总共花 ¥4,083，最窄的那一层每月花 ¥22,979。`],
@@ -1997,7 +1916,6 @@ html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3,html[lang="zh"] h4{lett
 [`<span class="k">Proposed alert</span><span class="v">¥30,000 / month</span>`,`<span class="k">建议告警线</span><span class="v">每月 ¥30,000</span>`],
 [`<span class="k">Review cadence</span><span class="v">Quarterly, with IT</span>`,`<span class="k">复核频率</span><span class="v">每季度，由 IT 牵头</span>`],
 [`Raised, not for decision today`,`仅提出，今天不做决策`],
-[`Gemini and Copilot overlap on 112 seats and ¥22,727 a month`,`Gemini 和 Copilot 在 112 个席位、每月 ¥22,727 上存在重叠`],
 [`Both are office-suite assistants doing substantially the same work in two different suites. There may be good reasons to run both — the underlying suites are separate purchases, and the seat populations may not be the same people. But the overlap is large enough that it should be a deliberate decision at renewal rather than a default. IT can produce the actual usage split if that would help.`,`两者都是办公套件助手，在两套不同的软件里做着基本相同的事。同时保留可能有合理理由 —— 底层的办公套件是分开采购的，席位人群也未必是同一批人。但重叠的规模已经大到：续约时这应当是一个经过判断的决定，而不是默认延续。如果有帮助，IT 可以提供实际的使用分布。`],
 [`Risk register`,`风险登记表`],
 [`What could go wrong, and what we are doing about it`,`哪些地方可能出问题，我们打算怎么应对`],
@@ -2035,19 +1953,14 @@ html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3,html[lang="zh"] h4{lett
 [`The 354,277 pilot tokens are not yet broken down per model, so the usage mix behind the cost scenarios is assumed rather than measured.`,`试点期的 354,277 个 token 尚未按模型拆分，因此成本情景背后的使用结构是假设的，而非实测。`],
 [`Seat overlap across vendors`,`跨供应商的席位重叠`],
 [`154 licences across three vendors; how many individuals hold two or three is not yet audited.`,`三家供应商合计 154 个授权；有多少人同时持有两个或三个，尚未核查。`],
-[`Gemini seat attribution`,`Gemini 席位归属`],
-[`Some of the 76 Workspace seats were opened for Drive, Meet or Gmail rather than Gemini. Counted in full here as the upper bound.`,`76 个 Workspace 席位中，有一部分是为 Drive、Meet 或 Gmail 开通的，并非为了 Gemini。此处按上限全额计入。`],
 [`AI Policy release`,`AI 使用政策发布`],
 [`Drafted. Sign-off needed before the company-wide announcement.`,`已起草。需在全公司宣布之前完成签发。`],
   ]);
 
 DICT.set("AI platforms in use at MOOV","MOOV 现有 AI 平台");
 DICT.set("Annualised cost estimate","年化成本估算");
-DICT.set("¥49,790 monthly equivalent, annualised using the assumptions in Spend.","按 Spend 页披露的假设折算为每月 ¥49,790，再进行年化。");
+DICT.set("¥35,415 monthly equivalent, annualised using the assumptions in Spend.","按 Spend 页披露的假设折算为每月 ¥35,415，再进行年化。");
 DICT.set("Assigned seats","已分配席位");
-DICT.set("Gemini is included in the Google Workspace licences held by MOOV.","MOOV 采购的 Google Workspace 许可证包含 Gemini。");
-DICT.set("Covered by Google Workspace terms. Administration and available controls depend on our Workspace edition and configuration.","适用 Google Workspace 条款；管理能力取决于采购版本及实际配置。");
-DICT.set("Google Workspace terms; controls depend on the purchased edition and tenant configuration.","适用 Google Workspace 条款；控制能力取决于采购版本及租户配置。");
 DICT.set("Uses the Microsoft 365 identity and permission framework. The controls enabled in our tenant should be documented.","使用 Microsoft 365 的身份和权限体系；应记录本公司租户实际启用的控制措施。");
 DICT.set("Microsoft 365 identity and permissions; subject to our tenant configuration.","使用 Microsoft 365 身份和权限体系，具体取决于本公司租户配置。");
 DICT.set("An agent tool used for software development and office automation.","用于软件开发和办公自动化的 Agent 工具。");
@@ -2070,15 +1983,13 @@ DICT.set("The AI Policy is drafted and awaits approval. We need to confirm permi
 DICT.set("Qoder supports MOOV OS development and automation requested by business departments. We propose tracking costs by project and requesting department, with Finance agreeing the allocation method.","Qoder 支持 MOOV OS 开发及业务部门提出的自动化需求。建议按项目和需求部门记录费用，并由财务共同确定分摊方法。");
 DICT.set("For discussion: which costs remain in the central IT budget, which are allocated to business projects, and who approves additional credit purchases.","讨论重点：哪些费用由 IT 统一承担，哪些归入业务项目，以及追加额度由谁审批。");
 DICT.set("Monthly cost equivalent by vendor","各供应商月度等值成本");
-DICT.set("Amounts are shown as RMB monthly equivalents: Gemini at USD/CNY 7.10; Copilot and MOOV AI annual fees divided by 12; Qoder net payments averaged across April–August. These are different cost bases, not a consolidated actual-spend statement.","统一折算为人民币月度等值：Gemini 按美元兑人民币 7.10；Copilot 和 MOOV AI 年费除以 12；Qoder 按 4–8 月净付款均值。这些口径不同，并非累计实付汇总。");
+DICT.set("Amounts are shown as RMB monthly equivalents: Copilot and MOOV AI annual fees divided by 12; Qoder net payments averaged across April–August. These are different cost bases, not a consolidated actual-spend statement.","统一折算为人民币月度等值：Copilot 和 MOOV AI 年费除以 12；Qoder 按 4–8 月净付款均值。这些口径不同，并非累计实付汇总。");
 DICT.set("¥597,476 annualised under these assumptions. MOOV AI includes its platform subscription only.","按上述假设年化为 ¥597,476。MOOV AI 仅计平台订阅。");
 DICT.set("Net payments were <strong>¥114,897</strong> from April to August 2026, averaging <strong>¥22,979 per month</strong>. Payments include subscriptions and credit top-ups; credit consumption and remaining balances require a separate usage record.","2026 年 4–8 月净付款 <strong>¥114,897</strong>，月均 <strong>¥22,979</strong>。付款包含订阅和额度充值；实际消耗及余额需结合用量记录单独核对。");
 DICT.set("At 300 users and 100 conversations per user per month, the qwen-plus scenario adds approximately ¥213/month in model fees. This excludes infrastructure, operations and knowledge maintenance.","按 300 人、每人每月 100 次对话计算，qwen-plus 情景下模型费用约增加 ¥213/月，不含基础设施、运维和知识维护费用。");
 DICT.set("Match the tool to the task","按任务选择工具");
 DICT.set("Qoder is used for software development and automation. Routine drafting and knowledge queries may be suitable for MOOV AI; confirm output quality before moving a workflow.","Qoder 用于软件开发和自动化。日常起草和知识查询可评估使用 MOOV AI，迁移前应确认输出质量。");
 DICT.set("Review office-assistant licences at renewal","续约时评估办公助手许可证");
-DICT.set("Gemini (76 seats) and Copilot (36 seats) provide similar assistance within different office suites. Renewal decisions should consider actual use, user overlap and the continued need for the underlying licences.","Gemini（76 个席位）和 Copilot（36 个席位）在不同办公套件内提供相近的辅助功能。续约时应结合实际使用、人员重叠及底层许可证需求评估。");
-DICT.set("Gemini and Copilot scale with paid seats. Qoder uses the historical payment average divided by 42 current seats as an illustrative assumption, not a quoted unit price. The conversation slider affects MOOV AI only.","Gemini 和 Copilot 按付费席位测算。Qoder 以历史月均付款除以当前 42 个席位作为示例假设，并非报价单价。对话次数滑块仅影响 MOOV AI。");
 DICT.set("<strong>Qoder averaging.</strong> Net payments from 16 April to 31 August are divided by five calendar months. April is partial. July–August payments averaged ¥42,668/month; top-up timing does not establish the underlying consumption rate.","<strong>Qoder 均值。</strong>4 月 16 日至 8 月 31 日净付款除以五个自然月，4 月并非完整月份。7–8 月平均付款为 ¥42,668/月；充值时间不能直接代表实际消耗速度。");
 DICT.set("Qoder Work at MOOV","Qoder Work 在 MOOV 的应用");
 DICT.set("We use Qoder Work for software development and office automation. It can plan and execute tasks, work with authorised local files, and generate code or documents. The following examples reflect work already carried out at MOOV.","我们使用 Qoder Work 进行软件开发和办公自动化。它可以规划并执行任务，处理获授权的本地文件，生成代码或文档。以下为 MOOV 已开展的实际工作。");
@@ -2121,7 +2032,7 @@ DICT.set("Company AI governance","公司 AI 治理");
 DICT.set("Qoder share of the monthly cost estimate","Qoder 占月度成本估算的比例");
 DICT.set("MOOV OS development and approved automation projects.","MOOV OS 开发及获批的自动化项目。");
 DICT.set("Employees using Word, Excel, Outlook and Teams.","使用 Word、Excel、Outlook 和 Teams 的员工。");
-DICT.set("Higher per-seat cost than the Workspace figure shown here; review licence requirements and usage at renewal.","所列人均费用高于 Workspace；续约时应评估许可证需求及实际使用情况。");
+DICT.set("Seat cost is fixed regardless of use; review licence requirements and usage at renewal.","席位费用与使用量无关；续约时应评估许可证需求及实际使用情况。");
 DICT.set("Considerations","注意事项");
 DICT.set("Agents use MOOV documents to answer questions on company policies and procedures.","Agent 依据 MOOV 文档回答公司政策及流程问题。");
 DICT.set("Consumer AI use","消费级 AI 使用");
@@ -2142,10 +2053,9 @@ DICT.set("4 reported on the enterprise home page; selected demo agents below","�
 DICT.set("Confirmed by the vendor","已由供应商确认");
 DICT.set("Source: Qoder order ledger. Reported net payments are ¥114,897. The ledger also records ¥7,965 in discounts and a ¥1,500 refund; confirm their treatment in the category totals. Nine voided orders are excluded.","来源：Qoder 订单台账。所列净付款为 ¥114,897；台账另记录折扣 ¥7,965 及退款 ¥1,500，需核对其在分类汇总中的处理方式。已排除九笔作废订单。");
 DICT.set("Employees using Google Docs, Gmail and Meet.","使用 Google Docs、Gmail 和 Meet 的员工。");
-DICT.set("Workspace fees are paid per seat; the share attributable specifically to Gemini has not been separated.","Workspace 按席位付费，尚未单独拆分 Gemini 对应的费用。");
 DICT.set("Intended for knowledge queries and workflow configuration. Two knowledge bases are currently reported.","主要用于知识查询及工作流配置，目前记录有两个知识库。");
 DICT.set("Cost management","费用管理");
-DICT.set("¥597,476 annualised under the stated assumptions. MOOV AI includes the fixed platform subscription only.","按所列假设年化为 ¥597,476。MOOV AI 仅包含固定平台订阅费。");
+DICT.set("¥424,977 annualised under the stated assumptions. MOOV AI includes the fixed platform subscription only.","按所列假设年化为 ¥424,977。MOOV AI 仅包含固定平台订阅费。");
 DICT.set("IT to review the actual user overlap and usage before renewal.","续约前由 IT 核对用户重叠及实际使用情况。");
 DICT.set("historical payments per current seat","按当前席位分摊历史付款");
 DICT.set("Illustrative monthly estimates in RMB. Seat-based fees, historical Qoder payments and MOOV AI token assumptions are shown separately; these scenarios do not imply equivalent workloads.","人民币月度示例测算，分别采用席位费用、Qoder 历史付款及 MOOV AI token 假设，不表示各平台承担相同工作量。");
@@ -2186,10 +2096,9 @@ DICT.set("Supporting detail: risks and open items","补充资料：风险及待�
 DICT.set("<span class=\"k\">Discounts reported — treatment to reconcile</span><span class=\"v\">−¥7,965</span>","<span class=\"k\">台账列示折扣——口径待核对</span><span class=\"v\">−¥7,965</span>");
   var SEL = "h1,h2,h3,h4,p,li,dt,dd,td,th,summary,figcaption,label,b,.eyebrow,.kv,.mt-row,.ag-x,.rm-tag,.rm-d,.tag,.pill,.dr-n,.co-n,.lname,.ldesc,.mn,.vc-name,.vc-sup,.vc-pos,.chip,.fn-t,.fn-d,.fn-k,.peri-label,.tier-bar,.tier-txt,.mfig,.ro .k,.ro .v,.ro .n,.segb,.tab,.tbtn,.mrow.mhead span,.co-head span,text,.dr-a,.dr-p,.moov-index a,.vc-foot .k,.vc-foot .v,.title-block .meta,.flow-arrow small,.demo-action";
   var ATTRS = new Map([
-    ['\u00a522,979 / month \u00b7 46.2%','\u00a522,979 / \u6708 \u00b7 46.2%'],
-    ['\u00a514,375 / month \u00b7 28.9%','\u00a514,375 / \u6708 \u00b7 28.9%'],
-    ['\u00a58,352 / month \u00b7 16.8%','\u00a58,352 / \u6708 \u00b7 16.8%'],
-    ['\u00a54,083 / month \u00b7 8.2%','\u00a54,083 / \u6708 \u00b7 8.2%'],
+    ['\u00a522,979 / month \u00b7 64.9%','\u00a522,979 / \u6708 \u00b7 64.9%'],
+    ['\u00a58,352 / month \u00b7 23.6%','\u00a58,352 / \u6708 \u00b7 23.6%'],
+    ['\u00a54,083 / month \u00b7 11.5%','\u00a54,083 / \u6708 \u00b7 11.5%'],
     ['April 2026','2026 \u5e74 4 \u6708'],
     ['May 2026','2026 \u5e74 5 \u6708'],
     ['June 2026','2026 \u5e74 6 \u6708'],
